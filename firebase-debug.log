@@ -1,0 +1,142 @@
+[debug] [2023-11-14T14:02:38.805Z] ----------------------------------------------------------------------
+[debug] [2023-11-14T14:02:38.807Z] Command:       /home/miks/.nvm/versions/node/v19.3.0/bin/node /home/miks/.nvm/versions/node/v19.3.0/bin/firebase emulators:start --only hosting
+[debug] [2023-11-14T14:02:38.807Z] CLI Version:   12.8.1
+[debug] [2023-11-14T14:02:38.808Z] Platform:      linux
+[debug] [2023-11-14T14:02:38.808Z] Node Version:  v19.3.0
+[debug] [2023-11-14T14:02:38.808Z] Time:          Tue Nov 14 2023 14:02:38 GMT+0000 (Greenwich Mean Time)
+[debug] [2023-11-14T14:02:38.808Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-11-14T14:02:38.907Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-11-14T14:02:38.907Z] > authorizing via signed-in user (mikssilis@gmail.com)
+[info] i  emulators: Starting emulators: hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: hosting"}}
+[debug] [2023-11-14T14:02:38.912Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-11-14T14:02:38.912Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-11-14T14:02:38.912Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-11-14T14:02:38.919Z] [hub] writing locator at /tmp/hub-lauderdale-manage.json
+[debug] [2023-11-14T14:02:38.932Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/lauderdale-manage [none]
+[debug] [2023-11-14T14:02:39.179Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/lauderdale-manage 200
+[debug] [2023-11-14T14:02:39.179Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/lauderdale-manage {"projectId":"lauderdale-manage","projectNumber":"255753500791","displayName":"Lauderdale Manage","name":"projects/lauderdale-manage","resources":{"hostingSite":"lauderdale-manage","storageBucket":"lauderdale-manage.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_5b9b383e-78da-40f3-aab7-14caaf57d3ad"}
+[debug] [2023-11-14T14:02:41.130Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/lauderdale-manage/sites pageToken=&pageSize=10
+[debug] [2023-11-14T14:02:42.220Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/lauderdale-manage/sites 200
+[debug] [2023-11-14T14:02:42.220Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/lauderdale-manage/sites {"sites":[{"name":"projects/lauderdale-manage/sites/lauderdale-manage","defaultUrl":"https://lauderdale-manage.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2023-11-14T14:02:42.222Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/lauderdale-manage/sites 
+[debug] [2023-11-14T14:02:42.693Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/lauderdale-manage/sites 200
+[debug] [2023-11-14T14:02:42.693Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/lauderdale-manage/sites {"sites":[{"name":"projects/lauderdale-manage/sites/lauderdale-manage","defaultUrl":"https://lauderdale-manage.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2023-11-14T14:02:42.694Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/lauderdale-manage/webApps/-/config [none]
+[debug] [2023-11-14T14:02:43.150Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/lauderdale-manage/webApps/-/config 200
+[debug] [2023-11-14T14:02:43.150Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/lauderdale-manage/webApps/-/config {"projectId":"lauderdale-manage","storageBucket":"lauderdale-manage.appspot.com","locationId":"europe-west","apiKey":"AIzaSyDElsBdteDVDpMPFT7xGtebqZTF4_03LyA","authDomain":"lauderdale-manage.firebaseapp.com","messagingSenderId":"255753500791"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[warn] ⚠  This integration expects Node version 16, 18, or 20. You're running version 19, problems may be encountered. 
+[debug] [2023-11-14T14:03:02.563Z] [web frameworks] effective firebase.json:  {
+  "hosting": [
+    {
+      "source": ".",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "frameworksBackend": {
+        "region": "europe-west1"
+      },
+      "site": "lauderdale-manage",
+      "rewrites": [
+        {
+          "source": "**",
+          "function": {
+            "functionId": "ssrlauderdalemanage",
+            "region": "europe-west1",
+            "pinTag": true
+          }
+        }
+      ],
+      "redirects": [],
+      "headers": [
+        {
+          "source": "**/*.[jt]s",
+          "headers": [
+            {
+              "key": "Set-Cookie",
+              "value": "__FIREBASE_DEFAULTS__=eyJjb25maWciOnsicHJvamVjdElkIjoibGF1ZGVyZGFsZS1tYW5hZ2UiLCJzdG9yYWdlQnVja2V0IjoibGF1ZGVyZGFsZS1tYW5hZ2UuYXBwc3BvdC5jb20iLCJsb2NhdGlvbklkIjoiZXVyb3BlLXdlc3QiLCJhcGlLZXkiOiJBSXphU3lERWxzQmR0ZURWRHBNUEZUN3hHdGVicVpURjRfMDNMeUEiLCJhdXRoRG9tYWluIjoibGF1ZGVyZGFsZS1tYW5hZ2UuZmlyZWJhc2VhcHAuY29tIiwibWVzc2FnaW5nU2VuZGVySWQiOiIyNTU3NTM1MDA3OTEifSwiX2F1dGhUb2tlblN5bmNVUkwiOiIvX19zZXNzaW9uIn0; SameSite=Strict; Expires=2025-10-09T00:43:02.563Z; Path=/;"
+            }
+          ]
+        }
+      ],
+      "cleanUrls": true,
+      "public": "public",
+      "webFramework": "next_ssr"
+    }
+  ],
+  "functions": [
+    {
+      "source": ".firebase/lauderdale-manage/functions",
+      "codebase": "firebase-frameworks-lauderdale-manage"
+    }
+  ]
+}
+[debug] [2023-11-14T14:03:02.564Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-11-14T14:03:02.564Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-11-14T14:03:02.565Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, pubsub, storage\u001b[22m"}}
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /home/miks/Downloads/lauderdale-manage-firebase-adminsdk-xlnjq-5cd45c73fd.json. Non-emulated services will access production using these credentials. Be careful! {"metadata":{"emulator":{"name":"functions"},"message":"Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /home/miks/Downloads/lauderdale-manage-firebase-adminsdk-xlnjq-5cd45c73fd.json. Non-emulated services will access production using these credentials. Be careful!"}}
+[debug] [2023-11-14T14:03:02.569Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/lauderdale-manage/adminSdkConfig [none]
+[debug] [2023-11-14T14:03:02.902Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/lauderdale-manage/adminSdkConfig 200
+[debug] [2023-11-14T14:03:02.902Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/lauderdale-manage/adminSdkConfig {"projectId":"lauderdale-manage","storageBucket":"lauderdale-manage.appspot.com","locationId":"europe-west"}
+[debug] [2023-11-14T14:03:02.937Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/lauderdale-manage/sites 
+[debug] [2023-11-14T14:03:03.722Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/lauderdale-manage/sites 200
+[debug] [2023-11-14T14:03:03.722Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/lauderdale-manage/sites {"sites":[{"name":"projects/lauderdale-manage/sites/lauderdale-manage","defaultUrl":"https://lauderdale-manage.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2023-11-14T14:03:03.723Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/lauderdale-manage/webApps/-/config [none]
+[debug] [2023-11-14T14:03:04.183Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/lauderdale-manage/webApps/-/config 200
+[debug] [2023-11-14T14:03:04.184Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/lauderdale-manage/webApps/-/config {"projectId":"lauderdale-manage","storageBucket":"lauderdale-manage.appspot.com","locationId":"europe-west","apiKey":"AIzaSyDElsBdteDVDpMPFT7xGtebqZTF4_03LyA","authDomain":"lauderdale-manage.firebaseapp.com","messagingSenderId":"255753500791"}
+[info] i  hosting[lauderdale-manage]: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] ✔  hosting[lauderdale-manage]: Local server: http://127.0.0.1:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5000\u001b[22m\u001b[24m"}}
+[info] i  functions: Watching "/home/miks/Documents/Projects/Lauderdale/lauderdale-manage/.firebase/lauderdale-manage/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/home/miks/Documents/Projects/Lauderdale/lauderdale-manage/.firebase/lauderdale-manage/functions\" for Cloud Functions..."}}
+[debug] [2023-11-14T14:03:04.217Z] Validating nodejs source
+[debug] [2023-11-14T14:03:04.841Z] > [functions] package.json contents: {
+  "main": "server.js",
+  "dependencies": {
+    "firebase-frameworks": "^0.10.4",
+    "firebase-functions": "^4.3.0",
+    "firebase-admin": "^11.0.1"
+  },
+  "engines": {
+    "node": "18"
+  }
+}
+[debug] [2023-11-14T14:03:04.842Z] Building nodejs source
+[debug] [2023-11-14T14:03:04.843Z] Failed to find version of module node: reached end of search path /home/miks/Documents/Projects/Lauderdale/lauderdale-manage/.firebase/lauderdale-manage/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "18" doesn't match your global version "19". Using node@19 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2023-11-14T14:03:04.849Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-11-14T14:03:04.854Z] Found firebase-functions binary at '/home/miks/Documents/Projects/Lauderdale/lauderdale-manage/.firebase/lauderdale-manage/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8429
+
+[debug] [2023-11-14T14:03:05.147Z] Got response from /__/functions.yaml {"endpoints":{"ssrlauderdalemanage":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","region":["europe-west1"],"labels":{},"httpsTrigger":{},"entryPoint":"ssrlauderdalemanage"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] ✔  functions: Loaded functions definitions from source: ssrlauderdalemanage. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: ssrlauderdalemanage."}}
+[info] ✔  functions[europe-west1-ssrlauderdalemanage]: http function initialized (http://127.0.0.1:5001/lauderdale-manage/europe-west1/ssrlauderdalemanage). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/lauderdale-manage/europe-west1/ssrlauderdalemanage)."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┐
+│ Emulator  │ Host:Port      │
+├───────────┼────────────────┤
+│ Functions │ 127.0.0.1:5001 │
+├───────────┼────────────────┤
+│ Hosting   │ 127.0.0.1:5000 │
+└───────────┴────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
