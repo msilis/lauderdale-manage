@@ -17,7 +17,7 @@ The dashboard will include the following features:
 To get a local copy up and running, follow these steps:
 
 1. Clone the repository: `https://github.com/msilis/lauderdale-manage.git`
-2. 2. Navigate to the project directory: `cd lauderdale-manage`
+2. Navigate to the project directory: `cd lauderdale-manage`
 3. Install dependencies: `npm install` or `yarn install` or `bun install`
 
 ## Contributing
