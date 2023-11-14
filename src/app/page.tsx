@@ -40,13 +40,17 @@ export default function Home() {
   return (
     <>
       <div>
-        <h1>Lauderdale Manage</h1>
-        <form onSubmit={handleSubmit}>
+        <div className="text-center">
+          <h1>Lauderdale Manage</h1>
+        </div>
+
+        <form onSubmit={handleSubmit} className="flex flex-col">
           <label htmlFor="firstName">First Name</label>
           <input
             type="text"
             id="firstName"
             value={firstName}
+            className="input input-bordered w-full max-w-xs"
             onChange={(event) => setFirstName(event.target.value)}
           />
           <label htmlFor="lastName">Last Name</label>
@@ -54,6 +58,7 @@ export default function Home() {
             type="text"
             id="lastName"
             value={lastName}
+            className="input input-bordered w-full max-w-xs"
             onChange={(event) => setLastName(event.target.value)}
           />
           <label htmlFor="familyName">Family Name</label>
@@ -61,6 +66,7 @@ export default function Home() {
             type="text"
             id="familyName"
             value={familyName}
+            className="input input-bordered w-full max-w-xs"
             onChange={(event) => setFamilyName(event.target.value)}
           />
           <label htmlFor="birthdate">Birthdate</label>
@@ -68,9 +74,12 @@ export default function Home() {
             type="text"
             id="birthdate"
             value={birthDate}
+            className="input input-bordered w-full max-w-xs"
             onChange={(event) => setBirthDate(event.target.value)}
           />
-          <button type="submit">Submit</button>
+          <button type="submit" className="btn btn-neutral">
+            Submit
+          </button>
         </form>
       </div>
     </>
