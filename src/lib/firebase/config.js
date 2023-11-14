@@ -5,3 +5,5 @@ var serviceAccount = require("./serviceAccountKey.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
+
+var db = admin.firestore();
