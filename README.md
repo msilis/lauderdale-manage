@@ -32,4 +32,4 @@ Contributions are what make the open-source community such an amazing place to l
 
 ## License
 
-Information about the project's license will go here.
+Distributed under the MIT License. See `LICENSE` for more information.
