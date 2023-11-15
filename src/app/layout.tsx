@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Lauderdale/Manage",
   description: "Manage the Lauderdale Suzuki Group",
+  icons: {
+    icon: "favicon.ico",
+  },
 };
 
 export default function RootLayout({
