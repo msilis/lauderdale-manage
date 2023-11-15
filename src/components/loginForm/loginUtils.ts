@@ -5,7 +5,6 @@ export const handleLogin = async (
   password: string,
   router: string[] | AppRouterInstance
 ) => {
-  console.log(email, password);
   const response = await fetch("../../api/login", {
     method: "POST",
     headers: {
@@ -17,7 +16,9 @@ export const handleLogin = async (
     console.error("Login failed");
     return;
   }
+
   console.log("Login successful!");
   sessionStorage.setItem("email", email);
+
   router.push("/dashboard");
 };
