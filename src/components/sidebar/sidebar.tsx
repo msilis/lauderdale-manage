@@ -3,6 +3,9 @@ export const Sidebar = () => {
     <div className="flex flex-col">
       <ul className="flex flex-col gap-4">
         <li>
+          <button className="btn btn-outline w-32">Overview</button>
+        </li>
+        <li>
           <button className="btn btn-outline w-32">Students</button>
         </li>
         <li>

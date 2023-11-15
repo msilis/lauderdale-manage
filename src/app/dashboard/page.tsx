@@ -23,7 +23,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div className="flex justify-end align-middle text-right px-3 pb-4 outline outline-4">
+      <div className="flex justify-end align-middle text-right px-3 pb-4 outline outline-2">
         <button
           className="btn btn-sm ml-2"
           onClick={() => handleLogout(router)}
