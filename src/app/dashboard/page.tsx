@@ -1,3 +1,6 @@
+"use client";
+
+import { DashboardHeader } from "@/components/dashboardHeader/dashboardHeader";
 import { isAuthenticated } from "../../../utils/Auth";
 import { redirect } from "next/navigation";
 
@@ -8,9 +11,16 @@ const Dashboard = () => {
     redirect("/");
   }
 
+  let loginEmail;
+
+  if (typeof window !== "undefined") {
+    loginEmail = sessionStorage.getItem("email");
+  }
+
   return (
-    <div className="text-center bg-slate-200">
-      <h2>Dashboard</h2>
+    <div className="text-right px-3 outline outline-4">
+      <DashboardHeader />
+      <span className="text-xs ">Logged in as {loginEmail ?? "User"}</span>
     </div>
   );
 };

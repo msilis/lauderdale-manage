@@ -18,5 +18,6 @@ export const handleLogin = async (
     return;
   }
   console.log("Login successful!");
+  sessionStorage.setItem("email", email);
   router.push("/dashboard");
 };
