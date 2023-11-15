@@ -1,5 +1,3 @@
-"use client";
-
 import { handleLogin } from "./loginUtils";
 import { useRef } from "react";
 import { useRouter } from "next/navigation";
