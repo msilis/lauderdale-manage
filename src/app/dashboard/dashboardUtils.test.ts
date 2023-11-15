@@ -5,15 +5,23 @@ import { mock } from "jest-mock-extended";
 // Mock the router object
 const mockRouter = mock<AppRouterInstance>();
 
-// Mock the sessionStorage object
-global.sessionStorage = mock<Storage>();
-
 describe("handleLogout", () => {
+  // Mock the sessionStorage object
+  let removeItemSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    removeItemSpy = jest.spyOn(Storage.prototype, "removeItem");
+  });
+
+  afterEach(() => {
+    removeItemSpy.mockRestore();
+  });
+
   it("should remove email from sessionStorage and redirect to home page", () => {
     handleLogout(mockRouter);
 
     // Verify that removeItem was called with 'email'
-    expect(sessionStorage.removeItem).toHaveBeenCalledWith("email");
+    expect(removeItemSpy).toHaveBeenCalledWith("email");
 
     // Verify that push was called with '/'
     expect(mockRouter.push).toHaveBeenCalledWith("/");
