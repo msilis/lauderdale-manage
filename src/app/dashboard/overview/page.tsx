@@ -1,3 +1,5 @@
+import DashboardLayout from "../dashboardLayout";
+
 const Overview = () => {
   return (
     <div>
@@ -6,4 +8,12 @@ const Overview = () => {
   );
 };
 
-export default Overview;
+const WrappedOverview = () => {
+  return (
+    <DashboardLayout>
+      <Overview />
+    </DashboardLayout>
+  );
+};
+
+export default WrappedOverview;

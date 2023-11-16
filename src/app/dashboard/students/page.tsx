@@ -1,3 +1,5 @@
+import DashboardLayout from "../dashboardLayout";
+
 const Students = () => {
   return (
     <div>
@@ -6,4 +8,11 @@ const Students = () => {
   );
 };
 
-export default Students;
+const WrappedStudents = () => {
+  return (
+    <DashboardLayout>
+      <Students />
+    </DashboardLayout>
+  );
+};
+export default WrappedStudents;

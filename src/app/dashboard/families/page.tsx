@@ -1,3 +1,5 @@
+import DashboardLayout from "../dashboardLayout";
+
 const Families = () => {
   return (
     <div>
@@ -6,4 +8,11 @@ const Families = () => {
   );
 };
 
-export default Families;
+const WrappedFamilies = () => {
+  return (
+    <DashboardLayout>
+      <Families />
+    </DashboardLayout>
+  );
+};
+export default WrappedFamilies;

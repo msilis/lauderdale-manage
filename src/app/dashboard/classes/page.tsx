@@ -1,3 +1,5 @@
+import DashboardLayout from "../dashboardLayout";
+
 const Classes = () => {
   return (
     <div>
@@ -6,4 +8,11 @@ const Classes = () => {
   );
 };
 
-export default Classes;
+const WrappedClasses = () => {
+  return (
+    <DashboardLayout>
+      <Classes />
+    </DashboardLayout>
+  );
+};
+export default WrappedClasses;
