@@ -58,6 +58,11 @@ export const Sidebar = () => {
             Classes
           </button>
         </li>
+        <li>
+          <button className="btn btn-outline btn-secondary w-32">
+            Log out
+          </button>
+        </li>
       </ul>
     </div>
   );
