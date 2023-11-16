@@ -21,7 +21,15 @@ const Dashboard = () => {
     loginEmail = sessionStorage.getItem("email");
   }
 
-  return <div></div>;
+  return (
+    <div className="grid grid-cols-3">
+      <div>
+        <Sidebar />
+      </div>
+      <div></div>
+      <div></div>
+    </div>
+  );
 };
 
 export default Dashboard;
