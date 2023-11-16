@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { handleLogout } from "@/app/dashboard/dashboardUtils";
 
 export const Sidebar = () => {
   const router = useRouter();
@@ -59,7 +60,10 @@ export const Sidebar = () => {
           </button>
         </li>
         <li>
-          <button className="btn btn-outline btn-secondary w-32">
+          <button
+            className="btn btn-outline btn-secondary w-32"
+            onClick={() => handleLogout(router)}
+          >
             Log out
           </button>
         </li>
