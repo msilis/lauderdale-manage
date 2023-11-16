@@ -21,24 +21,7 @@ const Dashboard = () => {
     loginEmail = sessionStorage.getItem("email");
   }
 
-  return (
-    <div>
-      <div className="flex justify-end align-middle text-right px-3 py-3 mt-1 outline outline-2">
-        <button
-          className="btn btn-sm ml-2"
-          onClick={() => handleLogout(router)}
-        >
-          Log out
-        </button>
-        <div className="ml-2">
-          <DashboardHeader />
-        </div>
-      </div>
-      <div className="ml-2 mt-4 p-4 bg-slate-300 max-w-fit h-full">
-        <Sidebar />
-      </div>
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Dashboard;
