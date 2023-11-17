@@ -1,5 +1,5 @@
 import { Sidebar } from "@/components/sidebar/sidebar";
-import { isAuthenticated } from "../../../utils/Auth";
+import { isAuthenticated } from "../../utils/Auth";
 import { redirect } from "next/navigation";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {

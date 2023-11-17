@@ -20,5 +20,5 @@ export const handleLogin = async (
   console.log("Login successful!");
   sessionStorage.setItem("email", email);
 
-  router.push("/dashboard");
+  router.push("/dashboard/overview");
 };

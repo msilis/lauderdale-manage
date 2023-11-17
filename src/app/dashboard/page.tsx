@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { componentBasedOnRoute } from "./componentBasedOnRoute";
-import DashboardLayout from "./dashboardLayout";
+import DashboardLayout from "../../layout/dashboardLayout";
 
 const Dashboard = () => {
   const pathname = usePathname();
