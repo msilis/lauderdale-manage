@@ -1,9 +1,13 @@
 import Link from "next/link";
 
-const Navbar = () => {
+type NavbarProps = {
+  buttonText: string;
+};
+
+const Navbar: React.FC<NavbarProps> = ({ buttonText }) => {
   return (
     <div className="navbar bg-base-100 outline outline-gray-50 mt-2 drop-shadow-xl">
-      <a className="btn btn-ghost text-l">Add Student</a>
+      <a className="btn btn-ghost text-l">{buttonText}</a>
     </div>
   );
 };
