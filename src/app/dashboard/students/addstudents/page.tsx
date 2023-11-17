@@ -1,5 +1,7 @@
 import DashboardLayout from "@/layout/dashboardLayout";
 import { UI_TEXT } from "../../../../../utils/uitext";
+import { Suspense } from "react";
+import Loading from "@/app/loading";
 
 const AddStudent = () => {
   return (
@@ -55,7 +57,9 @@ const AddStudent = () => {
 const WrappedAddStudent = () => {
   return (
     <DashboardLayout>
-      <AddStudent />
+      <Suspense fallback={<Loading />}>
+        <AddStudent />
+      </Suspense>
     </DashboardLayout>
   );
 };
