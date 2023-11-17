@@ -1,4 +1,5 @@
 import DashboardLayout from "@/layout/dashboardLayout";
+import { UI_TEXT } from "../../../../../utils/uitext";
 
 const AddStudent = () => {
   return (
@@ -45,7 +46,7 @@ const AddStudent = () => {
           className="input input-bordered w-full max-w-xs mt-2"
           required
         />
-        <button className="btn btn-accent mt-4">Add</button>
+        <button className="btn btn-accent mt-4">{UI_TEXT.addButton}</button>
       </form>
     </div>
   );
