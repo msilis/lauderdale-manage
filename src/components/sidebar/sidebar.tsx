@@ -12,13 +12,12 @@ export const Sidebar = () => {
 
   return (
     <div className="flex flex-col ml-2 mt-4">
-      <img
-        src="/lauderdalemanage.png"
-        height={120}
-        width={120}
-        alt="manage logo"
-      />
-      <ul className="flex flex-col gap-4">
+      <h4 className="font-bold">
+        Lauderdale
+        <br />
+        /Manage
+      </h4>
+      <ul className="flex flex-col gap-4 mt-5">
         <li>
           <button
             className="btn btn-outline w-32"
