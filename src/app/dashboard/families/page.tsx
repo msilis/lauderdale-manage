@@ -6,7 +6,10 @@ const Families = () => {
   return (
     <div>
       <h1 className="text-5xl font-bold">Families</h1>
-      <Navbar buttonText={UI_TEXT.addFamily} />
+      <Navbar
+        buttonText={UI_TEXT.addFamily}
+        url="/dashboard/families/addfamilies"
+      />
     </div>
   );
 };

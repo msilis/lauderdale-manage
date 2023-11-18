@@ -1,7 +1,14 @@
+"use client";
+
 import DashboardLayout from "@/layout/dashboardLayout";
 import { UI_TEXT } from "../../../../../utils/uitext";
+import { useRouter } from "next/navigation";
 
 const AddFamily = () => {
+  const router = useRouter();
+  const handleCancelButtonClick = () => {
+    router.push("/dashboard/families");
+  };
   return (
     <div className="mt-6 ml-[30%] max-w-2xl outline outline-slate-100 p-4 drop-shadow-lg rounded-md">
       <h2 className="font-bold">Enter Family Details</h2>
@@ -90,6 +97,7 @@ const AddFamily = () => {
             <input
               type="tel"
               id="parent2Phone"
+              placeholder="020 1234 5678"
               className="input input-bordered w-full max-w-xs mt-2"
             />
             <label htmlFor="parent1Address" className="flex flex-col mt-2">
@@ -102,7 +110,11 @@ const AddFamily = () => {
           </div>
         </div>
         <div className=" flex w-full md:w-full justify-around mt-4">
-          <button className="btn btn-secondary mt-4">
+          <button
+            className="btn btn-secondary mt-4"
+            type="reset"
+            onClick={() => handleCancelButtonClick()}
+          >
             {UI_TEXT.cancelButton}
           </button>
           <button className="btn btn-accent mt-4">{UI_TEXT.addFamily}</button>
