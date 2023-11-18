@@ -4,7 +4,7 @@ import Navbar from "@/components/navbar/navbar";
 
 const Families = () => {
   return (
-    <div>
+    <div className="flex flex-col ml-28">
       <h1 className="text-5xl font-bold">Families</h1>
       <Navbar
         buttonText={UI_TEXT.addFamily}
