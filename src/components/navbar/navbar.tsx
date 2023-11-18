@@ -11,8 +11,6 @@ type NavbarProps = {
 const Navbar: React.FC<NavbarProps> = ({ buttonText, url }) => {
   const router = useRouter();
   const handleButtonClick = () => {
-    console.log("Button handler clicked");
-    console.log(url);
     router.push(url);
   };
   return (
