@@ -43,6 +43,7 @@ const AddFamily = () => {
               id="parent1Email"
               placeholder="example@email.com"
               className="input input-bordered w-full max-w-xs mt-2"
+              required
             />
             <label htmlFor="parent1Phone" className="flex flex-col mt-2">
               Phone
@@ -52,6 +53,7 @@ const AddFamily = () => {
               id="parent1Phone"
               placeholder="020 1234 5678"
               className="input input-bordered w-full max-w-xs mt-2"
+              required
             />
             <label htmlFor="parent1Address" className="flex flex-col mt-2">
               Address
@@ -59,6 +61,7 @@ const AddFamily = () => {
             <textarea
               className="textarea textarea-bordered mt-2"
               placeholder="Address..."
+              required
             />
           </div>
           <div className="flex flex-col md:w-1/2">
@@ -70,7 +73,6 @@ const AddFamily = () => {
               type="text"
               placeholder="First name..."
               className="input input-bordered w-full max-w-xs mt-2"
-              required
             />
             <label htmlFor="parent2LastName" className="flex flex-col mt-2">
               Parent 2 Last Name
@@ -89,7 +91,6 @@ const AddFamily = () => {
               type="email"
               placeholder="email@example.com"
               className="input input-bordered w-full max-w-xs mt-2"
-              required
             />
             <label htmlFor="parent2Phone" className="flex flex-col mt-2">
               Phone
