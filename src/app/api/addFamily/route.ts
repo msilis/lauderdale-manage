@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/firebase/firebaseConfig";
-import { doc, setDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 
 export async function POST(request: Request) {
   try {
     const familyData = await request.json();
-    await setDoc(doc(db, "families"), {
+    console.log({ familyData });
+    await addDoc(collection(db, "families"), {
       parent1FirstName: familyData.parent1FirstName,
       parent1LastName: familyData.parent1LastName,
       parent1Email: familyData.parent1Email,
@@ -22,7 +23,7 @@ export async function POST(request: Request) {
       { status: 201 }
     );
   } catch (error) {
-    console.error("Error adding family to database");
+    console.error("Error adding family to database", error);
     return NextResponse.json(
       { message: "Error adding family to database" },
       { status: 500 }
