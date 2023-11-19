@@ -3,7 +3,7 @@ import { TABLE_UI } from "./familyUtils";
 const FamilyTable = () => {
   return (
     <div className="overflow-x-auto">
-      <table>
+      <table className="table">
         <thead>
           <tr>
             <th>{TABLE_UI.titleFamilyName}</th>

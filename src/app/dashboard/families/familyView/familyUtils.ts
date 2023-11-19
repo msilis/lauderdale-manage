@@ -3,3 +3,5 @@ export enum TABLE_UI {
   contactEmail = "Email",
   contactPhone = "Phone",
 }
+
+const getAllFamilyInfo = () => {};
