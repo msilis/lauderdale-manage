@@ -1,8 +1,8 @@
 "use client";
 
-import { errorToast, successToast } from "@/components/toast/toast";
+import { errorToast, successToast } from "../../../../components/toast/toast";
 import { toast } from "react-toastify";
-import { TOAST_TEXT } from "@/components/toast/toastText";
+import { TOAST_TEXT } from "../../../../components/toast/toastText";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 export const handleAddStudentSubmit = async (
