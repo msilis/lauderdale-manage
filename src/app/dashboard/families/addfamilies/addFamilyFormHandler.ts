@@ -1,3 +1,5 @@
+import { errorToast, successToast } from "@/components/toast/toast";
+import { TOAST_TEXT } from "@/components/toast/toastText";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 export const handleAddFamilyFormSubmit = async (
@@ -17,10 +19,13 @@ export const handleAddFamilyFormSubmit = async (
     body: JSON.stringify(familyData),
   });
   if (!response.ok) {
+    errorToast(TOAST_TEXT.errorAddingFamily);
     throw new Error("Could not add family to database");
   }
 
-  console.log("Added family to database");
+  successToast(TOAST_TEXT.familyAdded);
 
-  router.push("/dashboard/families");
+  setTimeout(() => {
+    router.push("/dashboard/families");
+  }, 1500);
 };
