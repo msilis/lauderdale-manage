@@ -1,7 +1,6 @@
 "use client";
 
 import { errorToast, successToast } from "../../../../components/toast/toast";
-import { toast } from "react-toastify";
 import { TOAST_TEXT } from "../../../../components/toast/toastText";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
@@ -11,9 +10,7 @@ export const handleAddStudentSubmit = async (
 ) => {
   event.preventDefault();
   const formData = new FormData(event.target as HTMLFormElement);
-  console.log({ formData });
   const studentData = Object.fromEntries(formData.entries());
-  console.log({ studentData });
 
   const response = await fetch("../../../api/addStudent", {
     method: "POST",

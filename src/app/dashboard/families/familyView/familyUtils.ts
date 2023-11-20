@@ -1,8 +1,8 @@
-export enum TABLE_UI {
-  titleFamilyName = "Family Name",
-  contactEmail = "Email",
-  contactPhone = "Phone",
-}
+export const TABLE_UI = {
+  titleFamilyName: "Family Name",
+  contactEmail: "Email",
+  contactPhone: "Phone",
+};
 
 export const getAllFamilyInfo = async () => {
   const response = await fetch("../../../api/getFamilies", {
