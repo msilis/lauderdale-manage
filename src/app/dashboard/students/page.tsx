@@ -5,7 +5,7 @@ import StudentView from "./studentView/studentView";
 
 const Students = () => {
   return (
-    <div className="flex flex-col ml-32">
+    <div className="flex flex-col ml-28 gap-6">
       <h1 className="text-5xl font-bold">Students</h1>
       <Navbar
         buttonText={UI_TEXT.addStudentsButton}
