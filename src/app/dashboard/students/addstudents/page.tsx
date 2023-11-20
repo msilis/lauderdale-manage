@@ -35,7 +35,7 @@ const AddStudent = () => {
           className="select select-bordered w-full max-w-xs mt-2"
           required
         >
-          <option disabled selected>
+          <option disabled value="DEFAULT">
             Family...
           </option>
         </select>
