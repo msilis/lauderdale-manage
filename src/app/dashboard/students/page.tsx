@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar/navbar";
 import DashboardLayout from "../../../layout/dashboardLayout";
 import { UI_TEXT } from "../../../../utils/uitext";
+import StudentView from "./studentView/studentView";
 
 const Students = () => {
   return (
@@ -10,6 +11,7 @@ const Students = () => {
         buttonText={UI_TEXT.addStudentsButton}
         url="/dashboard/students/addstudents"
       />
+      <StudentView />
     </div>
   );
 };
