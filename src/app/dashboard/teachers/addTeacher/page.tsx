@@ -18,7 +18,72 @@ const AddTeacher = () => {
         className="mt-4 flex flex-col mx-auto"
         method="submit"
         onSubmit={(event) => addTeacherHandler(event, router)}
-      ></form>
+      >
+        <label htmlFor="teacherFirstName" className="flex flex-col">
+          First Name
+        </label>
+        <input
+          id="teacherFirstName"
+          name="teacherFirstName"
+          type="text"
+          placeholder="First name..."
+          required
+          className="input input-bordered w-full mt-2"
+        />
+        <label htmlFor="teacherLastName" className="mt-2">
+          Last Name
+        </label>
+        <input
+          id="teacherLastName"
+          name="teacherLastName"
+          type="text"
+          placeholder="Last name..."
+          required
+          className="input input-bordered w-full mt-2"
+        />
+        <label htmlFor="teacherEmail" className="mt-2">
+          Email
+        </label>
+        <input
+          id="teacherEmail"
+          name="teacherEmail"
+          type="email"
+          placeholder="example@email.com"
+          required
+          className="input input-bordered w-full mt-2"
+        />
+        <label htmlFor="teacherPhone" className="mt-2">
+          Phone
+        </label>
+        <input
+          id="teacherPhone"
+          name="teacherPhone"
+          type="tel"
+          placeholder="020 1234 5678"
+          required
+          className="input input-bordered w-full mt-2"
+        />
+        <div className="flex w-full md:w-full justify-around mt-4">
+          <button
+            className="btn btn-secondary mt-4"
+            type="reset"
+            onClick={() => handleCancelButtonClick()}
+          >
+            {UI_TEXT.cancelButton}
+          </button>
+          <button className="btn btn-accent mt-4">{UI_TEXT.addButton}</button>
+        </div>
+      </form>
     </div>
   );
 };
+
+const WrappedAddTeacher = () => {
+  return (
+    <DashboardLayout>
+      <AddTeacher />
+    </DashboardLayout>
+  );
+};
+
+export default WrappedAddTeacher;
