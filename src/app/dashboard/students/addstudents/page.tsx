@@ -25,6 +25,7 @@ const AddStudent = () => {
         </label>
         <input
           id="studentFirstName"
+          name="studentFirstName"
           type="text"
           placeholder="First name..."
           className="input input-bordered w-full mt-2"
@@ -35,6 +36,7 @@ const AddStudent = () => {
         </label>
         <input
           id="studentLastName"
+          name="studentLastName"
           type="text"
           placeholder="Last name..."
           className="input input-bordered w-full  mt-2"
@@ -43,10 +45,12 @@ const AddStudent = () => {
         <label htmlFor="studentFamily" className="flex flex-col mt-2">
           Family
         </label>
-        <select className="select select-bordered w-full  mt-2" required>
-          <option disabled value="DEFAULT">
-            Family...
-          </option>
+        <select
+          className="select select-bordered w-full  mt-2"
+          required
+          name="studentFamily"
+        >
+          <option value="DEFAULT">Family...</option>
         </select>
         <label htmlFor="studentBirthdate" className="flex flex-col mt-2">
           Birth Date
@@ -56,6 +60,7 @@ const AddStudent = () => {
           type="date"
           className="input input-bordered w-full  mt-2"
           required
+          name="studentBirthdate"
         />
         <div className="flex w-full md:w-full justify-around mt-4">
           <button
