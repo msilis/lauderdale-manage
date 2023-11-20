@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { componentBasedOnRoute } from "./componentBasedOnRoute";
 import DashboardLayout from "../../layout/dashboardLayout";
+import { ToastContainer, toast } from "react-toastify";
 
 const Dashboard = () => {
   const pathname = usePathname();
@@ -12,6 +13,7 @@ const Dashboard = () => {
   return (
     <DashboardLayout>
       <Component />
+      <ToastContainer />
     </DashboardLayout>
   );
 };
