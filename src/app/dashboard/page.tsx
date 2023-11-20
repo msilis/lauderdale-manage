@@ -1,43 +1,18 @@
 "use client";
 
-import { DashboardHeader } from "@/components/dashboardHeader/dashboardHeader";
-import { isAuthenticated } from "../../../utils/Auth";
-import { redirect } from "next/navigation";
-import { handleLogout } from "./dashboardUtils";
-import { useRouter } from "next/navigation";
-import { Sidebar } from "@/components/sidebar/sidebar";
+import { usePathname } from "next/navigation";
+import { componentBasedOnRoute } from "./componentBasedOnRoute";
+import DashboardLayout from "../../layout/dashboardLayout";
 
 const Dashboard = () => {
-  const router = useRouter();
-  const isAuth = isAuthenticated;
+  const pathname = usePathname();
 
-  if (!isAuth) {
-    redirect("/");
-  }
-
-  let loginEmail;
-
-  if (typeof window !== "undefined") {
-    loginEmail = sessionStorage.getItem("email");
-  }
+  const Component = componentBasedOnRoute(pathname);
 
   return (
-    <div>
-      <div className="flex justify-end align-middle text-right px-3 py-3 mt-1 outline outline-2">
-        <button
-          className="btn btn-sm ml-2"
-          onClick={() => handleLogout(router)}
-        >
-          Log out
-        </button>
-        <div className="ml-2">
-          <DashboardHeader />
-        </div>
-      </div>
-      <div className="ml-2 mt-4 p-4 bg-slate-300 max-w-fit h-full">
-        <Sidebar />
-      </div>
-    </div>
+    <DashboardLayout>
+      <Component />
+    </DashboardLayout>
   );
 };
 
