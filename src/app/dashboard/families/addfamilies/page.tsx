@@ -14,7 +14,7 @@ const AddFamily = () => {
     <div className="mt-6 ml-[30%] max-w-2xl outline outline-slate-100 p-4 drop-shadow-lg rounded-md">
       <h2 className="font-bold">Enter Family Details</h2>
       <form
-        className="mt-4 "
+        className="mt-4"
         method="submit"
         onSubmit={(event) => handleAddFamilyFormSubmit(event, router)}
       >
@@ -125,7 +125,7 @@ const AddFamily = () => {
             />
           </div>
         </div>
-        <div className=" flex w-full md:w-full justify-around mt-4">
+        <div className="flex w-full md:w-full justify-around mt-4">
           <button
             className="btn btn-secondary mt-4"
             type="reset"

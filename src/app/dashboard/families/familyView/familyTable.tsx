@@ -28,8 +28,6 @@ const FamilyTable = () => {
     fetchFamilyData();
   }, []);
 
-  console.log(familyData);
-
   return (
     <div className="overflow-x-auto">
       <table className="table">
