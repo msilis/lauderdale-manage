@@ -1,5 +1,8 @@
 "use client";
 
+import { successToast } from "@/components/toast/toast";
+import { toast } from "react-toastify";
+import { TOAST_TEXT } from "@/components/toast/toastText";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 export const handleAddStudentSubmit = async (
@@ -23,8 +26,9 @@ export const handleAddStudentSubmit = async (
   if (!response.ok) {
     throw new Error("Could not add student to database");
   }
+  successToast(TOAST_TEXT.studentAdded);
 
-  console.log("Student added to database");
-
-  router.push("/dashboard/students");
+  setTimeout(() => {
+    router.push("/dashboard/students");
+  }, 1500);
 };
