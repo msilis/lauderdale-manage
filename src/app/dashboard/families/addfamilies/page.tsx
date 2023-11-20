@@ -125,7 +125,7 @@ const AddFamily = () => {
             />
           </div>
         </div>
-        <div className=" flex w-full md:w-full justify-around mt-4">
+        <div className="flex w-full md:w-full justify-around mt-4">
           <button
             className="btn btn-secondary mt-4"
             type="reset"
