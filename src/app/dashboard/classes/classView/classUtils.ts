@@ -6,3 +6,14 @@ export const CLASS_TABLE = {
   classTeacher: "Teacher",
   classAccompanist: "Accompanist",
 };
+
+export const getAllClasses = async () => {
+  const response = await fetch("../../../api/classes", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await response.json();
+  return data;
+};
