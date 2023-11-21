@@ -1,35 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { STUDENT_TABLE, getAllStudents } from "./studentUtils";
-
-interface StudentData {
-  studentFirstName: string;
-  studentLastName: string;
-  studentFamily: string;
-  studentBirthdate: string;
-  id: string;
-}
+import { STUDENT_TABLE } from "./studentUtils";
+import { StudentData } from "./studentView";
 
 interface StudentTableProps {
   setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
   setStudentId: React.Dispatch<React.SetStateAction<string>>;
+  studentData: StudentData[];
 }
 
 const StudentTable: React.FC<StudentTableProps> = ({
   setShowAlert,
   setStudentId,
+  studentData,
 }) => {
-  const [studentData, setStudentData] = useState<StudentData[]>([]);
-
-  useEffect(() => {
-    const fetchAllStudents = async () => {
-      const data = await getAllStudents();
-      setStudentData(data);
-    };
-    fetchAllStudents();
-  }, []);
-
   return (
     <div className="overflow-x-auto">
       <table className="table">

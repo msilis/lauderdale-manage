@@ -1,17 +1,39 @@
 "use client";
 
 import StudentTable from "./studentTable";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import WarningAlert from "@/components/alert/alert";
 import { deleteStudent } from "./studentUtils";
+import { getAllStudents } from "./studentUtils";
+
+export interface StudentData {
+  studentFirstName: string;
+  studentLastName: string;
+  studentFamily: string;
+  studentBirthdate: string;
+  id: string;
+}
 
 const StudentView = () => {
   const [showAlert, setShowAlert] = useState<boolean>(false);
   const [studentId, setStudentId] = useState<string>("");
+  const [studentData, setStudentData] = useState<StudentData[]>([]);
 
-  const handleYesClick = () => {
-    console.log(studentId, "...will be deleted");
-    deleteStudent(studentId);
+  console.log([studentData]);
+
+  useEffect(() => {
+    console.log("fetchAllStudents effect ran");
+    const fetchAllStudents = async () => {
+      const data = await getAllStudents();
+      setStudentData(data);
+    };
+    fetchAllStudents();
+  }, []);
+
+  const handleYesClick = async () => {
+    await deleteStudent(studentId);
+    const updatedStudents = await getAllStudents();
+    setStudentData(updatedStudents);
     setShowAlert(false);
   };
 
@@ -27,7 +49,11 @@ const StudentView = () => {
         />
       )}
       <div className="mt-6">
-        <StudentTable setShowAlert={setShowAlert} setStudentId={setStudentId} />
+        <StudentTable
+          setShowAlert={setShowAlert}
+          setStudentId={setStudentId}
+          studentData={studentData}
+        />
       </div>
     </div>
   );
