@@ -1,5 +1,3 @@
-"use client";
-
 import { STUDENT_TABLE } from "./studentUtils";
 import { StudentData } from "./studentView";
 

@@ -2,7 +2,7 @@
 
 import StudentTable from "./studentTable";
 import { useState, useEffect } from "react";
-import WarningAlert from "@/components/alert/alert";
+import WarningAlert from "../../../../components/alert/alert";
 import { deleteStudent } from "./studentUtils";
 import { getAllStudents } from "./studentUtils";
 
