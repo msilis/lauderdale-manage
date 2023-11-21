@@ -9,7 +9,8 @@ export async function POST(request: Request) {
       className: classData.className,
       classTeacher: classData.classTeacher,
       classLocation: classData.classLocation,
-      classTime: classData.classTime,
+      classStartTime: classData.classStartTime,
+      classEndTime: classData.classEndTime,
     });
     return NextResponse.json(
       { message: "Class added to database" },
