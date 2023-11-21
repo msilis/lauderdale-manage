@@ -4,4 +4,5 @@ export const UI_TEXT = {
   addFamily: "Add Family",
   cancelButton: "Cancel",
   addTeacherButton: "Add Teacher",
+  addClassButton: "Add Class",
 };

@@ -5,4 +5,6 @@ export const TOAST_TEXT = {
   errorAddingFamily: "There was an error adding the family",
   teacherAdded: "Teacher added successfully!",
   errorAddingTeacher: "There was an error adding the teacher",
+  classAdded: "Class added successfully!",
+  errorAddingClass: "There was an error adding the class",
 };
