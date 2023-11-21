@@ -27,12 +27,14 @@ const ClassTable = () => {
     <div className="overflow-x-auto">
       <table className="table">
         <thead>
-          <th>{CLASS_TABLE.className}</th>
-          <th>{CLASS_TABLE.classLocation}</th>
-          <th>{CLASS_TABLE.classTeacher}</th>
-          <th>{CLASS_TABLE.classAccompanist}</th>
-          <th>{CLASS_TABLE.classStartTime}</th>
-          <th>{CLASS_TABLE.classEndTime}</th>
+          <tr>
+            <th>{CLASS_TABLE.className}</th>
+            <th>{CLASS_TABLE.classLocation}</th>
+            <th>{CLASS_TABLE.classTeacher}</th>
+            <th>{CLASS_TABLE.classAccompanist}</th>
+            <th>{CLASS_TABLE.classStartTime}</th>
+            <th>{CLASS_TABLE.classEndTime}</th>
+          </tr>
         </thead>
         <tbody>
           {classData.map((classItem, index) => (
