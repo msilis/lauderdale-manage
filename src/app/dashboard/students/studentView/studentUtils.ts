@@ -15,3 +15,5 @@ export const getAllStudents = async () => {
   const data = await response.json();
   return data;
 };
+
+export const deleteStudent = async () => {};

@@ -1,7 +1,9 @@
 const WarningAlert: React.FC<{
   alertText: string;
   setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ alertText, setShowAlert }) => {
+  handleYesClick: () => void;
+  setStudentId: React.Dispatch<React.SetStateAction<string>>;
+}> = ({ alertText, setShowAlert, handleYesClick, setStudentId }) => {
   return (
     <div role="alert" className="alert alert-warning">
       <svg
@@ -18,10 +20,21 @@ const WarningAlert: React.FC<{
         />
       </svg>
       <span>{alertText}</span>
-      <button className="btn btn-sm" onClick={() => setShowAlert(false)}>
+      <button
+        className="btn btn-sm"
+        onClick={() => {
+          setStudentId("");
+          setShowAlert(false);
+        }}
+      >
         No
       </button>
-      <button className="btn btn-sm btn-primary">Yes</button>
+      <button
+        className="btn btn-sm btn-primary"
+        onClick={() => handleYesClick()}
+      >
+        Yes
+      </button>
     </div>
   );
 };
