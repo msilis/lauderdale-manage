@@ -1,3 +1,5 @@
+"use client";
+
 import StudentTable from "./studentTable";
 
 const StudentView = () => {

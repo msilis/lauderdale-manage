@@ -11,7 +11,7 @@ interface StudentData {
   id: string;
 }
 
-const StudentTable = () => {
+const StudentTable = (props: any) => {
   const [studentData, setStudentData] = useState<StudentData[]>([]);
 
   useEffect(() => {
