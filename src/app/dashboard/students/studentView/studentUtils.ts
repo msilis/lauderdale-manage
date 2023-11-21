@@ -1,9 +1,9 @@
-export enum STUDENT_TABLE {
-  studentFirstName = "First Name",
-  studentLastName = "Last Name",
-  studentFamily = "Family",
-  studentBirthdate = "Birthdate",
-}
+export const STUDENT_TABLE = {
+  studentFirstName: "First Name",
+  studentLastName: "Last Name",
+  studentFamily: "Family",
+  studentBirthdate: "Birthdate",
+};
 
 export const getAllStudents = async () => {
   const response = await fetch("../../../api/getStudents", {
