@@ -19,8 +19,6 @@ const StudentView = () => {
   const [studentId, setStudentId] = useState<string>("");
   const [studentData, setStudentData] = useState<StudentData[]>([]);
 
-  console.log([studentData]);
-
   useEffect(() => {
     console.log("fetchAllStudents effect ran");
     const fetchAllStudents = async () => {
