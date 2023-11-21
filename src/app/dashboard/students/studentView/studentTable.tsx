@@ -38,20 +38,22 @@ const StudentTable = () => {
               <td>{student.studentLastName}</td>
               <td>{student.studentFamily}</td>
               <td>{student.studentBirthdate}</td>
-              <td className="cursor-pointer w-[50px] hover:scale-125">
+              <td className="cursor-pointer w-[50px]">
                 <img
                   src="/icons8-edit-simple-small(1)/icons8-edit-16.png"
                   onClick={() => {
                     console.log(student.id);
                   }}
+                  className="hover:scale-125"
                 />
               </td>
-              <td className="cursor-pointer w-[50px] hover:scale-125">
+              <td className="cursor-pointer w-[50px] ">
                 <img
                   src="/icons8-delete-simple-small/icons8-delete-16.png"
                   onClick={() => {
                     console.log(student.id);
                   }}
+                  className="hover:scale-125"
                 />
               </td>
             </tr>
