@@ -22,7 +22,7 @@ export const getAllStudents = async () => {
 export const deleteStudent = async (studentId: string) => {
   console.log("studentId: ", studentId);
   const studentToDelete = studentId;
-  const response = await fetch("../../../api/modifystudent", {
+  const response = await fetch("../../../api/deletestudent", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
