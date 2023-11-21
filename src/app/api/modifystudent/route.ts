@@ -5,11 +5,12 @@ import { doc, deleteDoc } from "firebase/firestore";
 export async function POST(request: Request) {
   try {
     const deleteData = await request.json();
-    await deleteDoc(doc(db, "students", deleteData.studentId));
-    NextResponse.json({ message: "Student deleted" }, { status: 200 });
+    console.log("Delete data: ", deleteData);
+    await deleteDoc(doc(db, "students", deleteData));
+    return NextResponse.json({ message: "Student deleted" }, { status: 200 });
   } catch (error) {
     console.error("There was an error deleting the student", error);
-    NextResponse.json(
+    return NextResponse.json(
       { message: "There was an error deleting the student" },
       { status: 500 }
     );

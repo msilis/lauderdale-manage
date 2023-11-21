@@ -1,3 +1,6 @@
+import { errorToast, successToast } from "@/components/toast/toast";
+import { TOAST_TEXT } from "@/components/toast/toastText";
+
 export const STUDENT_TABLE = {
   studentFirstName: "First Name",
   studentLastName: "Last Name",
@@ -16,4 +19,19 @@ export const getAllStudents = async () => {
   return data;
 };
 
-export const deleteStudent = async () => {};
+export const deleteStudent = async (studentId: string) => {
+  console.log("studentId: ", studentId);
+  const studentToDelete = studentId;
+  const response = await fetch("../../../api/modifystudent", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(studentToDelete),
+  });
+  if (!response.ok) {
+    errorToast(TOAST_TEXT.errorStudentDelete);
+    throw new Error("Error deleting student");
+  }
+  successToast(TOAST_TEXT.studentDeleted);
+};

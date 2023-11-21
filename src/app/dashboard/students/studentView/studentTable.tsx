@@ -34,10 +34,12 @@ const StudentTable: React.FC<StudentTableProps> = ({
     <div className="overflow-x-auto">
       <table className="table">
         <thead>
-          <th>{STUDENT_TABLE.studentFirstName}</th>
-          <th>{STUDENT_TABLE.studentLastName}</th>
-          <th>{STUDENT_TABLE.studentFamily}</th>
-          <th>{STUDENT_TABLE.studentBirthdate}</th>
+          <tr>
+            <th>{STUDENT_TABLE.studentFirstName}</th>
+            <th>{STUDENT_TABLE.studentLastName}</th>
+            <th>{STUDENT_TABLE.studentFamily}</th>
+            <th>{STUDENT_TABLE.studentBirthdate}</th>
+          </tr>
         </thead>
         <tbody>
           {studentData.map((student) => (

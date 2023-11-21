@@ -3,13 +3,15 @@
 import StudentTable from "./studentTable";
 import { useState } from "react";
 import WarningAlert from "@/components/alert/alert";
+import { deleteStudent } from "./studentUtils";
 
 const StudentView = () => {
-  const [showAlert, setShowAlert] = useState<boolean>(true);
+  const [showAlert, setShowAlert] = useState<boolean>(false);
   const [studentId, setStudentId] = useState<string>("");
 
   const handleYesClick = () => {
     console.log(studentId, "...will be deleted");
+    deleteStudent(studentId);
     setShowAlert(false);
   };
 
