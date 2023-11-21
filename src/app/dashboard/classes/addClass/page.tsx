@@ -40,6 +40,26 @@ const AddClass = () => {
           className="input input-bordered w-full mt-2"
           required
         />
+        <label htmlFor="classTeacher" className="mt-2">
+          Teacher
+        </label>
+        <input
+          id="classTeacher"
+          name="classTeacher"
+          type="text"
+          placeholder="Teacher..."
+          className="input input-bordered w-full mt-2"
+        />
+        <label htmlFor="classAccompanist" className="mt-2">
+          Accompanist
+        </label>
+        <input
+          id="classAccompanist"
+          name="classAccompanist"
+          type="text"
+          placeholder="Accompanist..."
+          className="input input-bordered w-full mt-2"
+        />
         <div className="flex gap-3 mt-2 items-center">
           <label htmlFor="classStartTime" className="mt-2">
             Start Time
