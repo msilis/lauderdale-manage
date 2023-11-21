@@ -40,28 +40,38 @@ const AddClass = () => {
           className="input input-bordered w-full mt-2"
           required
         />
-        <label htmlFor="teacherEmail" className="mt-2">
-          Email
-        </label>
-        <input
-          id="teacherEmail"
-          name="teacherEmail"
-          type="email"
-          placeholder="example@email.com"
-          className="input input-bordered w-full mt-2"
-          required
-        />
-        <label htmlFor="teacherPhone" className="mt-2">
-          Phone
-        </label>
-        <input
-          id="teacherPhone"
-          name="teacherPhone"
-          type="tel"
-          placeholder="020 1234 5678"
-          className="input input-bordered w-full mt-2"
-          required
-        />
+        <div className="flex gap-3 mt-2 items-center">
+          <label htmlFor="classStartTime" className="mt-2">
+            Start Time
+          </label>
+          <input
+            id="classStartTime"
+            name="classStartTime"
+            type="time"
+            className="input input-bordered mt-2"
+            required
+          />
+          <label htmlFor="classEndTime" className="mt-2">
+            End Time
+          </label>
+          <input
+            id="classEndTime"
+            name="classEndTime"
+            type="time"
+            className="input input-bordered mt-2"
+            required
+          />
+        </div>
+        <div className="flex w-full md:w-full justify-around mt-4">
+          <button
+            className="btn btn-secondary mt-4"
+            type="reset"
+            onClick={() => handleCancelButtonClick()}
+          >
+            {UI_TEXT.cancelButton}
+          </button>
+          <button className="btn btn-accent mt-4">{UI_TEXT.addButton}</button>
+        </div>
       </form>
     </div>
   );
