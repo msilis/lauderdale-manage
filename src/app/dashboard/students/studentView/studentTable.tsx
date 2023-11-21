@@ -8,6 +8,7 @@ interface StudentData {
   studentLastName: string;
   studentFamily: string;
   studentBirthdate: string;
+  id: string;
 }
 
 const StudentTable = () => {
@@ -31,8 +32,8 @@ const StudentTable = () => {
           <th>{STUDENT_TABLE.studentBirthdate}</th>
         </thead>
         <tbody>
-          {studentData.map((student, index) => (
-            <tr key={index}>
+          {studentData.map((student) => (
+            <tr key={student.id}>
               <td>{student.studentFirstName}</td>
               <td>{student.studentLastName}</td>
               <td>{student.studentFamily}</td>
