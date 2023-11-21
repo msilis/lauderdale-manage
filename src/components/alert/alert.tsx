@@ -1,4 +1,7 @@
-export const WarningAlert = (alertText: string | undefined) => {
+const WarningAlert: React.FC<{
+  alertText: string;
+  setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ alertText, setShowAlert }) => {
   return (
     <div role="alert" className="alert alert-warning">
       <svg
@@ -15,6 +18,12 @@ export const WarningAlert = (alertText: string | undefined) => {
         />
       </svg>
       <span>{alertText}</span>
+      <button className="btn btn-sm" onClick={() => setShowAlert(false)}>
+        No
+      </button>
+      <button className="btn btn-sm btn-primary">Yes</button>
     </div>
   );
 };
+
+export default WarningAlert;

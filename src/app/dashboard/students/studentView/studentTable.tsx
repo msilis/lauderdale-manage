@@ -11,7 +11,11 @@ interface StudentData {
   id: string;
 }
 
-const StudentTable = (props: any) => {
+interface StudentTableProps {
+  setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const StudentTable: React.FC<StudentTableProps> = ({ setShowAlert }) => {
   const [studentData, setStudentData] = useState<StudentData[]>([]);
 
   useEffect(() => {
@@ -50,9 +54,7 @@ const StudentTable = (props: any) => {
               <td className="cursor-pointer w-[50px] ">
                 <img
                   src="/icons8-delete-simple-small/icons8-delete-16.png"
-                  onClick={() => {
-                    console.log(student.id);
-                  }}
+                  onClick={() => setShowAlert(true)}
                   className="hover:scale-125"
                 />
               </td>
