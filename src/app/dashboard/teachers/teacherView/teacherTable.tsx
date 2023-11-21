@@ -25,10 +25,12 @@ const TeacherTable = () => {
     <div className="overflow-x-auto">
       <table className="table">
         <thead>
-          <th>{TEACHER_TABLE.teacherFirstName}</th>
-          <th>{TEACHER_TABLE.teacherLastName}</th>
-          <th>{TEACHER_TABLE.teacherEmail}</th>
-          <th>{TEACHER_TABLE.teacherPhone}</th>
+          <tr>
+            <th>{TEACHER_TABLE.teacherFirstName}</th>
+            <th>{TEACHER_TABLE.teacherLastName}</th>
+            <th>{TEACHER_TABLE.teacherEmail}</th>
+            <th>{TEACHER_TABLE.teacherPhone}</th>
+          </tr>
         </thead>
         <tbody>
           {teacherData.map((teacher, index) => (
