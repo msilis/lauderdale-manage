@@ -45,6 +45,9 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
               className="input input-bordered w-full  mt-2"
             />
           </div>
+          <div>
+            <button className="btn btn-accent mt-4">Save</button>
+          </div>
         </div>
       </dialog>
     );
