@@ -55,5 +55,10 @@ export const handleDialogSave = async (
     },
     body: JSON.stringify(editedStudentData),
   });
+  if (!response.ok) {
+    errorToast(TOAST_TEXT.errorUpdatingStudent);
+    throw new Error("There was an error updating the student");
+  }
+  successToast(TOAST_TEXT.studentUpdated);
   setEditStudentData(null);
 };
