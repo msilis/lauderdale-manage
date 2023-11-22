@@ -9,4 +9,6 @@ export const TOAST_TEXT = {
   errorAddingClass: "There was an error adding the class",
   studentDeleted: "Student deleted successfully!",
   errorStudentDelete: "There was an error deleting the student",
+  errorUpdatingStudent: "There was an error updating the student",
+  studentUpdated: "Student updated successfully!",
 };

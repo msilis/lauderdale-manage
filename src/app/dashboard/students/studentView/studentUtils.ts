@@ -1,5 +1,7 @@
 import { errorToast, successToast } from "@/components/toast/toast";
 import { TOAST_TEXT } from "@/components/toast/toastText";
+import { SetStateAction } from "react";
+import { StudentData } from "./studentView";
 
 export const STUDENT_TABLE = {
   studentFirstName: "First Name",
@@ -33,4 +35,30 @@ export const deleteStudent = async (studentId: string) => {
     throw new Error("Error deleting student");
   }
   successToast(TOAST_TEXT.studentDeleted);
+};
+
+export const handleDialogClose = (setEditStudentData: {
+  (value: SetStateAction<StudentData | null>): void;
+  (arg0: null): void;
+}) => {
+  setEditStudentData(null);
+};
+
+export const handleDialogSave = async (
+  setEditStudentData: React.Dispatch<React.SetStateAction<StudentData | null>>,
+  editedStudentData: StudentData
+) => {
+  const response = await fetch("../../../api/editstudent", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(editedStudentData),
+  });
+  if (!response.ok) {
+    errorToast(TOAST_TEXT.errorUpdatingStudent);
+    throw new Error("There was an error updating the student");
+  }
+  successToast(TOAST_TEXT.studentUpdated);
+  setEditStudentData(null);
 };

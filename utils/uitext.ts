@@ -5,4 +5,5 @@ export const UI_TEXT = {
   cancelButton: "Cancel",
   addTeacherButton: "Add Teacher",
   addClassButton: "Add Class",
+  saveButton: "Save",
 };

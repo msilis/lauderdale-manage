@@ -5,12 +5,14 @@ interface StudentTableProps {
   setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
   setStudentId: React.Dispatch<React.SetStateAction<string>>;
   studentData: StudentData[];
+  handleEditClick: (student: StudentData) => void;
 }
 
 const StudentTable: React.FC<StudentTableProps> = ({
   setShowAlert,
   setStudentId,
   studentData,
+  handleEditClick,
 }) => {
   return (
     <div className="overflow-x-auto">
@@ -34,7 +36,7 @@ const StudentTable: React.FC<StudentTableProps> = ({
                 <img
                   src="/icons8-edit-simple-small(1)/icons8-edit-16.png"
                   onClick={() => {
-                    console.log(student.id);
+                    handleEditClick(student);
                   }}
                   className="hover:scale-125"
                 />
