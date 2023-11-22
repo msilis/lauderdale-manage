@@ -36,8 +36,6 @@ const StudentTable: React.FC<StudentTableProps> = ({
                 <img
                   src="/icons8-edit-simple-small(1)/icons8-edit-16.png"
                   onClick={() => {
-                    console.log("Edit clicked");
-                    console.log({ student });
                     handleEditClick(student);
                   }}
                   className="hover:scale-125"
