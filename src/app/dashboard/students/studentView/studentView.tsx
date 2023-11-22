@@ -3,11 +3,11 @@
 import StudentTable from "./studentTable";
 import { useState, useEffect, useRef } from "react";
 import WarningAlert from "../../../../components/alert/alert";
-import { deleteStudent } from "./studentUtils";
 import {
   getAllStudents,
   handleDialogClose,
   handleDialogSave,
+  deleteStudent,
 } from "./studentUtils";
 import EditStudent from "./editDialog";
 
@@ -71,7 +71,9 @@ const StudentView = () => {
         <EditStudent
           student={editStudentData}
           onClose={() => handleDialogClose(setEditStudentData)}
-          onSave={() => handleDialogSave(setEditStudentData)}
+          onSave={(editedStudentData) =>
+            handleDialogSave(setEditStudentData, editedStudentData)
+          }
           ref={dialogRef}
         />
       )}

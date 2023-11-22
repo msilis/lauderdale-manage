@@ -44,9 +44,10 @@ export const handleDialogClose = (setEditStudentData: {
   setEditStudentData(null);
 };
 
-export const handleDialogSave = (setEditStudentData: {
-  (value: SetStateAction<StudentData | null>): void;
-  (arg0: null): void;
-}) => {
+export const handleDialogSave = (
+  setEditStudentData: React.Dispatch<React.SetStateAction<StudentData | null>>,
+  editedStudentData: StudentData
+) => {
+  console.log(editedStudentData, "Edited data");
   setEditStudentData(null);
 };
