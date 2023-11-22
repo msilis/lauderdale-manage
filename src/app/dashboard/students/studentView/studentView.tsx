@@ -28,10 +28,7 @@ const StudentView = () => {
   );
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
-  console.log("From studentView: ", editStudentData);
-
   useEffect(() => {
-    console.log("fetchAllStudents effect ran");
     const fetchAllStudents = async () => {
       const data = await getAllStudents();
       setStudentData(data);
