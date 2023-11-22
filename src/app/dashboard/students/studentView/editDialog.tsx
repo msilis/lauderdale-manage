@@ -36,6 +36,26 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
               placeholder={student.studentLastName}
               className="input input-bordered w-full max-w-xs"
             />
+            <label htmlFor="studentFamily" className="mt-2">
+              Family
+            </label>
+            <select
+              id="studentFamily"
+              name="studentFamily"
+              className="select select-bordered w-full  mt-2"
+              defaultValue={student.studentFamily}
+            >
+              <option value="Default">Family...</option>
+              <option value="Default">Family2</option>{" "}
+            </select>
+            <label htmlFor="studentBirthdate">Birthdate</label>
+            <input
+              type="date"
+              name="studentBirthdate"
+              id="studentBirthdate"
+              defaultValue={student.studentBirthdate}
+              className="input input-bordered w-full  mt-2"
+            />
           </div>
         </div>
       </dialog>
