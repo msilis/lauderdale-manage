@@ -1,5 +1,6 @@
 import React from "react";
 import { StudentData } from "./studentView";
+import { UI_TEXT } from "../../../../../utils/uitext";
 
 interface EditStudentProps {
   student: StudentData;
@@ -46,7 +47,9 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
             />
           </div>
           <div>
-            <button className="btn btn-accent mt-4">Save</button>
+            <button className="btn btn-accent mt-4">
+              {UI_TEXT.saveButton}
+            </button>
           </div>
         </div>
       </dialog>
