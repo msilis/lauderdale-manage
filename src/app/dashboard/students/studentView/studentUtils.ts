@@ -34,3 +34,11 @@ export const deleteStudent = async (studentId: string) => {
   }
   successToast(TOAST_TEXT.studentDeleted);
 };
+
+export const handleDialogClose = (setEditStudentData) => {
+  setEditStudentData(null);
+};
+
+export const handleDialogSave = (setEditStudentData) => {
+  setEditStudentData(null);
+};
