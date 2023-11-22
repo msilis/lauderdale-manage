@@ -44,10 +44,16 @@ export const handleDialogClose = (setEditStudentData: {
   setEditStudentData(null);
 };
 
-export const handleDialogSave = (
+export const handleDialogSave = async (
   setEditStudentData: React.Dispatch<React.SetStateAction<StudentData | null>>,
   editedStudentData: StudentData
 ) => {
-  console.log(editedStudentData, "Edited data");
+  const response = await fetch("../../../api/editstudent", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(editedStudentData),
+  });
   setEditStudentData(null);
 };
