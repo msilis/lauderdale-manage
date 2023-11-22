@@ -18,6 +18,7 @@ const StudentView = () => {
   const [showAlert, setShowAlert] = useState<boolean>(false);
   const [studentId, setStudentId] = useState<string>("");
   const [studentData, setStudentData] = useState<StudentData[]>([]);
+  const [editStudentData, setEditStudentData] = useState<StudentData[]>([]);
 
   useEffect(() => {
     console.log("fetchAllStudents effect ran");
