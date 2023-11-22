@@ -1,5 +1,7 @@
 import { errorToast, successToast } from "@/components/toast/toast";
 import { TOAST_TEXT } from "@/components/toast/toastText";
+import { SetStateAction } from "react";
+import { StudentData } from "./studentView";
 
 export const STUDENT_TABLE = {
   studentFirstName: "First Name",
@@ -35,10 +37,16 @@ export const deleteStudent = async (studentId: string) => {
   successToast(TOAST_TEXT.studentDeleted);
 };
 
-export const handleDialogClose = (setEditStudentData) => {
+export const handleDialogClose = (setEditStudentData: {
+  (value: SetStateAction<StudentData | null>): void;
+  (arg0: null): void;
+}) => {
   setEditStudentData(null);
 };
 
-export const handleDialogSave = (setEditStudentData) => {
+export const handleDialogSave = (setEditStudentData: {
+  (value: SetStateAction<StudentData | null>): void;
+  (arg0: null): void;
+}) => {
   setEditStudentData(null);
 };
