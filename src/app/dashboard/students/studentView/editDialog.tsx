@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { StudentData } from "./studentView";
 import { UI_TEXT } from "../../../../../utils/uitext";
-import { useState } from "react";
 
 interface EditStudentProps {
   student: StudentData;
