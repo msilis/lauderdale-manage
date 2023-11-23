@@ -12,6 +12,8 @@ export const handleAddClassSubmit = async (
   const formData = new FormData(event.target as HTMLFormElement);
   const classData = Object.fromEntries(formData.entries());
 
+  console.log({ classData });
+
   const response = await fetch("../../../api/classes", {
     method: "POST",
     headers: {

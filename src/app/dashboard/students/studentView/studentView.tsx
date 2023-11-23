@@ -10,6 +10,7 @@ import {
   deleteStudent,
 } from "./studentUtils";
 import EditStudent from "./editDialog";
+import { ALERT_TEXT } from "../../../../../utils/uitext";
 
 export interface StudentData {
   studentFirstName: string;
@@ -36,6 +37,11 @@ const StudentView = () => {
     fetchAllStudents();
   }, []);
 
+  const updateStudentData = async () => {
+    const updatedStudentData = await getAllStudents();
+    setStudentData(updatedStudentData);
+  };
+
   const handleYesClick = async () => {
     await deleteStudent(studentId);
     const updatedStudents = await getAllStudents();
@@ -58,10 +64,10 @@ const StudentView = () => {
       <h2 className="font-bold text-2xl">Current Students</h2>
       {showAlert && (
         <WarningAlert
-          alertText="Are you sure?"
+          alertText={ALERT_TEXT.deleteStudent}
           setShowAlert={setShowAlert}
           handleYesClick={handleYesClick}
-          setStudentId={setStudentId}
+          setId={setStudentId}
         />
       )}
       {editStudentData && (
@@ -69,7 +75,11 @@ const StudentView = () => {
           student={editStudentData}
           onClose={() => handleDialogClose(setEditStudentData)}
           onSave={(editedStudentData) =>
-            handleDialogSave(setEditStudentData, editedStudentData)
+            handleDialogSave(
+              setEditStudentData,
+              editedStudentData,
+              updateStudentData
+            )
           }
           ref={dialogRef}
         />

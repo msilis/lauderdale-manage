@@ -1,28 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { CLASS_TABLE, getAllClasses } from "./classUtils";
+import { CLASS_TABLE } from "./classUtils";
 
-interface ClassData {
+export interface ClassData {
   className: string;
   classLocation: string;
   classTeacher: string;
   classAccompanist: string;
   classStartTime: string;
   classEndTime: string;
+  id: string;
 }
 
-const ClassTable = () => {
-  const [classData, setClassData] = useState<ClassData[]>([]);
+interface ClassTableProps {
+  setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
+  setClassId: React.Dispatch<React.SetStateAction<string>>;
+  classData: ClassData[];
+  handleEditClick: (classItem: ClassData) => void;
+}
 
-  useEffect(() => {
-    const fetchAllClasses = async () => {
-      const data = await getAllClasses();
-      setClassData(data);
-    };
-    fetchAllClasses();
-  }, []);
-
+const ClassTable: React.FC<ClassTableProps> = ({
+  setShowAlert,
+  setClassId,
+  classData,
+  handleEditClick,
+}) => {
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -37,14 +39,32 @@ const ClassTable = () => {
           </tr>
         </thead>
         <tbody>
-          {classData.map((classItem, index) => (
-            <tr key={index}>
+          {classData.map((classItem) => (
+            <tr key={classItem.id}>
               <td>{classItem.className}</td>
               <td>{classItem.classLocation}</td>
               <td>{classItem.classTeacher}</td>
               <td>{classItem.classAccompanist}</td>
               <td>{classItem.classStartTime}</td>
               <td>{classItem.classEndTime}</td>
+              <td className="cursor-pointer w-[50px]">
+                <img
+                  src="/icons8-edit-simple-small(1)/icons8-edit-16.png"
+                  className="hover:scale-125"
+                  onClick={() => {
+                    handleEditClick(classItem);
+                  }}
+                />
+              </td>
+              <td className="cursor-pointer w-[50px] ">
+                <img
+                  src="/icons8-delete-simple-small/icons8-delete-16.png"
+                  onClick={() => {
+                    setClassId(classItem.id);
+                    setShowAlert(true);
+                  }}
+                />
+              </td>
             </tr>
           ))}
         </tbody>

@@ -8,6 +8,7 @@ export async function POST(request: Request) {
     await addDoc(collection(db, "classes"), {
       className: classData.className,
       classTeacher: classData.classTeacher,
+      classAccompanist: classData.classAccompanist,
       classLocation: classData.classLocation,
       classStartTime: classData.classStartTime,
       classEndTime: classData.classEndTime,
@@ -28,7 +29,10 @@ export async function POST(request: Request) {
 export async function GET(request: Request) {
   try {
     const querySnapshot = await getDocs(collection(db, "classes"));
-    const documents = await querySnapshot.docs.map((doc) => doc.data());
+    const documents = await querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
     return NextResponse.json(documents, { status: 200 });
   } catch (error) {
     console.error("Could not get classes from database", error);
