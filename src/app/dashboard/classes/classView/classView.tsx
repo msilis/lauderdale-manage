@@ -35,6 +35,11 @@ const ClassView = () => {
     }
   }, [editClassData]);
 
+  const updateClassData = async () => {
+    const updatedClassList = await getAllClasses();
+    setClassData(updatedClassList);
+  };
+
   const handleYesClassDeleteClick = async () => {
     await deleteClass(classId);
     const updatedClassList = await getAllClasses();
@@ -62,7 +67,11 @@ const ClassView = () => {
           classItem={editClassData}
           onClose={() => handleClassDialogClose(setEditClassData)}
           onSave={(editedClassData) => {
-            handleClassDialogSave(setEditClassData, editedClassData);
+            handleClassDialogSave(
+              setEditClassData,
+              editedClassData,
+              updateClassData
+            );
           }}
           ref={editDialogRef}
         />

@@ -45,7 +45,8 @@ export const handleClassDialogClose = (
 
 export const handleClassDialogSave = async (
   setEditClassData: React.Dispatch<React.SetStateAction<ClassData | null>>,
-  editedClassData: ClassData
+  editedClassData: ClassData,
+  callback: () => void
 ) => {
   const response = await fetch("../../../api/classes/editclass", {
     method: "POST",
@@ -59,5 +60,6 @@ export const handleClassDialogSave = async (
     throw new Error("There was an error updating the class");
   }
   successToast(TOAST_TEXT.classUpdated);
+  callback();
   setEditClassData(null);
 };
