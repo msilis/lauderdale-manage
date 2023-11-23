@@ -23,7 +23,7 @@ const EditTeacher = React.forwardRef<HTMLDialogElement, EditTeacherProps>(
       }));
     };
     return (
-      <dialog id="editTeacherModal" ref={ref}>
+      <dialog id="editTeacherModal" className="modal" ref={ref}>
         <div className="modal-box">
           <form method="dialog" className="flex flex-col mt-2 gap-2">
             <button
@@ -34,6 +34,56 @@ const EditTeacher = React.forwardRef<HTMLDialogElement, EditTeacherProps>(
             </button>
           </form>
           <h3 className="font-bold text-lg">Update teacher information</h3>
+          <div className="flex flex-col mt-4">
+            <label htmlFor="teacherFirstName" className="mt-2">
+              First Name
+            </label>
+            <input
+              type="text"
+              defaultValue={teacher.teacherFirstName}
+              onChange={handleInputChange}
+              name="teacherFirstName"
+              className="input input-bordered w-full max-w-xs"
+            />
+            <label htmlFor="teacherLastName" className="mt-2">
+              Last Name
+            </label>
+            <input
+              type="text"
+              defaultValue={teacher.teacherLastName}
+              onChange={handleInputChange}
+              name="teacherLastName"
+              className="input input-bordered w-full max-w-xs mt-2"
+            />
+            <label htmlFor="teacherEmail" className="mt-2">
+              Email
+            </label>
+            <input
+              type="email"
+              defaultValue={teacher.teacherEmail}
+              onChange={handleInputChange}
+              name="teacherEmail"
+              className="input input-bordered w-full max-w-xs mt-2"
+            />
+            <label htmlFor="teacherPhone" className="mt-2">
+              Phone
+            </label>
+            <input
+              type="tel"
+              defaultValue={teacher.teacherPhone}
+              onChange={handleInputChange}
+              name="teacherPhone"
+              className="input input-bordered w-full max-w-xs mt-2"
+            />
+          </div>
+          <div>
+            <button
+              className="btn btn-accent mt-4"
+              onClick={() => onSave(editedTeacherData)}
+            >
+              {UI_TEXT.saveButton}
+            </button>
+          </div>
         </div>
       </dialog>
     );
