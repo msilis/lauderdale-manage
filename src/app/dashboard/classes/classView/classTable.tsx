@@ -1,7 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { CLASS_TABLE, getAllClasses } from "./classUtils";
+import { CLASS_TABLE } from "./classUtils";
+
+interface ClassTableProps {
+  setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
+  setClassId: React.Dispatch<React.SetStateAction<string>>;
+  classData: ClassData[];
+}
 
 export interface ClassData {
   className: string;
@@ -13,17 +18,11 @@ export interface ClassData {
   id: string;
 }
 
-const ClassTable = () => {
-  const [classData, setClassData] = useState<ClassData[]>([]);
-
-  useEffect(() => {
-    const fetchAllClasses = async () => {
-      const data = await getAllClasses();
-      setClassData(data);
-    };
-    fetchAllClasses();
-  }, []);
-
+const ClassTable: React.FC<ClassTableProps> = ({
+  setShowAlert,
+  setClassId,
+  classData,
+}) => {
   return (
     <div className="overflow-x-auto">
       <table className="table">
