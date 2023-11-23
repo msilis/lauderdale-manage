@@ -1,26 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { TEACHER_TABLE, getAllTeachers } from "./teacherUtils";
+import { TEACHER_TABLE } from "./teacherUtils";
+import { TeacherData } from "./teacherView";
 
-interface TeacherData {
-  teacherFirstName: string;
-  teacherLastName: string;
-  teacherEmail: string;
-  teacherPhone: string;
+interface TeacherTableProps {
+  teacherData: TeacherData[];
 }
 
-const TeacherTable = () => {
-  const [teacherData, setTeacherData] = useState<TeacherData[]>([]);
-
-  useEffect(() => {
-    const fetchAllTeachers = async () => {
-      const data = await getAllTeachers();
-      setTeacherData(data);
-    };
-    fetchAllTeachers();
-  }, []);
-
+const TeacherTable: React.FC<TeacherTableProps> = ({ teacherData }) => {
   return (
     <div className="overflow-x-auto">
       <table className="table">
