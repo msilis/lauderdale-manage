@@ -52,6 +52,7 @@ const ClassTable: React.FC<ClassTableProps> = ({
                   src="/icons8-edit-simple-small(1)/icons8-edit-16.png"
                   className="hover:scale-125"
                   onClick={() => {
+                    console.log(classItem);
                     handleEditClick(classItem);
                   }}
                 />

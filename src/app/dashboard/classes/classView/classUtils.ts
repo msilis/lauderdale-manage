@@ -20,6 +20,7 @@ export const getAllClasses = async () => {
     },
   });
   const data = await response.json();
+  console.log({ data });
   return data;
 };
 
@@ -48,6 +49,7 @@ export const handleClassDialogSave = async (
   setEditClassData: React.Dispatch<React.SetStateAction<ClassData | null>>,
   editedClassData: ClassData
 ) => {
+  console.log({ editedClassData });
   const response = await fetch("../../../api/classes/editclass", {
     method: "POST",
     headers: {
@@ -55,6 +57,7 @@ export const handleClassDialogSave = async (
     },
     body: JSON.stringify(editedClassData),
   });
+  console.log({ response });
   if (!response.ok) {
     errorToast(TOAST_TEXT.errorUpdatingStudent);
     throw new Error("There was an error updating the class");

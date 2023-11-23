@@ -52,8 +52,57 @@ const EditClass = React.forwardRef<HTMLDialogElement, EditClassProps>(
               defaultValue={classItem.classLocation}
               onChange={handleInputChange}
               name="classLocation"
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs mt-2"
             />
+            <label htmlFor="classTeacher" className="mt-2">
+              Teacher
+            </label>
+            <input
+              type="text"
+              defaultValue={classItem.classTeacher}
+              onChange={handleInputChange}
+              name="classTeacher"
+              className="input input-bordered w-full max-w-xs mt-2"
+            />
+            <label htmlFor="classAccompanist" className="mt-2">
+              Accompanist
+            </label>
+            <input
+              className="input input-bordered w-full max-w-xs mt-2"
+              type="text"
+              defaultValue={classItem.classAccompanist}
+              name="classAccompanist"
+            />
+            <div className="flex gap-3 mt-2 items-center">
+              <label htmlFor="classStartTime" className="mt-2">
+                Start Time
+              </label>
+              <input
+                id="classStartTime"
+                name="classStartTime"
+                type="time"
+                defaultValue={classItem.classStartTime}
+                className="input input-bordered mt-2"
+              />
+              <label htmlFor="classEndTime" className="mt-2">
+                End Time
+              </label>
+              <input
+                id="classEndTime"
+                name="classEndTime"
+                type="time"
+                defaultValue={classItem.classEndTime}
+                className="input input-bordered mt-2"
+              />
+            </div>
+            <div>
+              <button
+                className="btn btn-accent mt-4"
+                onClick={() => onSave(editedClassData)}
+              >
+                {UI_TEXT.saveButton}
+              </button>
+            </div>
           </div>
         </div>
       </dialog>
