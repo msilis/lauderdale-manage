@@ -3,8 +3,14 @@
 import TeacherTable from "./teacherTable";
 import { useState, useEffect, useRef } from "react";
 import WarningAlert from "@/components/alert/alert";
-import { deleteTeacher, getAllTeachers } from "./teacherUtils";
+import {
+  deleteTeacher,
+  getAllTeachers,
+  handleTeacherDialogClose,
+  handleTeacherDialogSave,
+} from "./teacherUtils";
 import { ALERT_TEXT } from "../../../../../utils/uitext";
+import EditTeacher from "./editTeacherDialog";
 
 export interface TeacherData {
   teacherFirstName: string;
@@ -50,6 +56,12 @@ const TeacherView = () => {
     setEditTeacherData(teacher);
   };
 
+  useEffect(() => {
+    if (editTeacherData !== null) {
+      editTeacherRef.current?.showModal();
+    }
+  }, [editTeacherData]);
+
   return (
     <div className="flex flex-col">
       <h2 className="font-bold text-2xl">Current Teachers</h2>
@@ -62,12 +74,26 @@ const TeacherView = () => {
             setId={setTeacherId}
           />
         )}
+        {editTeacherData && (
+          <EditTeacher
+            teacher={editTeacherData}
+            onClose={() => handleTeacherDialogClose(setEditTeacherData)}
+            onSave={(editedTeacherData) =>
+              handleTeacherDialogSave(
+                setEditTeacherData,
+                editedTeacherData,
+                updateTeacherData
+              )
+            }
+            ref={editTeacherRef}
+          />
+        )}
 
         <TeacherTable
           teacherData={teacherData}
           setShowAlert={setShowAlert}
           setTeacherId={setTeacherId}
-          handleEditClick={handleEditClick}
+          handleEditClick={handleEditTeacherClick}
         />
       </div>
     </div>
