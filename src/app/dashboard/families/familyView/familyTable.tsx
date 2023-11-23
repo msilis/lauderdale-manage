@@ -1,23 +1,27 @@
 "use client";
 
+import Link from "next/link";
 import { TABLE_UI, getAllFamilyInfo } from "./familyUtils";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-interface FamilyData {
+export interface FamilyData {
   parent1FirstName: string;
   parent1LastName: string;
   parent1Email: string;
   parent1Phone: string;
   parent1Address: string;
-  parent2FirstName: string;
-  parent2LastName: string;
-  parent2Email: string;
-  parent2Phone: string;
-  parent2Address: string;
+  parent2FirstName?: string;
+  parent2LastName?: string;
+  parent2Email?: string;
+  parent2Phone?: string;
+  parent2Address?: string;
+  id: string;
 }
 
 const FamilyTable = () => {
   const [familyData, setFamilyData] = useState<FamilyData[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchFamilyData = async () => {
@@ -27,6 +31,10 @@ const FamilyTable = () => {
 
     fetchFamilyData();
   }, []);
+
+  const handleFamilyClick = (familyId: string) => {
+    router.push(`/dashboard/families/${familyId}`);
+  };
 
   return (
     <div className="overflow-x-auto">
@@ -39,8 +47,8 @@ const FamilyTable = () => {
           </tr>
         </thead>
         <tbody>
-          {familyData.map((family, index) => (
-            <tr key={index}>
+          {familyData.map((family) => (
+            <tr key={family.id} onClick={() => handleFamilyClick(family.id)}>
               <td>{family.parent1LastName}</td>
               <td>{family.parent1Email}</td>
               <td>{family.parent1Phone}</td>
