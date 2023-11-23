@@ -11,4 +11,5 @@ export const UI_TEXT = {
 export const ALERT_TEXT = {
   deleteStudent: "Are you sure you want to delete this student?",
   deleteClass: "Are you sure you want to delete this class?",
+  deleteTeacher: "Are you sure you want to delete this teacher?",
 };
