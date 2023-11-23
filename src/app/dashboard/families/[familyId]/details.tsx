@@ -1,6 +1,10 @@
 import { FamilyData } from "../familyView/familyTable";
 
-const DetailsDisplay = ({ familyDetail }: { familyDetail: FamilyData }) => {
+const DetailsDisplay = ({
+  familyDetail,
+}: {
+  familyDetail: FamilyData | undefined;
+}) => {
   return (
     <div className="overflow-x-auto">
       <table className="table">
