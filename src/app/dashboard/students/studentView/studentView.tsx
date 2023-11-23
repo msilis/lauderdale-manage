@@ -62,7 +62,7 @@ const StudentView = () => {
           alertText={ALERT_TEXT.deleteStudent}
           setShowAlert={setShowAlert}
           handleYesClick={handleYesClick}
-          setStudentId={setStudentId}
+          setId={setStudentId}
         />
       )}
       {editStudentData && (

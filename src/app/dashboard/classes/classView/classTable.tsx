@@ -3,13 +3,14 @@
 import { useEffect, useState } from "react";
 import { CLASS_TABLE, getAllClasses } from "./classUtils";
 
-interface ClassData {
+export interface ClassData {
   className: string;
   classLocation: string;
   classTeacher: string;
   classAccompanist: string;
   classStartTime: string;
   classEndTime: string;
+  id: string;
 }
 
 const ClassTable = () => {
