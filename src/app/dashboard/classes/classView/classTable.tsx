@@ -45,6 +45,22 @@ const ClassTable: React.FC<ClassTableProps> = ({
               <td>{classItem.classAccompanist}</td>
               <td>{classItem.classStartTime}</td>
               <td>{classItem.classEndTime}</td>
+              <td className="cursor-pointer w-[50px]">
+                <img
+                  src="/icons8-edit-simple-small(1)/icons8-edit-16.png"
+                  className="hover:scale-125"
+                  onClick={() => {}}
+                />
+              </td>
+              <td className="cursor-pointer w-[50px] ">
+                <img
+                  src="/icons8-delete-simple-small/icons8-delete-16.png"
+                  onClick={() => {
+                    setClassId(classItem.id);
+                    setShowAlert(true);
+                  }}
+                />
+              </td>
             </tr>
           ))}
         </tbody>
