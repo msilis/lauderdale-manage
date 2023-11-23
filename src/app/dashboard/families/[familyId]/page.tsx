@@ -7,10 +7,12 @@ import { useEffect, useState } from "react";
 import DashboardLayout from "@/layout/dashboardLayout";
 import Navbar from "@/components/navbar/navbar";
 import { UI_TEXT } from "../../../../../utils/uitext";
+import DetailsDisplay from "./details";
 
 const FamilyDetail = () => {
-  const [familyDetail, setFamilyDetail] = useState<FamilyData>();
+  const [familyDetail, setFamilyDetail] = useState<FamilyData | undefined>();
   const params = useParams();
+  console.log(familyDetail);
 
   useEffect(() => {
     const fetchFamilyData = async () => {
@@ -19,6 +21,7 @@ const FamilyDetail = () => {
     };
     fetchFamilyData();
   }, []);
+
   return (
     <div className="flex flex-col ml-28 gap-6">
       <h1 className="text-5xl font-bold">Family Details</h1>
@@ -26,6 +29,7 @@ const FamilyDetail = () => {
         buttonText={UI_TEXT.addFamily}
         url="/dashboard/families/addfamilies"
       />
+      <DetailsDisplay familyDetail={familyDetail} />
     </div>
   );
 };
