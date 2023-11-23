@@ -48,7 +48,11 @@ const FamilyTable = () => {
         </thead>
         <tbody>
           {familyData.map((family) => (
-            <tr key={family.id} onClick={() => handleFamilyClick(family.id)}>
+            <tr
+              key={family.id}
+              onClick={() => handleFamilyClick(family.id)}
+              className="cursor-pointer"
+            >
               <td>{family.parent1LastName}</td>
               <td>{family.parent1Email}</td>
               <td>{family.parent1Phone}</td>

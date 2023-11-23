@@ -4,13 +4,13 @@ import { getFamilyDetails } from "../familyView/familyUtils";
 import { useParams } from "next/navigation";
 import { FamilyData } from "../familyView/familyTable";
 import { useEffect, useState } from "react";
+import DashboardLayout from "@/layout/dashboardLayout";
+import Navbar from "@/components/navbar/navbar";
+import { UI_TEXT } from "../../../../../utils/uitext";
 
 const FamilyDetail = () => {
   const [familyDetail, setFamilyDetail] = useState<FamilyData>();
   const params = useParams();
-
-  console.log(params.familyId);
-  console.log(familyDetail);
 
   useEffect(() => {
     const fetchFamilyData = async () => {
@@ -20,11 +20,22 @@ const FamilyDetail = () => {
     fetchFamilyData();
   }, []);
   return (
-    <div>
-      <h1>There should be something here</h1>
-      <h2>{familyDetail?.parent1LastName}</h2>
+    <div className="flex flex-col ml-28 gap-6">
+      <h1 className="text-5xl font-bold">Family Details</h1>
+      <Navbar
+        buttonText={UI_TEXT.addFamily}
+        url="/dashboard/families/addfamilies"
+      />
     </div>
   );
 };
 
-export default FamilyDetail;
+const WrappedFamilyDetail = () => {
+  return (
+    <DashboardLayout>
+      <FamilyDetail />
+    </DashboardLayout>
+  );
+};
+
+export default WrappedFamilyDetail;
