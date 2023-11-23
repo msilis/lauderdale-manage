@@ -10,6 +10,7 @@ import {
   deleteStudent,
 } from "./studentUtils";
 import EditStudent from "./editDialog";
+import { ALERT_TEXT } from "../../../../../utils/uitext";
 
 export interface StudentData {
   studentFirstName: string;
@@ -58,7 +59,7 @@ const StudentView = () => {
       <h2 className="font-bold text-2xl">Current Students</h2>
       {showAlert && (
         <WarningAlert
-          alertText="Are you sure?"
+          alertText={ALERT_TEXT.deleteStudent}
           setShowAlert={setShowAlert}
           handleYesClick={handleYesClick}
           setStudentId={setStudentId}

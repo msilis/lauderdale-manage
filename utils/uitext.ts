@@ -7,3 +7,8 @@ export const UI_TEXT = {
   addClassButton: "Add Class",
   saveButton: "Save",
 };
+
+export const ALERT_TEXT = {
+  deleteStudent: "Are you sure you want to delete this student?",
+  deleteClass: "Are you sure you want to delete this class?",
+};
