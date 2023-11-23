@@ -2,12 +2,6 @@
 
 import { CLASS_TABLE } from "./classUtils";
 
-interface ClassTableProps {
-  setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
-  setClassId: React.Dispatch<React.SetStateAction<string>>;
-  classData: ClassData[];
-}
-
 export interface ClassData {
   className: string;
   classLocation: string;
@@ -18,10 +12,18 @@ export interface ClassData {
   id: string;
 }
 
+interface ClassTableProps {
+  setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
+  setClassId: React.Dispatch<React.SetStateAction<string>>;
+  classData: ClassData[];
+  handleEditClick: (classItem: ClassData) => void;
+}
+
 const ClassTable: React.FC<ClassTableProps> = ({
   setShowAlert,
   setClassId,
   classData,
+  handleEditClick,
 }) => {
   return (
     <div className="overflow-x-auto">
@@ -49,7 +51,9 @@ const ClassTable: React.FC<ClassTableProps> = ({
                 <img
                   src="/icons8-edit-simple-small(1)/icons8-edit-16.png"
                   className="hover:scale-125"
-                  onClick={() => {}}
+                  onClick={() => {
+                    handleEditClick(classItem);
+                  }}
                 />
               </td>
               <td className="cursor-pointer w-[50px] ">

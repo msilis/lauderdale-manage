@@ -4,13 +4,21 @@ import ClassTable, { ClassData } from "./classTable";
 import { useState, useEffect, useRef } from "react";
 import WarningAlert from "@/components/alert/alert";
 import { ALERT_TEXT } from "../../../../../utils/uitext";
-import { deleteClass, getAllClasses } from "./classUtils";
+import {
+  deleteClass,
+  getAllClasses,
+  handleClassDialogClose,
+} from "./classUtils";
+import EditClass from "./classEditDialog";
 
 const ClassView = () => {
   const [showClassDeleteAlert, setShowClassDeleteAlert] =
     useState<boolean>(false);
   const [classId, setClassId] = useState<string>("");
   const [classData, setClassData] = useState<ClassData[]>([]);
+  const [editClassData, setEditClassData] = useState<ClassData | null>(null);
+
+  const editDialogRef = useRef<HTMLDialogElement | null>(null);
 
   useEffect(() => {
     const fetchAllClasses = async () => {
@@ -20,9 +28,21 @@ const ClassView = () => {
     fetchAllClasses();
   }, []);
 
+  useEffect(() => {
+    if (editClassData !== null) {
+      editDialogRef.current?.showModal();
+    }
+  }, [editClassData]);
+
   const handleYesClassDeleteClick = async () => {
     await deleteClass(classId);
     const updatedClassList = await getAllClasses();
+    setClassData(updatedClassList);
+    setShowClassDeleteAlert(false);
+  };
+
+  const handleEditClick = (classItem: ClassData) => {
+    setEditClassData(classItem);
   };
 
   return (
@@ -36,11 +56,20 @@ const ClassView = () => {
           setId={setClassId}
         />
       )}
+      {editClassData && (
+        <EditClass
+          classItem={editClassData}
+          onClose={() => handleClassDialogClose(setEditClassData)}
+          onSave={() => {}}
+          ref={editDialogRef}
+        />
+      )}
       <div className="mt-6">
         <ClassTable
           setShowAlert={setShowClassDeleteAlert}
           setClassId={setClassId}
           classData={classData}
+          handleEditClick={handleEditClick}
         />
       </div>
     </div>

@@ -35,3 +35,9 @@ export const deleteClass = async (classId: string) => {
   }
   successToast(TOAST_TEXT.classDeleted);
 };
+
+export const handleClassDialogClose = (
+  setEditClassData: (arg0: null) => void
+) => {
+  setEditClassData(null);
+};
