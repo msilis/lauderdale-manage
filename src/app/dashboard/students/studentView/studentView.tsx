@@ -37,6 +37,11 @@ const StudentView = () => {
     fetchAllStudents();
   }, []);
 
+  const updateStudentData = async () => {
+    const updatedStudentData = await getAllStudents();
+    setStudentData(updatedStudentData);
+  };
+
   const handleYesClick = async () => {
     await deleteStudent(studentId);
     const updatedStudents = await getAllStudents();
@@ -70,7 +75,11 @@ const StudentView = () => {
           student={editStudentData}
           onClose={() => handleDialogClose(setEditStudentData)}
           onSave={(editedStudentData) =>
-            handleDialogSave(setEditStudentData, editedStudentData)
+            handleDialogSave(
+              setEditStudentData,
+              editedStudentData,
+              updateStudentData
+            )
           }
           ref={dialogRef}
         />

@@ -46,7 +46,8 @@ export const handleDialogClose = (setEditStudentData: {
 
 export const handleDialogSave = async (
   setEditStudentData: React.Dispatch<React.SetStateAction<StudentData | null>>,
-  editedStudentData: StudentData
+  editedStudentData: StudentData,
+  callback: () => void
 ) => {
   const response = await fetch("../../../api/editstudent", {
     method: "POST",
@@ -60,5 +61,6 @@ export const handleDialogSave = async (
     throw new Error("There was an error updating the student");
   }
   successToast(TOAST_TEXT.studentUpdated);
+  callback();
   setEditStudentData(null);
 };
