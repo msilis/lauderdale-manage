@@ -72,6 +72,7 @@ const EditClass = React.forwardRef<HTMLDialogElement, EditClassProps>(
               type="text"
               defaultValue={classItem.classAccompanist}
               name="classAccompanist"
+              onChange={handleInputChange}
             />
             <div className="flex gap-3 mt-2 items-center">
               <label htmlFor="classStartTime" className="mt-2">
@@ -82,6 +83,7 @@ const EditClass = React.forwardRef<HTMLDialogElement, EditClassProps>(
                 name="classStartTime"
                 type="time"
                 defaultValue={classItem.classStartTime}
+                onChange={handleInputChange}
                 className="input input-bordered mt-2"
               />
               <label htmlFor="classEndTime" className="mt-2">
@@ -92,6 +94,7 @@ const EditClass = React.forwardRef<HTMLDialogElement, EditClassProps>(
                 name="classEndTime"
                 type="time"
                 defaultValue={classItem.classEndTime}
+                onChange={handleInputChange}
                 className="input input-bordered mt-2"
               />
             </div>

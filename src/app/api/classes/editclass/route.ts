@@ -8,7 +8,6 @@ export async function POST(request: Request) {
     const { id, ...data } = JSON.parse(body);
     const classRef = doc(db, "classes", id);
     console.log({ data });
-    console.log({ classRef });
     await updateDoc(classRef, data);
     return NextResponse.json({ message: "Class updated" }, { status: 200 });
   } catch (error) {

@@ -1,7 +1,6 @@
 import { errorToast, successToast } from "@/components/toast/toast";
 import { TOAST_TEXT } from "@/components/toast/toastText";
 import { ClassData } from "./classTable";
-import { Dispatch, SetStateAction } from "react";
 
 export const CLASS_TABLE = {
   className: "Class Name",
@@ -20,7 +19,6 @@ export const getAllClasses = async () => {
     },
   });
   const data = await response.json();
-  console.log({ data });
   return data;
 };
 
@@ -56,7 +54,6 @@ export const handleClassDialogSave = async (
     },
     body: JSON.stringify(editedClassData),
   });
-  console.log({ response });
   if (!response.ok) {
     errorToast(TOAST_TEXT.errorUpdatingStudent);
     throw new Error("There was an error updating the class");

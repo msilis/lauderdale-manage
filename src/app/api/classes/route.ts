@@ -8,6 +8,7 @@ export async function POST(request: Request) {
     await addDoc(collection(db, "classes"), {
       className: classData.className,
       classTeacher: classData.classTeacher,
+      classAccompanist: classData.classAccompanist,
       classLocation: classData.classLocation,
       classStartTime: classData.classStartTime,
       classEndTime: classData.classEndTime,
