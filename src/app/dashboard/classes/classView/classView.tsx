@@ -8,6 +8,7 @@ import {
   deleteClass,
   getAllClasses,
   handleClassDialogClose,
+  handleClassDialogSave,
 } from "./classUtils";
 import EditClass from "./classEditDialog";
 
@@ -60,7 +61,9 @@ const ClassView = () => {
         <EditClass
           classItem={editClassData}
           onClose={() => handleClassDialogClose(setEditClassData)}
-          onSave={() => {}}
+          onSave={(editedClassData) => {
+            handleClassDialogSave(setEditClassData, editedClassData);
+          }}
           ref={editDialogRef}
         />
       )}

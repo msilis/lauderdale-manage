@@ -15,6 +15,14 @@ const EditClass = React.forwardRef<HTMLDialogElement, EditClassProps>(
     const [editedClassData, setEditedClassData] =
       useState<ClassData>(classItem);
 
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = event.target;
+      setEditedClassData((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    };
+
     return (
       <dialog id="editClassModal" className="modal" ref={ref}>
         <div className="modal-box">
@@ -27,6 +35,26 @@ const EditClass = React.forwardRef<HTMLDialogElement, EditClassProps>(
             </button>
           </form>
           <h3 className="font-bold text-lg">Update class information</h3>
+          <div className="flex flex-col mt-4">
+            <label htmlFor="className">Class Name</label>
+            <input
+              className="input input-bordered w-full max-w-xs mt-2"
+              type="text"
+              defaultValue={classItem.className}
+              onChange={handleInputChange}
+              name="className"
+            />
+            <label htmlFor="classLocation" className="mt-2">
+              Class Name
+            </label>
+            <input
+              type="text"
+              defaultValue={classItem.classLocation}
+              onChange={handleInputChange}
+              name="classLocation"
+              className="input input-bordered w-full max-w-xs"
+            />
+          </div>
         </div>
       </dialog>
     );
