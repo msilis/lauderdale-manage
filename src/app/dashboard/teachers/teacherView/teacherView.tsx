@@ -14,6 +14,13 @@ export interface TeacherData {
 
 const TeacherView = () => {
   const [teacherData, setTeacherData] = useState<TeacherData[]>([]);
+  const [showAlert, setShowAlert] = useState<boolean>(false);
+  const [teacherId, setTeacherId] = useState<string>("");
+  const [editTeacherData, setEditTeacherData] = useState<TeacherData | null>(
+    null
+  );
+
+  const editTeacherRef = useRef<HTMLDialogElement | null>(null);
 
   useEffect(() => {
     const fetchAllTeachers = async () => {
