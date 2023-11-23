@@ -1,4 +1,8 @@
+"use client";
+
 import TeacherTable from "./teacherTable";
+import { useState, useEffect, useRef } from "react";
+import WarningAlert from "@/components/alert/alert";
 
 const TeacherView = () => {
   return (
