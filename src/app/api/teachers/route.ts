@@ -28,7 +28,10 @@ export async function POST(request: Request) {
 export async function GET(request: Request) {
   try {
     const querySnapshot = await getDocs(collection(db, "teachers"));
-    const documents = await querySnapshot.docs.map((doc) => doc.data());
+    const documents = await querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
     return NextResponse.json(documents, { status: 200 });
   } catch (error) {
     console.error("Could not get list of teachers from database");
