@@ -39,8 +39,8 @@ const ClassTable: React.FC<ClassTableProps> = ({
           </tr>
         </thead>
         <tbody>
-          {classData.map((classItem, index) => (
-            <tr key={index}>
+          {classData.map((classItem) => (
+            <tr key={classItem.id}>
               <td>{classItem.className}</td>
               <td>{classItem.classLocation}</td>
               <td>{classItem.classTeacher}</td>
@@ -52,7 +52,6 @@ const ClassTable: React.FC<ClassTableProps> = ({
                   src="/icons8-edit-simple-small(1)/icons8-edit-16.png"
                   className="hover:scale-125"
                   onClick={() => {
-                    console.log(classItem);
                     handleEditClick(classItem);
                   }}
                 />

@@ -49,7 +49,6 @@ export const handleClassDialogSave = async (
   setEditClassData: React.Dispatch<React.SetStateAction<ClassData | null>>,
   editedClassData: ClassData
 ) => {
-  console.log({ editedClassData });
   const response = await fetch("../../../api/classes/editclass", {
     method: "POST",
     headers: {
