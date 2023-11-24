@@ -63,3 +63,15 @@ export const handleClassDialogSave = async (
   callback();
   setEditClassData(null);
 };
+
+export const getClassDetails = async (classId: string | undefined) => {
+  const response = await fetch("../../../api/classes/getOneClass", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(classId),
+  });
+  const data = await response.json();
+  return data;
+};

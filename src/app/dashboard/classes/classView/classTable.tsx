@@ -49,6 +49,7 @@ const ClassTable: React.FC<ClassTableProps> = ({
               <tr
                 key={classItem.id}
                 onClick={() => handleClassClick(classItem.id)}
+                className="cursor-pointer"
               >
                 <td>{classItem.className}</td>
                 <td>{classItem.classLocation}</td>
