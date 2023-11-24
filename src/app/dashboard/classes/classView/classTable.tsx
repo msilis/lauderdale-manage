@@ -39,34 +39,45 @@ const ClassTable: React.FC<ClassTableProps> = ({
           </tr>
         </thead>
         <tbody>
-          {classData.map((classItem) => (
-            <tr key={classItem.id}>
-              <td>{classItem.className}</td>
-              <td>{classItem.classLocation}</td>
-              <td>{classItem.classTeacher}</td>
-              <td>{classItem.classAccompanist}</td>
-              <td>{classItem.classStartTime}</td>
-              <td>{classItem.classEndTime}</td>
-              <td className="cursor-pointer w-[50px]">
-                <img
-                  src="/icons8-edit-simple-small(1)/icons8-edit-16.png"
-                  className="hover:scale-125"
-                  onClick={() => {
-                    handleEditClick(classItem);
-                  }}
-                />
-              </td>
-              <td className="cursor-pointer w-[50px] ">
-                <img
-                  src="/icons8-delete-simple-small/icons8-delete-16.png"
-                  onClick={() => {
-                    setClassId(classItem.id);
-                    setShowAlert(true);
-                  }}
-                />
+          {classData && classData.length > 0 && classData[0].id ? (
+            classData.map((classItem) => (
+              <tr key={classItem.id}>
+                <td>{classItem.className}</td>
+                <td>{classItem.classLocation}</td>
+                <td>{classItem.classTeacher}</td>
+                <td>{classItem.classAccompanist}</td>
+                <td>{classItem.classStartTime}</td>
+                <td>{classItem.classEndTime}</td>
+                <td className="cursor-pointer w-[50px]">
+                  <img
+                    src="/icons8-edit-simple-small(1)/icons8-edit-16.png"
+                    className="hover:scale-125"
+                    onClick={() => {
+                      handleEditClick(classItem);
+                    }}
+                  />
+                </td>
+                <td className="cursor-pointer w-[50px] ">
+                  <img
+                    src="/icons8-delete-simple-small/icons8-delete-16.png"
+                    onClick={() => {
+                      setClassId(classItem.id);
+                      setShowAlert(true);
+                    }}
+                  />
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <span className="loading loading-dots loading-lg"></span>
               </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>
