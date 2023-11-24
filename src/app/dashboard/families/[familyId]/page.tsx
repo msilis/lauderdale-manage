@@ -30,6 +30,11 @@ const FamilyDetail = () => {
             buttonText: UI_TEXT.addFamily,
             url: "/dashboard/families/addfamilies",
           },
+          {
+            buttonText: UI_TEXT.editFamily,
+            url: `/dashboard/families/${params.familyId}/editfamily`,
+            className: "btn btn-accent text-l",
+          },
         ]}
       />
       <DetailsDisplay familyDetail={familyDetail} />

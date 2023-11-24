@@ -6,6 +6,8 @@ export const UI_TEXT = {
   addTeacherButton: "Add Teacher",
   addClassButton: "Add Class",
   saveButton: "Save",
+  updateFamily: "Update Family",
+  editFamily: "Edit Family",
 };
 
 export const ALERT_TEXT = {

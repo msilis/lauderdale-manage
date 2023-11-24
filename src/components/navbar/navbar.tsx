@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 type ButtonProps = {
@@ -21,15 +20,17 @@ const Navbar: React.FC<NavbarProps> = ({ buttons }) => {
   return (
     <div className="navbar bg-base-100 outline outline-gray-50 mt-2 drop-shadow-xl md:max-md:w-72 overflow-auto">
       {buttons &&
-        buttons.map((button, index) => (
-          <button
-            key={index}
-            className={`${button.className} || btn btn-ghost text-l`}
-            onClick={() => handleButtonClick(button.url)}
-          >
-            {button.buttonText}
-          </button>
-        ))}
+        buttons.map(
+          ({ buttonText, url, className = "btn btn-ghost text-l" }, index) => (
+            <button
+              key={index}
+              className={`${className}`}
+              onClick={() => handleButtonClick(url)}
+            >
+              {buttonText}
+            </button>
+          )
+        )}
     </div>
   );
 };
