@@ -61,7 +61,7 @@ export const Sidebar = () => {
         <li>
           <button
             className="btn btn-outline w-32"
-            onClick={() => navigateTo("/dashboard/settingsgit ")}
+            onClick={() => navigateTo("/dashboard/settings")}
           >
             Settings
           </button>
