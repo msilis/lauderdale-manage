@@ -62,7 +62,6 @@ const FamilyTable = () => {
           ) : (
             <tr>
               <td></td>
-              <td></td>
               <td>
                 <span className="loading loading-dots loading-lg"></span>
               </td>

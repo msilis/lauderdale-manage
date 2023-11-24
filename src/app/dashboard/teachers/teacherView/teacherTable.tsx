@@ -28,33 +28,43 @@ const TeacherTable: React.FC<TeacherTableProps> = ({
           </tr>
         </thead>
         <tbody>
-          {teacherData.map((teacher, index) => (
-            <tr key={index}>
-              <td>{teacher.teacherFirstName}</td>
-              <td>{teacher.teacherLastName}</td>
-              <td>{teacher.teacherEmail}</td>
-              <td>{teacher.teacherPhone}</td>
-              <td className="cursor-pointer w-[50px]">
-                <img
-                  src="/icons8-edit-simple-small(1)/icons8-edit-16.png"
-                  onClick={() => {
-                    handleEditClick(teacher);
-                  }}
-                  className="hover:scale-125"
-                />
-              </td>
-              <td className="cursor-pointer w-[50px] ">
-                <img
-                  src="/icons8-delete-simple-small/icons8-delete-16.png"
-                  onClick={() => {
-                    setTeacherId(teacher.id);
-                    setShowAlert(true);
-                  }}
-                  className="hover:scale-125"
-                />
+          {teacherData && teacherData.length > 0 && teacherData[0].id ? (
+            teacherData.map((teacher, index) => (
+              <tr key={index}>
+                <td>{teacher.teacherFirstName}</td>
+                <td>{teacher.teacherLastName}</td>
+                <td>{teacher.teacherEmail}</td>
+                <td>{teacher.teacherPhone}</td>
+                <td className="cursor-pointer w-[50px]">
+                  <img
+                    src="/icons8-edit-simple-small(1)/icons8-edit-16.png"
+                    onClick={() => {
+                      handleEditClick(teacher);
+                    }}
+                    className="hover:scale-125"
+                  />
+                </td>
+                <td className="cursor-pointer w-[50px] ">
+                  <img
+                    src="/icons8-delete-simple-small/icons8-delete-16.png"
+                    onClick={() => {
+                      setTeacherId(teacher.id);
+                      setShowAlert(true);
+                    }}
+                    className="hover:scale-125"
+                  />
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td></td>
+              <td></td>
+              <td>
+                <span className="loading loading-dots loading-lg"></span>
               </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>
