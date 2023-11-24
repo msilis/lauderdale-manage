@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { getAllStudents } from "../../students/studentView/studentUtils";
 import AddStudentToClass from "./addStudentModal";
 import { ClassData } from "../classView/classTable";
@@ -8,6 +8,7 @@ import { ClassData } from "../classView/classTable";
 const ClassStudentDisplay = ({ classDetail }: { classDetail: ClassData }) => {
   const [students, setStudents] = useState();
   const [addStudent, setAddStudent] = useState<boolean>(true);
+  const addStudentRef = useRef();
 
   useEffect(() => {
     const fetchAllStudents = async () => {
