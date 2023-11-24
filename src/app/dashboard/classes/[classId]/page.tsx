@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { ClassData } from "../classView/classTable";
 import { useParams } from "next/navigation";
 import { getClassDetails } from "../classView/classUtils";
+import ClassStudentDisplay from "./classStudentDisplay";
 
 const ClassDetail = () => {
   const [classDetail, setClassDetail] = useState<ClassData | undefined>();
@@ -27,11 +28,12 @@ const ClassDetail = () => {
         buttons={[
           {
             buttonText: UI_TEXT.addClassButton,
-            url: "/dashboard/classes/addclass",
+            url: "/dashboard/classes/addClass",
           },
         ]}
       />
       <ClassDetailsDisplay classDetail={classDetail} />
+      <ClassStudentDisplay />
     </div>
   );
 };
