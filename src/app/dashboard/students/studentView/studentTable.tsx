@@ -26,33 +26,44 @@ const StudentTable: React.FC<StudentTableProps> = ({
           </tr>
         </thead>
         <tbody>
-          {studentData.map((student) => (
-            <tr key={student.id}>
-              <td>{student.studentFirstName}</td>
-              <td>{student.studentLastName}</td>
-              <td>{student.studentFamily}</td>
-              <td>{student.studentBirthdate}</td>
-              <td className="cursor-pointer w-[50px]">
-                <img
-                  src="/icons8-edit-simple-small(1)/icons8-edit-16.png"
-                  onClick={() => {
-                    handleEditClick(student);
-                  }}
-                  className="hover:scale-125"
-                />
-              </td>
-              <td className="cursor-pointer w-[50px] ">
-                <img
-                  src="/icons8-delete-simple-small/icons8-delete-16.png"
-                  onClick={() => {
-                    setStudentId(student.id);
-                    setShowAlert(true);
-                  }}
-                  className="hover:scale-125"
-                />
+          {studentData ? (
+            studentData.map((student) => (
+              <tr key={student.id}>
+                <td>{student.studentFirstName}</td>
+                <td>{student.studentLastName}</td>
+                <td>{student.studentFamily}</td>
+                <td>{student.studentBirthdate}</td>
+                <td className="cursor-pointer w-[50px]">
+                  <img
+                    src="/icons8-edit-simple-small(1)/icons8-edit-16.png"
+                    onClick={() => {
+                      handleEditClick(student);
+                    }}
+                    className="hover:scale-125"
+                  />
+                </td>
+                <td className="cursor-pointer w-[50px] ">
+                  <img
+                    src="/icons8-delete-simple-small/icons8-delete-16.png"
+                    onClick={() => {
+                      setStudentId(student.id);
+                      setShowAlert(true);
+                    }}
+                    className="hover:scale-125"
+                  />
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td></td>
+              <td></td>
+
+              <td>
+                <span className="loading loading-dots loading-lg"></span>
               </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>
