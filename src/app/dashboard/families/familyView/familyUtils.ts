@@ -1,3 +1,5 @@
+import { FamilyData } from "./familyTable";
+
 export const TABLE_UI = {
   titleFamilyName: "Family Name",
   contactEmail: "Email",
@@ -25,4 +27,14 @@ export const getFamilyDetails = async (familyId: string | undefined) => {
   });
   const data = await response.json();
   return data;
+};
+
+export const updateFamilyDetails = async (updatedFamilyData: FamilyData) => {
+  const response = await fetch("../../../api/addFamily/editFamily", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedFamilyData),
+  });
 };

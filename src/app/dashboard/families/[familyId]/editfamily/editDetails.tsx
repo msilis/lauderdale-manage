@@ -1,6 +1,9 @@
+"use client";
+
 import { FamilyData } from "../../familyView/familyTable";
 import { UI_TEXT } from "../../../../../../utils/uitext";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const EditFamilyDetailsDisplay = ({
   detailsToEdit,
@@ -8,7 +11,18 @@ const EditFamilyDetailsDisplay = ({
   detailsToEdit: FamilyData | undefined;
 }) => {
   const router = useRouter();
-  console.log(detailsToEdit);
+  const [editedFamilyValues, setEditedFamilyValues] = useState<FamilyData>(
+    detailsToEdit as FamilyData
+  );
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setEditedFamilyValues((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
   return (
     <div className="mt-6 ml-[30%] max-w-2xl outline outline-slate-100 p-4 drop-shadow-lg rounded-md">
       <div className="flex flex-col md:flex-row md:space-x-4">
@@ -21,6 +35,7 @@ const EditFamilyDetailsDisplay = ({
             id="parent1FirstName"
             type="text"
             defaultValue={detailsToEdit?.parent1FirstName}
+            onChange={handleInputChange}
             className="input input-bordered w-full max-w-xs mt-2"
           />
           <label htmlFor="Parent1LastName" className="flex flex-col mt-2">
@@ -31,6 +46,7 @@ const EditFamilyDetailsDisplay = ({
             id="parent1LastName"
             type="text"
             defaultValue={detailsToEdit?.parent1LastName}
+            onChange={handleInputChange}
             className="input input-bordered w-full max-w-xs mt-2"
           />
           <label htmlFor="parent1Email" className="flex flex-col mt-2">
@@ -41,6 +57,7 @@ const EditFamilyDetailsDisplay = ({
             type="email"
             id="parent1Email"
             defaultValue={detailsToEdit?.parent1Email}
+            onChange={handleInputChange}
             className="input input-bordered w-full max-w-xs mt-2"
           />
           <label htmlFor="parent1Phone" className="flex flex-col mt-2">
@@ -51,6 +68,7 @@ const EditFamilyDetailsDisplay = ({
             name="parent1Phone"
             id="parent1Phone"
             defaultValue={detailsToEdit?.parent1Phone}
+            onChange={handleInputChange}
             className="input input-bordered w-full max-w-xs mt-2"
           />
           <label htmlFor="parent1Address" className="flex flex-col mt-2">
@@ -60,6 +78,7 @@ const EditFamilyDetailsDisplay = ({
             className="textarea textarea-bordered mt-2"
             defaultValue={detailsToEdit?.parent1Address}
             name="parent1Address"
+            onChange={() => handleInputChange}
           />
         </div>
         <div className="flex flex-col md:w-1/2">
@@ -71,6 +90,7 @@ const EditFamilyDetailsDisplay = ({
             id="parent2FirstName"
             type="text"
             defaultValue={detailsToEdit?.parent2FirstName}
+            onChange={handleInputChange}
             className="input input-bordered w-full max-w-xs mt-2"
           />
           <label htmlFor="parent2LastName" className="flex flex-col mt-2">
@@ -81,6 +101,7 @@ const EditFamilyDetailsDisplay = ({
             type="text"
             id="parent2LastName"
             defaultValue={detailsToEdit?.parent2LastName}
+            onChange={handleInputChange}
             className="input input-bordered w-full max-w-xs mt-2"
           />
           <label htmlFor="parent2Email" className="flex flex-col mt-2">
@@ -91,6 +112,7 @@ const EditFamilyDetailsDisplay = ({
             id="parent2Email"
             type="email"
             defaultValue={detailsToEdit?.parent2Email}
+            onChange={handleInputChange}
             className="input input-bordered w-full max-w-xs mt-2"
           />
           <label htmlFor="parent2Phone" className="flex flex-col mt-2">
@@ -101,6 +123,7 @@ const EditFamilyDetailsDisplay = ({
             type="tel"
             id="parent2Phone"
             defaultValue={detailsToEdit?.parent2Phone}
+            onChange={handleInputChange}
             className="input input-bordered w-full max-w-xs mt-2"
           />
           <label htmlFor="parent1Address" className="flex flex-col mt-2">
@@ -110,6 +133,7 @@ const EditFamilyDetailsDisplay = ({
             name="parent2Address"
             className="textarea textarea-bordered mt-2"
             defaultValue={detailsToEdit?.parent2Address}
+            onChange={() => handleInputChange}
           />
         </div>
       </div>
