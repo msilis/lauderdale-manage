@@ -5,6 +5,7 @@ import { doc, updateDoc } from "firebase/firestore";
 export async function POST(request: Request) {
   try {
     const body = await request.text();
+    console.log(body, "body");
     const { id, ...data } = JSON.parse(body);
     const familyRef = doc(db, "families", id);
     await updateDoc(familyRef, data);

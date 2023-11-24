@@ -7,8 +7,9 @@ export async function POST(request: Request) {
     const familyId = await request.json();
     const docRef = doc(db, "families", familyId);
     const docSnap = await getDoc(docRef);
-    console.log(docSnap.data(), "docSnap");
-    return NextResponse.json(docSnap.data(), { status: 200 });
+    const data = docSnap.data();
+    const id = docSnap.id;
+    return NextResponse.json({ id, ...data }, { status: 200 });
   } catch (error) {
     console.error("There was an error getting family details", error);
     return NextResponse.json(

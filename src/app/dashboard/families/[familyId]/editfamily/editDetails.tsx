@@ -3,7 +3,9 @@
 import { FamilyData } from "../../familyView/familyTable";
 import { UI_TEXT } from "../../../../../../utils/uitext";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+import { updateFamilyDetails } from "../../familyView/familyUtils";
 
 const EditFamilyDetailsDisplay = ({
   detailsToEdit,
@@ -11,16 +13,33 @@ const EditFamilyDetailsDisplay = ({
   detailsToEdit: FamilyData | undefined;
 }) => {
   const router = useRouter();
+  const params = useParams();
   const [editedFamilyValues, setEditedFamilyValues] = useState<FamilyData>(
     detailsToEdit as FamilyData
   );
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  useEffect(() => {
+    if (detailsToEdit) {
+      setEditedFamilyValues(detailsToEdit);
+    }
+  }, [detailsToEdit]);
+
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = event.target;
     setEditedFamilyValues((prevState) => ({
       ...prevState,
       [name]: value,
     }));
+  };
+  console.log(editedFamilyValues, "editedFamilyValues");
+  console.log(detailsToEdit, "details to edit");
+  const handleUpdateFamilyClick = () => {
+    const navigateAfterUpdate = () => {
+      router.push(`/dashboard/families/${params.familyId}`);
+    };
+    updateFamilyDetails(editedFamilyValues as FamilyData, navigateAfterUpdate);
   };
 
   return (
@@ -78,7 +97,7 @@ const EditFamilyDetailsDisplay = ({
             className="textarea textarea-bordered mt-2"
             defaultValue={detailsToEdit?.parent1Address}
             name="parent1Address"
-            onChange={() => handleInputChange}
+            onChange={handleInputChange}
           />
         </div>
         <div className="flex flex-col md:w-1/2">
@@ -133,7 +152,7 @@ const EditFamilyDetailsDisplay = ({
             name="parent2Address"
             className="textarea textarea-bordered mt-2"
             defaultValue={detailsToEdit?.parent2Address}
-            onChange={() => handleInputChange}
+            onChange={handleInputChange}
           />
         </div>
       </div>
@@ -146,7 +165,12 @@ const EditFamilyDetailsDisplay = ({
         >
           {UI_TEXT.cancelButton}
         </button>
-        <button className="btn btn-accent mt-4">{UI_TEXT.updateFamily}</button>
+        <button
+          className="btn btn-accent mt-4"
+          onClick={handleUpdateFamilyClick}
+        >
+          {UI_TEXT.updateFamily}
+        </button>
       </div>
     </div>
   );
