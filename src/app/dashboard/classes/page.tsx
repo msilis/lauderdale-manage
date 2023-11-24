@@ -8,8 +8,12 @@ const Classes = () => {
     <div className="flex flex-col ml-28 gap-6">
       <h1 className="text-5xl font-bold">Classes</h1>
       <Navbar
-        buttonText={UI_TEXT.addClassButton}
-        url="/dashboard/classes/addClass"
+        buttons={[
+          {
+            buttonText: UI_TEXT.addClassButton,
+            url: "/dashboard/classes/addClass",
+          },
+        ]}
       />
       <ClassView />
     </div>

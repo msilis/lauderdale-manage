@@ -19,4 +19,6 @@ export const TOAST_TEXT = {
   errorDeletingTeacher: "There was an error deleting the teacher",
   teacherUpdated: "Teacher info updated successfully!",
   errorUpdatingTeacher: "There was an error updating teacher info",
+  familyUpdated: "Family updated successfully!",
+  errorUpdatingFamily: "There was an error updating the family",
 };
