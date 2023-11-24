@@ -4,7 +4,7 @@ import Navbar from "@/components/navbar/navbar";
 import { UI_TEXT } from "../../../../../utils/uitext";
 import DashboardLayout from "@/layout/dashboardLayout";
 import ClassDetailsDisplay from "./classDetailDisplay";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ClassData } from "../classView/classTable";
 import { useParams } from "next/navigation";
 import { getClassDetails } from "../classView/classUtils";
@@ -13,6 +13,7 @@ import ClassStudentDisplay from "./classStudentDisplay";
 const ClassDetail = () => {
   const [classDetail, setClassDetail] = useState<ClassData | undefined>();
   const params = useParams();
+  const addStudentRef = useRef();
 
   useEffect(() => {
     const fetchClassDetails = async () => {
@@ -33,7 +34,7 @@ const ClassDetail = () => {
         ]}
       />
       <ClassDetailsDisplay classDetail={classDetail} />
-      <ClassStudentDisplay />
+      <ClassStudentDisplay classDetail={classDetail!} />
     </div>
   );
 };
