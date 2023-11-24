@@ -8,8 +8,12 @@ const Families = () => {
     <div className="flex flex-col ml-28 gap-6">
       <h1 className="text-5xl font-bold">Families</h1>
       <Navbar
-        buttonText={UI_TEXT.addFamily}
-        url="/dashboard/families/addfamilies"
+        buttons={[
+          {
+            buttonText: UI_TEXT.addFamily,
+            url: "/dashboard/families/addfamilies",
+          },
+        ]}
       />
       <FamilyView />
     </div>

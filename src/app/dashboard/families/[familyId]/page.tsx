@@ -12,7 +12,6 @@ import DetailsDisplay from "./details";
 const FamilyDetail = () => {
   const [familyDetail, setFamilyDetail] = useState<FamilyData | undefined>();
   const params = useParams();
-  console.log(familyDetail);
 
   useEffect(() => {
     const fetchFamilyData = async () => {
@@ -26,8 +25,12 @@ const FamilyDetail = () => {
     <div className="flex flex-col ml-28 gap-6">
       <h1 className="text-5xl font-bold">Family Details</h1>
       <Navbar
-        buttonText={UI_TEXT.addFamily}
-        url="/dashboard/families/addfamilies"
+        buttons={[
+          {
+            buttonText: UI_TEXT.addFamily,
+            url: "/dashboard/families/addfamilies",
+          },
+        ]}
       />
       <DetailsDisplay familyDetail={familyDetail} />
     </div>
