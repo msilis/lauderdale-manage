@@ -47,17 +47,27 @@ const FamilyTable = () => {
           </tr>
         </thead>
         <tbody>
-          {familyData.map((family) => (
-            <tr
-              key={family.id}
-              onClick={() => handleFamilyClick(family.id)}
-              className="cursor-pointer"
-            >
-              <td>{family.parent1LastName}</td>
-              <td>{family.parent1Email}</td>
-              <td>{family.parent1Phone}</td>
+          {familyData && familyData.length > 0 && familyData[0].id ? (
+            familyData.map((family) => (
+              <tr
+                key={family.id}
+                onClick={() => handleFamilyClick(family.id)}
+                className="cursor-pointer"
+              >
+                <td>{family.parent1LastName}</td>
+                <td>{family.parent1Email}</td>
+                <td>{family.parent1Phone}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td></td>
+              <td></td>
+              <td>
+                <span className="loading loading-dots loading-lg"></span>
+              </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>
