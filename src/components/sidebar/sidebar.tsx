@@ -60,6 +60,14 @@ export const Sidebar = () => {
         </li>
         <li>
           <button
+            className="btn btn-outline w-32"
+            onClick={() => navigateTo("/dashboard/settingsgit ")}
+          >
+            Settings
+          </button>
+        </li>
+        <li>
+          <button
             className="btn btn-outline btn-secondary w-32"
             onClick={() => handleLogout(router)}
           >
