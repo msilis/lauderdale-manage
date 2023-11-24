@@ -33,8 +33,7 @@ const EditFamilyDetailsDisplay = ({
       [name]: value,
     }));
   };
-  console.log(editedFamilyValues, "editedFamilyValues");
-  console.log(detailsToEdit, "details to edit");
+
   const handleUpdateFamilyClick = () => {
     const navigateAfterUpdate = () => {
       router.push(`/dashboard/families/${params.familyId}`);
