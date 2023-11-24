@@ -1,4 +1,6 @@
+import { errorToast, successToast } from "@/components/toast/toast";
 import { FamilyData } from "./familyTable";
+import { TOAST_TEXT } from "@/components/toast/toastText";
 
 export const TABLE_UI = {
   titleFamilyName: "Family Name",
@@ -29,7 +31,10 @@ export const getFamilyDetails = async (familyId: string | undefined) => {
   return data;
 };
 
-export const updateFamilyDetails = async (updatedFamilyData: FamilyData) => {
+export const updateFamilyDetails = async (
+  updatedFamilyData: FamilyData,
+  callback: () => void
+) => {
   const response = await fetch("../../../api/addFamily/editFamily", {
     method: "POST",
     headers: {
@@ -37,4 +42,10 @@ export const updateFamilyDetails = async (updatedFamilyData: FamilyData) => {
     },
     body: JSON.stringify(updatedFamilyData),
   });
+  if (!response.ok) {
+    errorToast(TOAST_TEXT.errorUpdatingFamily);
+    throw new Error("There was an error updating the family");
+  }
+  successToast(TOAST_TEXT.familyUpdated);
+  callback();
 };
