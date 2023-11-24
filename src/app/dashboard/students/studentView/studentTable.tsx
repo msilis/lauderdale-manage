@@ -26,7 +26,7 @@ const StudentTable: React.FC<StudentTableProps> = ({
           </tr>
         </thead>
         <tbody>
-          {studentData ? (
+          {studentData && studentData.length > 0 && studentData[0].id ? (
             studentData.map((student) => (
               <tr key={student.id}>
                 <td>{student.studentFirstName}</td>
@@ -58,7 +58,6 @@ const StudentTable: React.FC<StudentTableProps> = ({
             <tr>
               <td></td>
               <td></td>
-
               <td>
                 <span className="loading loading-dots loading-lg"></span>
               </td>
