@@ -7,8 +7,8 @@ import { ClassData } from "../classView/classTable";
 
 const ClassStudentDisplay = ({ classDetail }: { classDetail: ClassData }) => {
   const [students, setStudents] = useState();
-  const [addStudent, setAddStudent] = useState<boolean>(true);
-  const addStudentRef = useRef();
+  const [addStudent, setAddStudent] = useState<boolean>(false);
+  const addStudentRef = useRef<HTMLDialogElement | null>(null);
 
   useEffect(() => {
     const fetchAllStudents = async () => {
@@ -18,11 +18,27 @@ const ClassStudentDisplay = ({ classDetail }: { classDetail: ClassData }) => {
     fetchAllStudents();
   }, []);
 
+  useEffect(() => {
+    if (addStudent !== false) {
+      addStudentRef.current?.showModal();
+    }
+  }, [addStudent]);
+
   console.log(students);
   return (
     <div className="flex flex-col ml-5 gap-6">
       <h3 className="font-bold">Students</h3>
-      {addStudent && <AddStudentToClass className={classDetail?.className} />}
+      <button className="btn btn-ghost" onClick={() => setAddStudent(true)}>
+        Open modal
+      </button>
+      {addStudent && (
+        <AddStudentToClass
+          className={classDetail?.className}
+          ref={addStudentRef}
+          onClose={() => setAddStudent(false)}
+          onSave={() => {}}
+        />
+      )}
     </div>
   );
 };
