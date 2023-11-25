@@ -41,7 +41,6 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
     }, []);
 
     const options = selectOptions(studentNames);
-    console.log(ref, "from the modal");
 
     return (
       <dialog className="modal" ref={ref}>
