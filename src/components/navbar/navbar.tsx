@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 type ButtonProps = {
   buttonText: string;
-  url: string;
+  url?: string;
   className?: string;
   onClick?: () => void;
 };
@@ -15,11 +15,11 @@ type NavbarProps = {
 
 const Navbar: React.FC<NavbarProps> = ({ buttons }) => {
   const router = useRouter();
-  const handleButtonClick = (url: string, onClick?: () => void) => {
+  const handleButtonClick = (url?: string, onClick?: () => void) => {
     if (onClick) {
       onClick();
     } else {
-      router.push(url);
+      router.push(url!);
     }
   };
   return (
