@@ -5,6 +5,8 @@ import React from "react";
 import { StudentData } from "../../students/studentView/studentView";
 import { UI_TEXT } from "../../../../../utils/uitext";
 import { getAllStudents } from "../../students/studentView/studentUtils";
+import Select from "react-select";
+import { selectOptions } from "./modalUtils";
 
 interface AddStudentProps {
   className: string;
@@ -12,7 +14,7 @@ interface AddStudentProps {
   onSave: (student: StudentData) => void;
 }
 
-interface StudentNames {
+export interface StudentNames {
   studentFirstName: string;
   studentLastName: string;
   id: string;
@@ -30,13 +32,15 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
         const extractedData = studentData.map((student: StudentData) => ({
           studentFirstName: student.studentFirstName,
           studentLastName: student.studentLastName,
-          studentId: student.id,
+          id: student.id,
         }));
         setStudentNames(extractedData);
       };
 
       fetchStudentNames();
     }, []);
+
+    const options = selectOptions(studentNames);
 
     return (
       <dialog className="modal" ref={ref}>
@@ -50,7 +54,9 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
             </button>
           </form>
           <h3 className="font-bold text-lg">Add students to {className}</h3>
-          <div></div>
+          <div>
+            <Select isMulti options={options} />
+          </div>
           <div className="flex gap-4">
             <button
               className="btn btn-secondary mt-4 "
