@@ -1,6 +1,10 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import React from "react";
 import { StudentData } from "../../students/studentView/studentView";
 import { UI_TEXT } from "../../../../../utils/uitext";
+import { getAllStudents } from "../../students/studentView/studentUtils";
 
 interface AddStudentProps {
   className: string;
@@ -8,8 +12,33 @@ interface AddStudentProps {
   onSave: (student: StudentData) => void;
 }
 
+interface StudentNames {
+  studentFirstName: string;
+  studentLastName: string;
+  id: string;
+}
+
 const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
   ({ className, onClose, onSave }, ref) => {
+    const [students, setStudents] = useState<StudentData | undefined>();
+    const [studentNames, setStudentNames] = useState<
+      StudentNames[] | undefined
+    >();
+
+    useEffect(() => {
+      const fetchStudentNames = async () => {
+        const studentData = await getAllStudents();
+        const extractedData = studentData.map((student: StudentData) => ({
+          studentFirstName: student.studentFirstName,
+          studentLastName: student.studentLastName,
+          studentId: student.id,
+        }));
+        setStudentNames(extractedData);
+      };
+
+      fetchStudentNames();
+    }, []);
+
     return (
       <dialog className="modal" ref={ref}>
         <div className="modal-box">
