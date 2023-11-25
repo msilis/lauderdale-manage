@@ -28,11 +28,6 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
     fetchAllStudents();
   }, []);
 
-  console.log(dialogRef, "from classStudentDisplay");
-  useEffect(() => {
-    console.log(dialogRef, "from the effect");
-  }, []);
-
   return (
     <div className="flex flex-col ml-5 gap-6">
       <h3 className="font-bold">Students</h3>
