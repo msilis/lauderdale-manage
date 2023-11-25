@@ -21,7 +21,7 @@ const Navbar: React.FC<NavbarProps> = ({ buttons }) => {
     } else if (url) {
       router.push(url);
     } else {
-      return;
+      console.warn("No click function or url provided to handleButtonClick");
     }
   };
 
