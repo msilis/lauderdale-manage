@@ -20,7 +20,6 @@ interface StudentNames {
 
 const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
   ({ className, onClose, onSave }, ref) => {
-    const [students, setStudents] = useState<StudentData | undefined>();
     const [studentNames, setStudentNames] = useState<
       StudentNames[] | undefined
     >();
