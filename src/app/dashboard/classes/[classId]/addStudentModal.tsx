@@ -57,7 +57,7 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
           <div>
             <Select isMulti options={options} />
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-4 mb-2">
             <button
               className="btn btn-secondary mt-4 "
               onClick={() => onClose()}
