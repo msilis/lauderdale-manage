@@ -26,7 +26,6 @@ const ClassDetail = () => {
 
   useEffect(() => {
     if (addStudent) {
-      console.log("useEffect ran");
       addStudentRef.current?.showModal();
     } else {
       addStudentRef.current?.close();
