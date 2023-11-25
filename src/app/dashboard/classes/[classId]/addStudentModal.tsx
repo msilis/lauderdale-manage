@@ -1,5 +1,6 @@
 import React from "react";
 import { StudentData } from "../../students/studentView/studentView";
+import { UI_TEXT } from "../../../../../utils/uitext";
 
 interface AddStudentProps {
   className: string;
@@ -21,6 +22,18 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
             </button>
           </form>
           <h3 className="font-bold text-lg">Add students to {className}</h3>
+          <div></div>
+          <div className="flex gap-4">
+            <button
+              className="btn btn-secondary mt-4 "
+              onClick={() => onClose()}
+            >
+              {UI_TEXT.cancelButton}
+            </button>
+            <button className="btn btn-accent mt-4" onClick={() => {}}>
+              {UI_TEXT.saveButton}
+            </button>
+          </div>
         </div>
       </dialog>
     );
