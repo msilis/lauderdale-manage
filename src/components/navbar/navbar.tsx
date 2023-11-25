@@ -18,10 +18,13 @@ const Navbar: React.FC<NavbarProps> = ({ buttons }) => {
   const handleButtonClick = (url?: string, onClick?: () => void) => {
     if (onClick) {
       onClick();
+    } else if (url) {
+      router.push(url);
     } else {
-      router.push(url!);
+      return;
     }
   };
+
   return (
     <div className="navbar bg-base-100 outline outline-gray-50 mt-2 drop-shadow-xl md:max-md:w-72 overflow-auto">
       {buttons &&
