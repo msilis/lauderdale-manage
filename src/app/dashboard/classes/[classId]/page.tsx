@@ -33,7 +33,6 @@ const ClassDetail = () => {
     }
   }, [addStudent]);
 
-  console.log(addStudentRef, "from the page");
   return (
     <div className="flex flex-col ml-28 gap-6">
       <h1 className="text-5xl font-bold">Class Details</h1>
