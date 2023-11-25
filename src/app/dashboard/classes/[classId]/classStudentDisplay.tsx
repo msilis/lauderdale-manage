@@ -27,9 +27,6 @@ const ClassStudentDisplay = ({ classDetail }: { classDetail: ClassData }) => {
   return (
     <div className="flex flex-col ml-5 gap-6">
       <h3 className="font-bold">Students</h3>
-      <button className="btn btn-ghost" onClick={() => setAddStudent(true)}>
-        Open modal
-      </button>
       {addStudent && (
         <AddStudentToClass
           className={classDetail?.className}
