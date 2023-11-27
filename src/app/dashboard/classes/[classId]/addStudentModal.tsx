@@ -21,7 +21,7 @@ export interface StudentNames {
   id: string;
 }
 
-type StudentOption = {
+export type StudentOption = {
   value: string;
   label: string;
   id: string;
