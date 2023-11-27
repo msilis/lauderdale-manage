@@ -32,7 +32,9 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
     const [studentNames, setStudentNames] = useState<
       StudentNames[] | undefined
     >();
-    const [selectedStudents, setSelectedStudents] = useState([]);
+    const [selectedStudents, setSelectedStudents] = useState<StudentOption[]>(
+      []
+    );
 
     useEffect(() => {
       const fetchStudentNames = async () => {
@@ -54,7 +56,7 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
       actionMeta: ActionMeta<StudentOption>
     ) => {
       if (selectedStudents) {
-        selectedStudents.map((option: StudentOption) => option);
+        setSelectedStudents(Array.from(selectedStudents));
       } else {
         setSelectedStudents([]);
       }
@@ -68,19 +70,30 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
           <form method="dialog">
             <button
               className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-              onClick={() => onClose()}
+              onClick={() => {
+                setSelectedStudents([]);
+                onClose();
+              }}
             >
               ✕
             </button>
           </form>
           <h3 className="font-bold text-lg">Add students to {className}</h3>
           <div>
-            <Select isMulti options={options} onChange={handleSelectChange} />
+            <Select
+              isMulti
+              value={selectedStudents}
+              options={options}
+              onChange={handleSelectChange}
+            />
           </div>
           <div className="flex gap-4 mb-2">
             <button
               className="btn btn-secondary mt-4 "
-              onClick={() => onClose()}
+              onClick={() => {
+                setSelectedStudents([]);
+                onClose();
+              }}
             >
               {UI_TEXT.cancelButton}
             </button>
