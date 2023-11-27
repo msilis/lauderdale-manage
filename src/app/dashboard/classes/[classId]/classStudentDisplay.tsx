@@ -34,6 +34,7 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
 
       <AddStudentToClass
         className={classDetail?.className}
+        classId={classDetail?.id}
         ref={dialogRef}
         onClose={() => setAddStudent(false)}
         onSave={() => {}}

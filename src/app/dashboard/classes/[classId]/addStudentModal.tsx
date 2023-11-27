@@ -11,6 +11,7 @@ import { selectOptions } from "./modalUtils";
 
 interface AddStudentProps {
   className: string;
+  classId: string;
   onClose: () => void;
   onSave: (student: StudentData) => void;
 }
