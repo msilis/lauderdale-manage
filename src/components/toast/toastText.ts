@@ -21,4 +21,6 @@ export const TOAST_TEXT = {
   errorUpdatingTeacher: "There was an error updating teacher info",
   familyUpdated: "Family updated successfully!",
   errorUpdatingFamily: "There was an error updating the family",
+  errorAddingStudentToClass: "There was an error adding student(s) to class",
+  studentAddedToClass: "Student(s) added to class successfully!",
 };

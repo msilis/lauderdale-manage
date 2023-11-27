@@ -7,7 +7,7 @@ import { UI_TEXT } from "../../../../../utils/uitext";
 import { getAllStudents } from "../../students/studentView/studentUtils";
 import Select from "react-select";
 import { ActionMeta } from "react-select";
-import { selectOptions } from "./modalUtils";
+import { saveStudentsToClass, selectOptions } from "./modalUtils";
 
 interface AddStudentProps {
   className: string;
@@ -29,7 +29,7 @@ export type StudentOption = {
 };
 
 const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
-  ({ className, onClose, onSave }, ref) => {
+  ({ className, onClose, onSave, classId }, ref) => {
     const [studentNames, setStudentNames] = useState<
       StudentNames[] | undefined
     >();
@@ -61,6 +61,11 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
       } else {
         setSelectedStudents([]);
       }
+    };
+
+    const handleSave = () => {
+      saveStudentsToClass(selectedStudents, classId);
+      onClose();
     };
 
     return (
@@ -96,7 +101,7 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
             >
               {UI_TEXT.cancelButton}
             </button>
-            <button className="btn btn-accent mt-4" onClick={() => {}}>
+            <button className="btn btn-accent mt-4" onClick={handleSave}>
               {UI_TEXT.saveButton}
             </button>
           </div>
