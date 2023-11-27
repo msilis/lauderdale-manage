@@ -65,7 +65,7 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
       fetchAssignedStudents();
     }, [classId]);
 
-    const options = selectOptions(studentNames);
+    const options = selectOptions(studentNames, assignedStudents);
     const handleSelectChange = (
       selectedStudents: readonly StudentOption[],
       actionMeta: ActionMeta<StudentOption>

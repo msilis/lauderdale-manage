@@ -2,14 +2,24 @@ import { errorToast, successToast } from "@/components/toast/toast";
 import { StudentNames, StudentOption } from "./addStudentModal";
 import { TOAST_TEXT } from "@/components/toast/toastText";
 
-export const selectOptions = (studentNames: StudentNames[] | undefined) => {
+export const selectOptions = (
+  studentNames: StudentNames[] | undefined,
+  assignedStudents: StudentOption[] | undefined
+) => {
   if (studentNames) {
     const mappedOptions = studentNames.map((student) => ({
       value: `${student.studentLastName}, ${student.studentFirstName}`,
       label: `${student.studentLastName}, ${student.studentFirstName}`,
       id: student.id,
     }));
-    return mappedOptions;
+
+    const filteredStudents = studentNames?.filter(
+      (student) =>
+        !assignedStudents?.find(
+          (assignedStudent) => assignedStudent.id === student.id
+        )
+    );
+    return filteredStudents;
   }
 };
 
