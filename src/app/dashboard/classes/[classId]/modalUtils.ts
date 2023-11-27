@@ -1,4 +1,4 @@
-import { StudentNames } from "./addStudentModal";
+import { StudentNames, StudentOption } from "./addStudentModal";
 
 export const selectOptions = (studentNames: StudentNames[] | undefined) => {
   if (studentNames) {
@@ -10,3 +10,5 @@ export const selectOptions = (studentNames: StudentNames[] | undefined) => {
     return mappedOptions;
   }
 };
+
+const saveStudentsToClass = (selectedStudents: StudentOption) => {};
