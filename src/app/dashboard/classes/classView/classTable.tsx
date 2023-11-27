@@ -10,6 +10,7 @@ export interface ClassData {
   classAccompanist: string;
   classStartTime: string;
   classEndTime: string;
+  classStudents?: string[];
   id: string;
 }
 

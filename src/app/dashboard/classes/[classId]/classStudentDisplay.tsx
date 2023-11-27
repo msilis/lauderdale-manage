@@ -20,6 +20,13 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
 }) => {
   const [students, setStudents] = useState();
 
+  console.log(classDetail, "classDetail");
+
+  interface StudentListProps {
+    studentName: string;
+    studentId: string;
+  }
+
   useEffect(() => {
     const fetchAllStudents = async () => {
       const studentData = await getAllStudents();
@@ -31,7 +38,25 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
   return (
     <div className="flex flex-col ml-5 gap-6">
       <h3 className="font-bold">Students</h3>
-
+      <div className="overflow-x-auto">
+        <table className="table table-zebra">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Student Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {classDetail.classStudents &&
+              classDetail.classStudents?.map((student, index) => (
+                <tr key={student.studentId}>
+                  <td>{index + 1}</td>
+                  <td>{student.studentName}</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
       <AddStudentToClass
         className={classDetail?.className}
         classId={classDetail?.id}
