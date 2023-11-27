@@ -6,6 +6,7 @@ import { StudentData } from "../../students/studentView/studentView";
 import { UI_TEXT } from "../../../../../utils/uitext";
 import { getAllStudents } from "../../students/studentView/studentUtils";
 import Select from "react-select";
+import { ActionMeta } from "react-select";
 import { selectOptions } from "./modalUtils";
 
 interface AddStudentProps {
@@ -20,14 +21,18 @@ export interface StudentNames {
   id: string;
 }
 
+type StudentOption = {
+  value: string;
+  label: string;
+  id: string;
+};
+
 const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
   ({ className, onClose, onSave }, ref) => {
     const [studentNames, setStudentNames] = useState<
       StudentNames[] | undefined
     >();
-    const [selectedStudents, setSelectedStudents] = useState<
-      StudentNames[] | undefined
-    >([]);
+    const [selectedStudents, setSelectedStudents] = useState([]);
 
     useEffect(() => {
       const fetchStudentNames = async () => {
@@ -44,8 +49,15 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
     }, []);
 
     const options = selectOptions(studentNames);
-    const handleSelectChange = (selecteStudent) => {
-      setSelectedStudents(selecteStudent.map((option) => option));
+    const handleSelectChange = (
+      selectedStudents: readonly StudentOption[],
+      actionMeta: ActionMeta<StudentOption>
+    ) => {
+      if (selectedStudents) {
+        selectedStudents.map((option: StudentOption) => option);
+      } else {
+        setSelectedStudents([]);
+      }
     };
 
     console.log(selectedStudents, "selected students");
