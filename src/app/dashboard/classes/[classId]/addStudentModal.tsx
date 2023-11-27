@@ -25,6 +25,9 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
     const [studentNames, setStudentNames] = useState<
       StudentNames[] | undefined
     >();
+    const [selectedStudents, setSelectedStudents] = useState<
+      StudentNames[] | undefined
+    >([]);
 
     useEffect(() => {
       const fetchStudentNames = async () => {
@@ -41,7 +44,12 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
     }, []);
 
     const options = selectOptions(studentNames);
+    const handleSelectChange = (selecteStudent) => {
+      setSelectedStudents(selecteStudent.map((option) => option));
+    };
 
+    console.log(selectedStudents, "selected students");
+    console.log(options, "options");
     return (
       <dialog className="modal" ref={ref}>
         <div className="modal-box">
@@ -55,7 +63,7 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
           </form>
           <h3 className="font-bold text-lg">Add students to {className}</h3>
           <div>
-            <Select isMulti options={options} />
+            <Select isMulti options={options} onChange={handleSelectChange} />
           </div>
           <div className="flex gap-4 mb-2">
             <button
