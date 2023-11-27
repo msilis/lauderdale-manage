@@ -4,22 +4,23 @@ import { TOAST_TEXT } from "@/components/toast/toastText";
 
 export const selectOptions = (
   studentNames: StudentNames[] | undefined,
-  assignedStudents: StudentOption[] | undefined
+  assignedStudents: StudentOption[]
 ) => {
-  if (studentNames) {
+  if (studentNames && Array.isArray(assignedStudents)) {
     const mappedOptions = studentNames.map((student) => ({
       value: `${student.studentLastName}, ${student.studentFirstName}`,
       label: `${student.studentLastName}, ${student.studentFirstName}`,
       id: student.id,
     }));
-
-    const filteredStudents = studentNames?.filter(
-      (student) =>
-        !assignedStudents?.find(
-          (assignedStudent) => assignedStudent.id === student.id
+    const filteredOptions = mappedOptions.filter(
+      (option) =>
+        !assignedStudents.find(
+          (assignedStudent) => assignedStudent.studentId === option.id
         )
     );
-    return filteredStudents;
+    console.log(mappedOptions, "mappedOptions");
+    console.log(filteredOptions, "filteredOptions");
+    return filteredOptions;
   }
 };
 

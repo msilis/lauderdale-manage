@@ -32,6 +32,10 @@ export type StudentOption = {
   id: string;
 };
 
+type AssignedStudentType = {
+  classStudents: StudentOption[];
+};
+
 const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
   ({ className, onClose, onSave, classId }, ref) => {
     const [studentNames, setStudentNames] = useState<
@@ -40,9 +44,8 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
     const [selectedStudents, setSelectedStudents] = useState<StudentOption[]>(
       []
     );
-    const [assignedStudents, setAssignedStudents] = useState<StudentOption[]>(
-      []
-    );
+    const [assignedStudents, setAssignedStudents] =
+      useState<AssignedStudentType | null>(null);
 
     useEffect(() => {
       const fetchStudentNames = async () => {
@@ -54,18 +57,26 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
         }));
         setStudentNames(extractedData);
       };
-      const fetchAssignedStudents = async () => {
-        if (classId) {
-          const assignedStudentData = await getAssignedStudents(classId);
-          setAssignedStudents(assignedStudentData);
-        }
-      };
 
       fetchStudentNames();
-      fetchAssignedStudents();
+    }, []);
+
+    useEffect(() => {
+      if (classId) {
+        const fetchAssignedStudents = async () => {
+          const assignedStudentData = await getAssignedStudents(classId);
+          setAssignedStudents(assignedStudentData);
+        };
+        fetchAssignedStudents();
+      }
     }, [classId]);
 
-    const options = selectOptions(studentNames, assignedStudents);
+    console.log(assignedStudents?.classStudents, "assignedStudents");
+
+    const options = selectOptions(
+      studentNames,
+      assignedStudents?.classStudents
+    );
     const handleSelectChange = (
       selectedStudents: readonly StudentOption[],
       actionMeta: ActionMeta<StudentOption>
