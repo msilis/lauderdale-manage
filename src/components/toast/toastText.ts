@@ -23,4 +23,6 @@ export const TOAST_TEXT = {
   errorUpdatingFamily: "There was an error updating the family",
   errorAddingStudentToClass: "There was an error adding student(s) to class",
   studentAddedToClass: "Student(s) added to class successfully!",
+  errorFetchingAssignedStudents:
+    "There was an error getting assigned students for this class",
 };
