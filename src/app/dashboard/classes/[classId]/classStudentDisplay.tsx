@@ -20,8 +20,6 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
 }) => {
   const [students, setStudents] = useState();
 
-  console.log(classDetail, "classDetail");
-
   interface StudentListProps {
     studentName: string;
     studentId: string;

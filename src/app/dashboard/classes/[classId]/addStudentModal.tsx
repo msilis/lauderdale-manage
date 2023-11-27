@@ -7,7 +7,11 @@ import { UI_TEXT } from "../../../../../utils/uitext";
 import { getAllStudents } from "../../students/studentView/studentUtils";
 import Select from "react-select";
 import { ActionMeta } from "react-select";
-import { saveStudentsToClass, selectOptions } from "./modalUtils";
+import {
+  getAssignedStudents,
+  saveStudentsToClass,
+  selectOptions,
+} from "./modalUtils";
 
 interface AddStudentProps {
   className: string;
@@ -50,9 +54,16 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
         }));
         setStudentNames(extractedData);
       };
+      const fetchAssignedStudents = async () => {
+        if (classId) {
+          const assignedStudentData = await getAssignedStudents(classId);
+          setAssignedStudents(assignedStudentData);
+        }
+      };
 
       fetchStudentNames();
-    }, []);
+      fetchAssignedStudents();
+    }, [classId]);
 
     const options = selectOptions(studentNames);
     const handleSelectChange = (

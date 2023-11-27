@@ -13,10 +13,7 @@ export const selectOptions = (studentNames: StudentNames[] | undefined) => {
   }
 };
 
-export const getAssignedStudents = async (
-  classId: string,
-  setAssignedStudents: StudentOption[]
-) => {
+export const getAssignedStudents = async (classId: string) => {
   const response = await fetch("../../../api/classes/getAssignedStudents", {
     method: "POST",
     headers: {
@@ -25,8 +22,10 @@ export const getAssignedStudents = async (
     body: JSON.stringify(classId),
   });
   if (!response.ok) {
-    errorToast(TOAST_TEXT.errorFetchingAssignedStudents);
+    console.error("There was an error getting assigned students", Error);
   }
+  const data = await response.json();
+  return data;
 };
 
 export const saveStudentsToClass = async (
