@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/firebase/firebaseConfig";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 export async function POST(request: Request) {
   try {
@@ -13,10 +13,14 @@ export async function POST(request: Request) {
         studentName: student.label,
       })
     );
-    console.log({ studentsToAdd });
+
     const classRef = doc(db, "classes", classId);
+    const classDoc = await getDoc(classRef);
+    const classData = classDoc.data();
+    const existingStudents = classData ? classData.classStudents || [] : [];
+    const mergedStudents = [...existingStudents, ...studentsToAdd];
     await updateDoc(classRef, {
-      classStudents: studentsToAdd,
+      classStudents: mergedStudents,
     });
     return NextResponse.json(
       { message: "Students added to class" },
