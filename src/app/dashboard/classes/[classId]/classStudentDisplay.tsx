@@ -47,7 +47,7 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
             </tr>
           </thead>
           <tbody>
-            {classDetail.classStudents &&
+            {classDetail &&
               classDetail.classStudents?.map((student, index) => (
                 <tr key={student.studentId}>
                   <td>{index + 1}</td>
