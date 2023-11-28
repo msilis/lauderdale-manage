@@ -9,6 +9,7 @@ import { ClassData } from "../classView/classTable";
 import { useParams } from "next/navigation";
 import { getClassDetails } from "../classView/classUtils";
 import ClassStudentDisplay from "./classStudentDisplay";
+import { handleRemoveStudent } from "./classEditUtils";
 
 export type StudentToDeleteType = {
   studentId: string;
@@ -61,7 +62,9 @@ const ClassDetail = () => {
             ? [
                 {
                   buttonText: UI_TEXT.removeStudent,
-                  onClick: () => {},
+                  onClick: () => {
+                    handleRemoveStudent(studentsToDelete, classDetail?.id);
+                  },
                 },
               ]
             : []),

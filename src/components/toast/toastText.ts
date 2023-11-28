@@ -25,4 +25,6 @@ export const TOAST_TEXT = {
   studentAddedToClass: "Student(s) added to class successfully!",
   errorFetchingAssignedStudents:
     "There was an error getting assigned students for this class",
+  errorRemovingStudent: "There was an error removing the student(s)",
+  studentRemoved: "Student(s) removed successfully!",
 };
