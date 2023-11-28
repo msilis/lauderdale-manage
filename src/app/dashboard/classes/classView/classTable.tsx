@@ -62,7 +62,8 @@ const ClassTable: React.FC<ClassTableProps> = ({
                   <img
                     src="/icons8-edit-simple-small(1)/icons8-edit-16.png"
                     className="hover:scale-125"
-                    onClick={() => {
+                    onClick={(event) => {
+                      event.stopPropagation();
                       handleEditClick(classItem);
                     }}
                   />
@@ -70,10 +71,12 @@ const ClassTable: React.FC<ClassTableProps> = ({
                 <td className="cursor-pointer w-[50px] ">
                   <img
                     src="/icons8-delete-simple-small/icons8-delete-16.png"
-                    onClick={() => {
+                    onClick={(event) => {
+                      event.stopPropagation();
                       setClassId(classItem.id);
                       setShowAlert(true);
                     }}
+                    className="hover:scale-125"
                   />
                 </td>
               </tr>
