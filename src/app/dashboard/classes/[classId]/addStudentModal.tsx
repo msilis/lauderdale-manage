@@ -69,7 +69,7 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
       if (classId) {
         const fetchAssignedStudents = async () => {
           const assignedStudentData = await getAssignedStudents(classId);
-          console.log({ assignedStudentData });
+
           setAssignedStudents(assignedStudentData);
         };
         fetchAssignedStudents();

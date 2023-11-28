@@ -20,7 +20,6 @@ const ClassDetail = () => {
   useEffect(() => {
     const fetchClassDetails = async () => {
       const classData = await getClassDetails(params.classId as string);
-      console.log({ classData });
       setClassDetail(classData);
       setUpdateTable(false);
     };
