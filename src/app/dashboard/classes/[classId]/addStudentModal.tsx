@@ -87,6 +87,7 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
 
     const handleSave = () => {
       saveStudentsToClass(selectedStudents, classId);
+      setUpdateTable((prev) => !prev);
       onClose();
     };
 

@@ -32,7 +32,7 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
       setStudents(studentData);
     };
     fetchAllStudents();
-  }, []);
+  }, [updateTable]);
 
   return (
     <div className="flex flex-col ml-5 gap-6">
