@@ -8,6 +8,7 @@ export const UI_TEXT = {
   saveButton: "Save",
   updateFamily: "Update Family",
   editFamily: "Edit Family",
+  removeStudent: "Remove",
 };
 
 export const ALERT_TEXT = {

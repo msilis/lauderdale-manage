@@ -1,6 +1,7 @@
 "use client";
 
 import { CLASS_TABLE } from "./classUtils";
+import { useRouter } from "next/navigation";
 
 export interface ClassData {
   className: string;
@@ -9,6 +10,7 @@ export interface ClassData {
   classAccompanist: string;
   classStartTime: string;
   classEndTime: string;
+  classStudents?: { studentId: string; studentName: string }[];
   id: string;
 }
 
@@ -25,6 +27,10 @@ const ClassTable: React.FC<ClassTableProps> = ({
   classData,
   handleEditClick,
 }) => {
+  const router = useRouter();
+  const handleClassClick = (classId: string) => {
+    router.push(`/dashboard/classes/${classId}`);
+  };
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -41,7 +47,11 @@ const ClassTable: React.FC<ClassTableProps> = ({
         <tbody>
           {classData && classData.length > 0 && classData[0].id ? (
             classData.map((classItem) => (
-              <tr key={classItem.id}>
+              <tr
+                key={classItem.id}
+                onClick={() => handleClassClick(classItem.id)}
+                className="cursor-pointer"
+              >
                 <td>{classItem.className}</td>
                 <td>{classItem.classLocation}</td>
                 <td>{classItem.classTeacher}</td>
