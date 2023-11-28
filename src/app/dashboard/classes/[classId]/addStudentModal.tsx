@@ -101,7 +101,7 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
 
     return (
       <dialog className="modal" ref={ref}>
-        <div className="modal-box">
+        <div className="modal-box h-60">
           <form method="dialog">
             <button
               className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
@@ -114,15 +114,16 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
             </button>
           </form>
           <h3 className="font-bold text-lg">Add students to {className}</h3>
-          <div>
+          <div className="mt-4">
             <Select
+              maxMenuHeight={120}
               isMulti
               value={selectedStudents}
               options={options}
               onChange={handleSelectChange}
             />
           </div>
-          <div className="flex gap-4 mb-2">
+          <div className="flex gap-4 mb-2 mt-6">
             <button
               className="btn btn-secondary mt-4 "
               onClick={() => {
