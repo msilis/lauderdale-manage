@@ -19,6 +19,7 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
   dialogRef,
 }) => {
   const [students, setStudents] = useState();
+  const [updateTable, setUpdateTable] = useState<boolean>(false);
 
   interface StudentListProps {
     studentName: string;
@@ -61,6 +62,7 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
         ref={dialogRef}
         onClose={() => setAddStudent(false)}
         onSave={() => {}}
+        setUpdateTable={setUpdateTable}
       />
     </div>
   );
