@@ -5,7 +5,6 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 export async function POST(request: Request) {
   try {
     const body = await request.text();
-    console.log({ body });
     const { classId, selectedStudents } = JSON.parse(body);
     const studentsToAdd = selectedStudents.map(
       (student: { id: string; label: string }) => ({
