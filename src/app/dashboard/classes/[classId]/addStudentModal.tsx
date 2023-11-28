@@ -77,7 +77,7 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
         };
         fetchAssignedStudents();
       }
-    }, [updateTable]);
+    }, [classId, updateTable]);
 
     const options = selectOptions(studentNames, assignedStudents);
 
