@@ -12,6 +12,7 @@ import ClassStudentDisplay from "./classStudentDisplay";
 
 const ClassDetail = () => {
   const [classDetail, setClassDetail] = useState<ClassData | undefined>();
+  const [updateTable, setUpdateTable] = useState<boolean>(false);
   const [addStudent, setAddStudent] = useState<boolean>(false);
   const params = useParams();
   const addStudentRef = useRef<HTMLDialogElement | null>(null);
@@ -19,10 +20,12 @@ const ClassDetail = () => {
   useEffect(() => {
     const fetchClassDetails = async () => {
       const classData = await getClassDetails(params.classId as string);
+      console.log({ classData });
       setClassDetail(classData);
+      setUpdateTable(false);
     };
     fetchClassDetails();
-  }, []);
+  }, [updateTable]);
 
   useEffect(() => {
     if (addStudent) {
@@ -55,6 +58,7 @@ const ClassDetail = () => {
         addStudent={addStudent}
         setAddStudent={setAddStudent}
         dialogRef={addStudentRef}
+        setUpdateTable={setUpdateTable}
       />
     </div>
   );

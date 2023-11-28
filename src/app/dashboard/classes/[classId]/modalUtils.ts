@@ -16,11 +16,11 @@ export const selectOptions = (
       label: `${student.studentLastName}, ${student.studentFirstName}`,
       id: student.id,
     }));
+
     const filteredOptions = mappedOptions.filter(
       (option) =>
-        !assignedStudents?.classStudents.find(
-          (assignedStudent) =>
-            assignedStudent.classStudents?.studentId === option.id
+        !assignedStudents?.classStudents?.find(
+          (assignedStudent) => assignedStudent.studentId === option.id
         )
     );
 

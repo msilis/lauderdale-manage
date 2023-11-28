@@ -34,7 +34,10 @@ export type StudentOption = {
 };
 
 export type AssignedStudentType = {
-  classStudents: StudentOption[];
+  classStudents: {
+    studentId: string;
+    studentName: string;
+  }[];
 };
 
 const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
@@ -66,6 +69,7 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
       if (classId) {
         const fetchAssignedStudents = async () => {
           const assignedStudentData = await getAssignedStudents(classId);
+          console.log({ assignedStudentData });
           setAssignedStudents(assignedStudentData);
         };
         fetchAssignedStudents();
@@ -87,7 +91,7 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
 
     const handleSave = () => {
       saveStudentsToClass(selectedStudents, classId);
-      setUpdateTable((prev) => !prev);
+      setUpdateTable(true);
       onClose();
     };
 

@@ -10,6 +10,7 @@ type ClassStudentDisplayProps = {
   addStudent: boolean;
   setAddStudent: (value: boolean) => void;
   dialogRef: React.RefObject<HTMLDialogElement>;
+  setUpdateTable: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
@@ -17,9 +18,9 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
   addStudent,
   setAddStudent,
   dialogRef,
+  setUpdateTable,
 }) => {
   const [students, setStudents] = useState();
-  const [updateTable, setUpdateTable] = useState<boolean>(false);
 
   interface StudentListProps {
     studentName: string;
@@ -32,7 +33,7 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
       setStudents(studentData);
     };
     fetchAllStudents();
-  }, [updateTable]);
+  }, [classDetail]);
 
   return (
     <div className="flex flex-col ml-5 gap-6">
