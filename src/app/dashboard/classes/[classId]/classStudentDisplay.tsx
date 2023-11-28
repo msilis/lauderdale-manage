@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { getAllStudents } from "../../students/studentView/studentUtils";
 import AddStudentToClass from "./addStudentModal";
 import { ClassData } from "../classView/classTable";
+import { StudentToDeleteType } from "./page";
 
 type ClassStudentDisplayProps = {
   classDetail: ClassData;
@@ -11,8 +12,10 @@ type ClassStudentDisplayProps = {
   setAddStudent: (value: boolean) => void;
   dialogRef: React.RefObject<HTMLDialogElement>;
   setUpdateTable: React.Dispatch<React.SetStateAction<boolean>>;
-  studentsToDelete: string[];
-  setStudentsToDelete: React.Dispatch<React.SetStateAction<string[]>>;
+  studentsToDelete: StudentToDeleteType[];
+  setStudentsToDelete: React.Dispatch<
+    React.SetStateAction<StudentToDeleteType[]>
+  >;
 };
 
 const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
@@ -41,13 +44,17 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
 
   const handleCheckInput = (
     event: { target: { checked: any } },
-    studentId: string
+    studentId: string,
+    studentName: string
   ) => {
     if (event.target.checked) {
-      setStudentsToDelete([...studentsToDelete, studentId]);
+      setStudentsToDelete([
+        ...studentsToDelete,
+        { studentId: studentId, studentName: studentName },
+      ]);
     } else {
       setStudentsToDelete(
-        studentsToDelete.filter((student) => student !== studentId)
+        studentsToDelete.filter((student) => student.studentId !== studentId)
       );
     }
   };
@@ -75,7 +82,11 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
                       type="checkbox"
                       className="checkbox checkbox-sm"
                       onChange={(event) =>
-                        handleCheckInput(event, student?.studentId)
+                        handleCheckInput(
+                          event,
+                          student?.studentId,
+                          student?.studentName
+                        )
                       }
                     />
                   </td>

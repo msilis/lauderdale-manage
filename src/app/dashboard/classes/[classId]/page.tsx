@@ -10,10 +10,17 @@ import { useParams } from "next/navigation";
 import { getClassDetails } from "../classView/classUtils";
 import ClassStudentDisplay from "./classStudentDisplay";
 
+export type StudentToDeleteType = {
+  studentId: string;
+  studentName: string;
+};
+
 const ClassDetail = () => {
   const [classDetail, setClassDetail] = useState<ClassData | undefined>();
   const [updateTable, setUpdateTable] = useState<boolean>(false);
-  const [studentsToDelete, setStudentsToDelete] = useState<string[]>([]);
+  const [studentsToDelete, setStudentsToDelete] = useState<
+    StudentToDeleteType[]
+  >([]);
   const [addStudent, setAddStudent] = useState<boolean>(false);
   const params = useParams();
   const addStudentRef = useRef<HTMLDialogElement | null>(null);
