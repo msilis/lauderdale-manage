@@ -66,7 +66,7 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
         <table className="table table-zebra">
           <thead>
             <tr>
-              <th></th>
+              <th>Remove?</th>
               <th></th>
               <th>Student Name</th>
             </tr>

@@ -64,6 +64,8 @@ const ClassDetail = () => {
                   buttonText: UI_TEXT.removeStudent,
                   onClick: () => {
                     handleRemoveStudent(studentsToDelete, classDetail?.id);
+                    setUpdateTable(true);
+                    setStudentsToDelete([]);
                   },
                 },
               ]
