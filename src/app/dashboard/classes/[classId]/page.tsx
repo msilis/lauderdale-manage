@@ -50,6 +50,14 @@ const ClassDetail = () => {
               setAddStudent(true);
             },
           },
+          ...(studentsToDelete.length > 0
+            ? [
+                {
+                  buttonText: UI_TEXT.removeStudent,
+                  onClick: () => {},
+                },
+              ]
+            : []),
         ]}
       />
       <ClassDetailsDisplay classDetail={classDetail} />
