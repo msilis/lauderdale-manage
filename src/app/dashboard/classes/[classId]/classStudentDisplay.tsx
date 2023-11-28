@@ -21,6 +21,7 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
   setUpdateTable,
 }) => {
   const [students, setStudents] = useState();
+  const [studentsToDelete, setStudentsToDelete] = useState<string[]>([]);
 
   interface StudentListProps {
     studentName: string;
@@ -35,6 +36,21 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
     fetchAllStudents();
   }, [classDetail]);
 
+  const handleCheckInput = (
+    event: { target: { checked: any } },
+    studentId: string
+  ) => {
+    if (event.target.checked) {
+      setStudentsToDelete([...studentsToDelete, studentId]);
+    } else {
+      setStudentsToDelete(
+        studentsToDelete.filter((student) => student !== studentId)
+      );
+    }
+  };
+
+  console.log(studentsToDelete, "studentsToDelete");
+
   return (
     <div className="flex flex-col ml-5 gap-6">
       <h3 className="font-bold">Students</h3>
@@ -43,6 +59,7 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
           <thead>
             <tr>
               <th></th>
+              <th></th>
               <th>Student Name</th>
             </tr>
           </thead>
@@ -50,6 +67,15 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
             {classDetail &&
               classDetail.classStudents?.map((student, index) => (
                 <tr key={student.studentId}>
+                  <td>
+                    <input
+                      type="checkbox"
+                      className="checkbox checkbox-sm"
+                      onChange={(event) =>
+                        handleCheckInput(event, student?.studentId)
+                      }
+                    />
+                  </td>
                   <td>{index + 1}</td>
                   <td>{student.studentName}</td>
                 </tr>
