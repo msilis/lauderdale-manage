@@ -10,7 +10,7 @@ export const selectOptions = (
   studentNames: StudentNames[] | undefined,
   assignedStudents: AssignedStudentType | null
 ) => {
-  if (studentNames && Array.isArray(assignedStudents)) {
+  if (studentNames && assignedStudents) {
     const mappedOptions = studentNames.map((student) => ({
       value: `${student.studentLastName}, ${student.studentFirstName}`,
       label: `${student.studentLastName}, ${student.studentFirstName}`,
@@ -18,13 +18,12 @@ export const selectOptions = (
     }));
     const filteredOptions = mappedOptions.filter(
       (option) =>
-        !assignedStudents.find(
+        !assignedStudents?.classStudents.find(
           (assignedStudent) =>
-            assignedStudent.assignedStudents.studentId === option.id
+            assignedStudent.classStudents?.studentId === option.id
         )
     );
-    console.log(mappedOptions, "mappedOptions");
-    console.log(filteredOptions, "filteredOptions");
+
     return filteredOptions;
   }
 };
