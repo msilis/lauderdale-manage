@@ -21,11 +21,11 @@ interface AddStudentProps {
   setUpdateTable: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export interface StudentNames {
+export type StudentNames = {
   studentFirstName: string;
   studentLastName: string;
   id: string;
-}
+};
 
 export type StudentOption = {
   value: string;
