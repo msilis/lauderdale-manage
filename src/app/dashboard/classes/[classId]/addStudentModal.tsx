@@ -18,6 +18,7 @@ interface AddStudentProps {
   classId: string;
   onClose: () => void;
   onSave: (student: StudentData) => void;
+  updateTable: boolean;
   setUpdateTable: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -41,7 +42,10 @@ export type AssignedStudentType = {
 };
 
 const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
-  ({ className, onClose, onSave, classId, setUpdateTable }, ref) => {
+  (
+    { className, onClose, onSave, classId, updateTable, setUpdateTable },
+    ref
+  ) => {
     const [studentNames, setStudentNames] = useState<
       StudentNames[] | undefined
     >();
@@ -73,7 +77,7 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
         };
         fetchAssignedStudents();
       }
-    }, [classId]);
+    }, [updateTable]);
 
     const options = selectOptions(studentNames, assignedStudents);
 

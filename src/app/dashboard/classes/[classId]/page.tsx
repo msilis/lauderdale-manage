@@ -78,6 +78,7 @@ const ClassDetail = () => {
         addStudent={addStudent}
         setAddStudent={setAddStudent}
         dialogRef={addStudentRef}
+        updateTable={updateTable}
         setUpdateTable={setUpdateTable}
         studentsToDelete={studentsToDelete}
         setStudentsToDelete={setStudentsToDelete}

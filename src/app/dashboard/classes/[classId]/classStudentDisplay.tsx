@@ -11,6 +11,7 @@ type ClassStudentDisplayProps = {
   addStudent: boolean;
   setAddStudent: (value: boolean) => void;
   dialogRef: React.RefObject<HTMLDialogElement>;
+  updateTable: boolean;
   setUpdateTable: React.Dispatch<React.SetStateAction<boolean>>;
   studentsToDelete: StudentToDeleteType[];
   setStudentsToDelete: React.Dispatch<
@@ -23,6 +24,7 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
   addStudent,
   setAddStudent,
   dialogRef,
+  updateTable,
   setUpdateTable,
   studentsToDelete,
   setStudentsToDelete,
@@ -101,6 +103,7 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
         ref={dialogRef}
         onClose={() => setAddStudent(false)}
         onSave={() => {}}
+        updateTable={updateTable}
         setUpdateTable={setUpdateTable}
       />
     </div>
