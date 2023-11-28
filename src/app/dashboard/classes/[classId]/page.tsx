@@ -13,6 +13,7 @@ import ClassStudentDisplay from "./classStudentDisplay";
 const ClassDetail = () => {
   const [classDetail, setClassDetail] = useState<ClassData | undefined>();
   const [updateTable, setUpdateTable] = useState<boolean>(false);
+  const [studentsToDelete, setStudentsToDelete] = useState<string[]>([]);
   const [addStudent, setAddStudent] = useState<boolean>(false);
   const params = useParams();
   const addStudentRef = useRef<HTMLDialogElement | null>(null);
@@ -58,6 +59,8 @@ const ClassDetail = () => {
         setAddStudent={setAddStudent}
         dialogRef={addStudentRef}
         setUpdateTable={setUpdateTable}
+        studentsToDelete={studentsToDelete}
+        setStudentsToDelete={setStudentsToDelete}
       />
     </div>
   );

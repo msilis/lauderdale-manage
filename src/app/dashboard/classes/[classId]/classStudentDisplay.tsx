@@ -11,6 +11,8 @@ type ClassStudentDisplayProps = {
   setAddStudent: (value: boolean) => void;
   dialogRef: React.RefObject<HTMLDialogElement>;
   setUpdateTable: React.Dispatch<React.SetStateAction<boolean>>;
+  studentsToDelete: string[];
+  setStudentsToDelete: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
 const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
@@ -19,9 +21,10 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
   setAddStudent,
   dialogRef,
   setUpdateTable,
+  studentsToDelete,
+  setStudentsToDelete,
 }) => {
   const [students, setStudents] = useState();
-  const [studentsToDelete, setStudentsToDelete] = useState<string[]>([]);
 
   interface StudentListProps {
     studentName: string;
