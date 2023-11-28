@@ -32,7 +32,7 @@ export type StudentOption = {
   id: string;
 };
 
-type AssignedStudentType = {
+export type AssignedStudentType = {
   classStudents: StudentOption[];
 };
 
@@ -71,12 +71,7 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
       }
     }, [classId]);
 
-    console.log(assignedStudents?.classStudents, "assignedStudents");
-
-    const options = selectOptions(
-      studentNames,
-      assignedStudents?.classStudents ?? []
-    );
+    const options = selectOptions(studentNames, assignedStudents);
 
     const handleSelectChange = (
       selectedStudents: readonly StudentOption[],

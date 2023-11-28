@@ -1,10 +1,14 @@
 import { errorToast, successToast } from "@/components/toast/toast";
-import { StudentNames, StudentOption } from "./addStudentModal";
+import {
+  AssignedStudentType,
+  StudentNames,
+  StudentOption,
+} from "./addStudentModal";
 import { TOAST_TEXT } from "@/components/toast/toastText";
 
 export const selectOptions = (
   studentNames: StudentNames[] | undefined,
-  assignedStudents: StudentOption[]
+  assignedStudents: AssignedStudentType | null
 ) => {
   if (studentNames && Array.isArray(assignedStudents)) {
     const mappedOptions = studentNames.map((student) => ({
@@ -15,7 +19,8 @@ export const selectOptions = (
     const filteredOptions = mappedOptions.filter(
       (option) =>
         !assignedStudents.find(
-          (assignedStudent) => assignedStudent.studentId === option.id
+          (assignedStudent) =>
+            assignedStudent.assignedStudents.studentId === option.id
         )
     );
     console.log(mappedOptions, "mappedOptions");
