@@ -35,8 +35,6 @@ const FamilyTable = () => {
     router.push(`/dashboard/families/${familyId}`);
   };
 
-  console.log({ familyData });
-
   return (
     <div className="overflow-x-auto">
       <table className="table">
