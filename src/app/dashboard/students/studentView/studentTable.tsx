@@ -14,7 +14,6 @@ const StudentTable: React.FC<StudentTableProps> = ({
   studentData,
   handleEditClick,
 }) => {
-  console.log({ studentData });
   return (
     <div className="overflow-x-auto">
       <table className="table">
