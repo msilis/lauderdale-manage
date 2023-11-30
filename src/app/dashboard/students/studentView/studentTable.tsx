@@ -14,6 +14,7 @@ const StudentTable: React.FC<StudentTableProps> = ({
   studentData,
   handleEditClick,
 }) => {
+  console.log({ studentData });
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -59,7 +60,11 @@ const StudentTable: React.FC<StudentTableProps> = ({
               <td></td>
               <td></td>
               <td>
-                <span className="loading loading-dots loading-lg"></span>
+                {studentData.length === 0 ? (
+                  <span>No Students</span>
+                ) : (
+                  <span className="loading loading-dots loading-lg"></span>
+                )}
               </td>
             </tr>
           )}

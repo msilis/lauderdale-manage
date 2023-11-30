@@ -35,8 +35,6 @@ const FamilyTable = () => {
     router.push(`/dashboard/families/${familyId}`);
   };
 
-  console.log({ familyData });
-
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -64,7 +62,11 @@ const FamilyTable = () => {
             <tr>
               <td></td>
               <td>
-                <span className="loading loading-dots loading-lg"></span>
+                {familyData.length === 0 ? (
+                  <span>No families</span>
+                ) : (
+                  <span className="loading loading-dots loading-lg"></span>
+                )}
               </td>
             </tr>
           )}

@@ -87,7 +87,11 @@ const ClassTable: React.FC<ClassTableProps> = ({
               <td></td>
               <td></td>
               <td>
-                <span className="loading loading-dots loading-lg"></span>
+                {classData.length === 0 ? (
+                  <span>No classes</span>
+                ) : (
+                  <span className="loading loading-dots loading-lg"></span>
+                )}
               </td>
             </tr>
           )}
