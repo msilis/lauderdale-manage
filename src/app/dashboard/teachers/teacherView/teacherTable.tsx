@@ -61,7 +61,11 @@ const TeacherTable: React.FC<TeacherTableProps> = ({
               <td></td>
               <td></td>
               <td>
-                <span className="loading loading-dots loading-lg"></span>
+                {teacherData.length === 0 ? (
+                  <span>No Teachers</span>
+                ) : (
+                  <span className="loading loading-dots loading-lg"></span>
+                )}
               </td>
             </tr>
           )}
