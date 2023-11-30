@@ -2,13 +2,15 @@
 
 import DashboardLayout from "@/layout/dashboardLayout";
 import { UI_TEXT } from "../../../../../utils/uitext";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import Loading from "@/app/loading";
 import { handleAddStudentSubmit } from "./addStudentFormHandler";
 import { useRouter } from "next/navigation";
+import { FamilyData } from "../../families/familyView/familyTable";
 
 const AddStudent = () => {
   const router = useRouter();
+  const [familyData, setFamilyData] = useState<FamilyData[]>([]);
   const handleCancelButtonClick = () => {
     router.push("/dashboard/students");
   };
