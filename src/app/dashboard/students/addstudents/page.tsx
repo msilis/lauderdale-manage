@@ -2,16 +2,29 @@
 
 import DashboardLayout from "@/layout/dashboardLayout";
 import { UI_TEXT } from "../../../../../utils/uitext";
-import { Suspense } from "react";
+import { Suspense, useState, useEffect } from "react";
 import Loading from "@/app/loading";
 import { handleAddStudentSubmit } from "./addStudentFormHandler";
 import { useRouter } from "next/navigation";
+import { FamilyData } from "../../families/familyView/familyTable";
+import { getAllFamilyInfo } from "../../families/familyView/familyUtils";
 
 const AddStudent = () => {
   const router = useRouter();
+  const [familyData, setFamilyData] = useState<FamilyData[]>([]);
   const handleCancelButtonClick = () => {
     router.push("/dashboard/students");
   };
+
+  useEffect(() => {
+    const fetchFamilies = async () => {
+      const data = await getAllFamilyInfo();
+      setFamilyData(data);
+    };
+    fetchFamilies();
+  }, []);
+
+  console.log({ familyData });
   return (
     <div className="mt-6 ml-[30%] max-w-lg outline outline-slate-100 p-4 drop-shadow-lg rounded-md">
       <h2 className="font-bold">Enter Student Details</h2>
@@ -50,7 +63,12 @@ const AddStudent = () => {
           required
           name="studentFamily"
         >
-          <option value="DEFAULT">Family...</option>
+          <option value="">Family...</option>
+          {familyData.map((family) => (
+            <option value={family.parent1LastName} id={family.id}>
+              {family.parent1LastName}
+            </option>
+          ))}
         </select>
         <label htmlFor="studentBirthdate" className="flex flex-col mt-2">
           Birth Date

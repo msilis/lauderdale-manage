@@ -4,4 +4,15 @@ export const UI_TEXT = {
   addFamily: "Add Family",
   cancelButton: "Cancel",
   addTeacherButton: "Add Teacher",
+  addClassButton: "Add Class",
+  saveButton: "Save",
+  updateFamily: "Update Family",
+  editFamily: "Edit Family",
+  removeStudent: "Remove",
+};
+
+export const ALERT_TEXT = {
+  deleteStudent: "Are you sure you want to delete this student?",
+  deleteClass: "Are you sure you want to delete this class?",
+  deleteTeacher: "Are you sure you want to delete this teacher?",
 };

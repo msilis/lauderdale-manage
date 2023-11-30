@@ -5,7 +5,10 @@ import { collection, getDocs } from "firebase/firestore";
 export async function GET(request: Request) {
   try {
     const querySnapshot = await getDocs(collection(db, "students"));
-    const documents = querySnapshot.docs.map((doc) => doc.data());
+    const documents = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
     return NextResponse.json(documents);
   } catch (error) {
     console.error(

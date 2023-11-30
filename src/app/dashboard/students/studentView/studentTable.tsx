@@ -1,44 +1,68 @@
-"use client";
+import { STUDENT_TABLE } from "./studentUtils";
+import { StudentData } from "./studentView";
 
-import { useEffect, useState } from "react";
-import { STUDENT_TABLE, getAllStudents } from "./studentUtils";
-
-interface StudentData {
-  studentFirstName: string;
-  studentLastName: string;
-  studentFamily: string;
-  studentBirthdate: string;
+interface StudentTableProps {
+  setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
+  setStudentId: React.Dispatch<React.SetStateAction<string>>;
+  studentData: StudentData[];
+  handleEditClick: (student: StudentData) => void;
 }
 
-const StudentTable = () => {
-  const [studentData, setStudentData] = useState<StudentData[]>([]);
-
-  useEffect(() => {
-    const fetchAllStudents = async () => {
-      const data = await getAllStudents();
-      setStudentData(data);
-    };
-    fetchAllStudents();
-  }, []);
-
+const StudentTable: React.FC<StudentTableProps> = ({
+  setShowAlert,
+  setStudentId,
+  studentData,
+  handleEditClick,
+}) => {
   return (
     <div className="overflow-x-auto">
       <table className="table">
         <thead>
-          <th>{STUDENT_TABLE.studentFirstName}</th>
-          <th>{STUDENT_TABLE.studentLastName}</th>
-          <th>{STUDENT_TABLE.studentFamily}</th>
-          <th>{STUDENT_TABLE.studentBirthdate}</th>
+          <tr>
+            <th>{STUDENT_TABLE.studentFirstName}</th>
+            <th>{STUDENT_TABLE.studentLastName}</th>
+            <th>{STUDENT_TABLE.studentFamily}</th>
+            <th>{STUDENT_TABLE.studentBirthdate}</th>
+          </tr>
         </thead>
         <tbody>
-          {studentData.map((student, index) => (
-            <tr key={index}>
-              <td>{student.studentFirstName}</td>
-              <td>{student.studentLastName}</td>
-              <td>{student.studentFamily}</td>
-              <td>{student.studentBirthdate}</td>
+          {studentData && studentData.length > 0 && studentData[0].id ? (
+            studentData.map((student) => (
+              <tr key={student.id}>
+                <td>{student.studentFirstName}</td>
+                <td>{student.studentLastName}</td>
+                <td>{student.studentFamily}</td>
+                <td>{student.studentBirthdate}</td>
+                <td className="cursor-pointer w-[50px]">
+                  <img
+                    src="/icons8-edit-simple-small(1)/icons8-edit-16.png"
+                    onClick={() => {
+                      handleEditClick(student);
+                    }}
+                    className="hover:scale-125"
+                  />
+                </td>
+                <td className="cursor-pointer w-[50px] ">
+                  <img
+                    src="/icons8-delete-simple-small/icons8-delete-16.png"
+                    onClick={() => {
+                      setStudentId(student.id);
+                      setShowAlert(true);
+                    }}
+                    className="hover:scale-125"
+                  />
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td></td>
+              <td></td>
+              <td>
+                <span className="loading loading-dots loading-lg"></span>
+              </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>

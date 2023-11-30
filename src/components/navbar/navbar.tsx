@@ -1,26 +1,50 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-type NavbarProps = {
+type ButtonProps = {
   buttonText: string;
-  url: string;
+  url?: string;
+  className?: string;
+  onClick?: () => void;
 };
 
-const Navbar: React.FC<NavbarProps> = ({ buttonText, url }) => {
+type NavbarProps = {
+  buttons: ButtonProps[];
+};
+
+const Navbar: React.FC<NavbarProps> = ({ buttons }) => {
   const router = useRouter();
-  const handleButtonClick = () => {
-    router.push(url);
+  const handleButtonClick = (url?: string, onClick?: () => void) => {
+    if (onClick) {
+      onClick();
+    } else if (url) {
+      router.push(url);
+    } else {
+      console.warn("No click function or url provided to handleButtonClick");
+    }
   };
+
   return (
     <div className="navbar bg-base-100 outline outline-gray-50 mt-2 drop-shadow-xl md:max-md:w-72 overflow-auto">
-      <button
-        className="btn btn-ghost text-l"
-        onClick={() => handleButtonClick()}
-      >
-        {buttonText}
-      </button>
+      {buttons &&
+        buttons.map(
+          (
+            { buttonText, url, className = "btn btn-ghost text-l", onClick },
+            index
+          ) => (
+            <button
+              key={index}
+              className={`${className}`}
+              onClick={(event) => {
+                event.preventDefault();
+                handleButtonClick(url, onClick);
+              }}
+            >
+              {buttonText}
+            </button>
+          )
+        )}
     </div>
   );
 };
