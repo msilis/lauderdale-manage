@@ -9,6 +9,7 @@ export const UI_TEXT = {
   updateFamily: "Update Family",
   editFamily: "Edit Family",
   removeStudent: "Remove",
+  setTermDates: "Set Term Dates",
 };
 
 export const ALERT_TEXT = {
