@@ -22,6 +22,7 @@ const TermCalendar: React.FC<TermCalendarProps> = ({ dates, setDates }) => {
         multiple={true}
         numberOfMonths={4}
         onChange={(event) => handleDateChange(event)}
+        highlightToday={false}
       />
       <div className="flex gap-4 mt-4">
         <button className="btn btn-accent">{UI_TEXT.saveDates}</button>

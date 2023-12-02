@@ -27,4 +27,6 @@ export const TOAST_TEXT = {
     "There was an error getting assigned students for this class",
   errorRemovingStudent: "There was an error removing the student(s)",
   studentRemoved: "Student(s) removed successfully!",
+  errorSavingDates: "There was an error saving the term dates",
+  termDatesSaved: "Term dates saved successfully!",
 };
