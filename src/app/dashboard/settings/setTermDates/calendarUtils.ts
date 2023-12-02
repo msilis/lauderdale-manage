@@ -4,11 +4,14 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 import type { Value } from "react-multi-date-picker";
 
 export const handleCalendarSave = async (
-  dates: Value[],
+  dates: Value,
   router: string[] | AppRouterInstance
 ) => {
-  const datesToSave = dates;
-  const response = await fetch("../../../api/settings/setTermDates", {
+  const datesToSave = {
+    termDates: dates,
+  };
+
+  const response = await fetch("../../../api/settings/termdates", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -16,8 +19,8 @@ export const handleCalendarSave = async (
     body: JSON.stringify(datesToSave),
   });
   if (!response.ok) {
-    console.log("There was an error saving term dates");
     errorToast(TOAST_TEXT.errorSavingDates);
+    throw new Error("Could not save term dates");
   }
   successToast(TOAST_TEXT.termDatesSaved);
   setTimeout(() => {

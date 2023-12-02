@@ -1,18 +1,21 @@
-"use client";
-
-import { useState } from "react";
 import { Calendar } from "react-multi-date-picker";
 import type { Value } from "react-multi-date-picker";
 import { UI_TEXT } from "../../../../../utils/uitext";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { handleCalendarSave } from "./calendarUtils";
 
 interface TermCalendarProps {
   dates: Value;
   setDates: (dates: Value) => void;
+  router: string[] | AppRouterInstance;
 }
 
-const TermCalendar: React.FC<TermCalendarProps> = ({ dates, setDates }) => {
+const TermCalendar: React.FC<TermCalendarProps> = ({
+  dates,
+  setDates,
+  router,
+}) => {
   const handleDateChange = (event: Value) => {
-    console.log(event);
     setDates(event);
   };
 
@@ -25,7 +28,12 @@ const TermCalendar: React.FC<TermCalendarProps> = ({ dates, setDates }) => {
         highlightToday={false}
       />
       <div className="flex gap-4 mt-4">
-        <button className="btn btn-accent">{UI_TEXT.saveDates}</button>
+        <button
+          className="btn btn-accent"
+          onClick={() => handleCalendarSave(dates, router)}
+        >
+          {UI_TEXT.saveDates}
+        </button>
         <button className="btn btn-default">{UI_TEXT.resetDates}</button>
       </div>
     </div>
