@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Calendar } from "react-multi-date-picker";
 import type { Value } from "react-multi-date-picker";
+import { UI_TEXT } from "../../../../../utils/uitext";
 
 interface TermCalendarProps {
   dates: Value;
@@ -22,6 +23,10 @@ const TermCalendar: React.FC<TermCalendarProps> = ({ dates, setDates }) => {
         numberOfMonths={4}
         onChange={(event) => handleDateChange(event)}
       />
+      <div className="flex gap-4 mt-4">
+        <button className="btn btn-accent">{UI_TEXT.saveDates}</button>
+        <button className="btn btn-default">{UI_TEXT.resetDates}</button>
+      </div>
     </div>
   );
 };
