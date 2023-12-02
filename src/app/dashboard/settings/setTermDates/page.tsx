@@ -4,9 +4,12 @@ import DashboardLayout from "@/layout/dashboardLayout";
 import Navbar from "@/components/navbar/navbar";
 import TermCalendar from "./calendar";
 import { useState } from "react";
+import type { Value } from "react-multi-date-picker";
+import React from "react";
 
 const SetTermDates = () => {
-  const [dates, setDates] = useState(new Date());
+  const [dates, setDates] = useState<Value>([]);
+
   return (
     <div className="flex flex-col ml-28 gap-6">
       <h1 className="text-5xl font-bold">Set Term Dates</h1>
