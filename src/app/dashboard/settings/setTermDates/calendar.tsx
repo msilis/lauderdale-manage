@@ -23,6 +23,7 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
     <div>
       <Calendar
         multiple={true}
+        value={dates}
         numberOfMonths={4}
         onChange={(event) => handleDateChange(event)}
         highlightToday={false}
@@ -34,7 +35,9 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
         >
           {UI_TEXT.saveDates}
         </button>
-        <button className="btn btn-default">{UI_TEXT.resetDates}</button>
+        <button className="btn btn-default" onClick={() => setDates([])}>
+          {UI_TEXT.resetDates}
+        </button>
       </div>
     </div>
   );
