@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import DashboardLayout from "@/layout/dashboardLayout";
 import Navbar from "@/components/navbar/navbar";
 import { UI_TEXT } from "../../../../../utils/uitext";
+import Link from "next/link";
 import DetailsDisplay from "./details";
 import { BackButton } from "@/components/backButton/back";
 import { useRouter } from "next/navigation";
