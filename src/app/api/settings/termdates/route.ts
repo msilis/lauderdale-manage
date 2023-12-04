@@ -24,9 +24,16 @@ export async function POST(request: Request) {
 export async function GET(request: Request) {
   try {
     const querySnapshot = await getDocs(collection(db, "settings"));
+    if (querySnapshot.empty) {
+      return NextResponse.json(
+        { message: "No term dates set" },
+        { status: 404 }
+      );
+    }
     const data = querySnapshot.docs.map((document) => {
       const data = document.data();
       const field = data["termDates"];
+
       return {
         id: document.id,
         field,
