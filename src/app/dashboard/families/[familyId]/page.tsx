@@ -35,6 +35,16 @@ const FamilyDetail = () => {
       <h1 className="text-5xl font-bold">Family Details</h1>
       <Navbar className={STYLE_UTILS.navbarStyle}>
         <BackButton clickHandler={handleBackClick} className="btn btn-square" />
+        <Link href="/dashboard/families/addfamilies">
+          <button className={STYLE_UTILS.ghostButton}>
+            {UI_TEXT.addFamily}
+          </button>
+        </Link>
+        <Link href={`/dashboard/families/${params.familyId}/editfamily`}>
+          <button className={STYLE_UTILS.accentButton}>
+            {UI_TEXT.editFamily}
+          </button>
+        </Link>
       </Navbar>
       <DetailsDisplay familyDetail={familyDetail} />
     </div>
