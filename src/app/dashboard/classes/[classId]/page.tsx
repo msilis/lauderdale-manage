@@ -10,6 +10,8 @@ import { useParams } from "next/navigation";
 import { getClassDetails } from "../classView/classUtils";
 import ClassStudentDisplay from "./classStudentDisplay";
 import { handleRemoveStudent } from "./classEditUtils";
+import Link from "next/link";
+import { STYLE_UTILS } from "../../../../../utils/styleUtils";
 
 export type StudentToDeleteType = {
   studentId: string;
@@ -43,35 +45,39 @@ const ClassDetail = () => {
     }
   }, [addStudent]);
 
+  const removeStudentHandler = () => {
+    handleRemoveStudent(studentsToDelete, classDetail?.id);
+    setUpdateTable(true);
+    setStudentsToDelete([]);
+  };
+
+  const addStudentHandler = () => {
+    setAddStudent(true);
+  };
+
   return (
     <div className="flex flex-col ml-28 gap-6">
       <h1 className="text-5xl font-bold">Class Details</h1>
-      <Navbar
-        buttons={[
-          {
-            content: UI_TEXT.addClassButton,
-            url: "/dashboard/classes/addClass",
-          },
-          {
-            content: UI_TEXT.addStudentsButton,
-            onClick: () => {
-              setAddStudent(true);
-            },
-          },
-          ...(studentsToDelete.length > 0
-            ? [
-                {
-                  content: UI_TEXT.removeStudent,
-                  onClick: () => {
-                    handleRemoveStudent(studentsToDelete, classDetail?.id);
-                    setUpdateTable(true);
-                    setStudentsToDelete([]);
-                  },
-                },
-              ]
-            : []),
-        ]}
-      />
+      <Navbar>
+        <Link href="/dashboard/classes/addClass">
+          <button className={STYLE_UTILS.ghostButton}>
+            {UI_TEXT.addClassButton}
+          </button>
+        </Link>
+        <button className={STYLE_UTILS.ghostButton} onClick={addStudentHandler}>
+          {UI_TEXT.addStudentsButton}
+        </button>
+        {studentsToDelete.length > 0 ? (
+          <button
+            className={STYLE_UTILS.redButton}
+            onClick={() => handleRemoveStudent}
+          >
+            {UI_TEXT.removeStudent}
+          </button>
+        ) : (
+          ""
+        )}
+      </Navbar>
       <ClassDetailsDisplay classDetail={classDetail} />
       <ClassStudentDisplay
         classDetail={classDetail!}
