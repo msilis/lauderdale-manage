@@ -8,10 +8,13 @@ import DashboardLayout from "@/layout/dashboardLayout";
 import Navbar from "@/components/navbar/navbar";
 import { UI_TEXT } from "../../../../../utils/uitext";
 import DetailsDisplay from "./details";
+import { BackButton } from "@/components/backButton/back";
+import { useRouter } from "next/navigation";
 
 const FamilyDetail = () => {
   const [familyDetail, setFamilyDetail] = useState<FamilyData | undefined>();
   const params = useParams();
+  const router = useRouter();
 
   useEffect(() => {
     const fetchFamilyData = async () => {
@@ -26,6 +29,10 @@ const FamilyDetail = () => {
       <h1 className="text-5xl font-bold">Family Details</h1>
       <Navbar
         buttons={[
+          {
+            content: <BackButton />,
+            onClick: () => router.back(),
+          },
           {
             content: UI_TEXT.addFamily,
             url: "/dashboard/families/addfamilies",
