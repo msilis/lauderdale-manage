@@ -8,10 +8,13 @@ import DashboardLayout from "@/layout/dashboardLayout";
 import Navbar from "@/components/navbar/navbar";
 import { UI_TEXT } from "../../../../../utils/uitext";
 import DetailsDisplay from "./details";
+import { BackButton } from "@/components/backButton/back";
+import { useRouter } from "next/navigation";
 
 const FamilyDetail = () => {
   const [familyDetail, setFamilyDetail] = useState<FamilyData | undefined>();
   const params = useParams();
+  const router = useRouter();
 
   useEffect(() => {
     const fetchFamilyData = async () => {
@@ -27,11 +30,15 @@ const FamilyDetail = () => {
       <Navbar
         buttons={[
           {
-            buttonText: UI_TEXT.addFamily,
+            content: <BackButton />,
+            onClick: () => router.back(),
+          },
+          {
+            content: UI_TEXT.addFamily,
             url: "/dashboard/families/addfamilies",
           },
           {
-            buttonText: UI_TEXT.editFamily,
+            content: UI_TEXT.editFamily,
             url: `/dashboard/families/${params.familyId}/editfamily`,
             className: "btn btn-accent text-l",
           },

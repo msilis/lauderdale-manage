@@ -49,11 +49,11 @@ const ClassDetail = () => {
       <Navbar
         buttons={[
           {
-            buttonText: UI_TEXT.addClassButton,
+            content: UI_TEXT.addClassButton,
             url: "/dashboard/classes/addClass",
           },
           {
-            buttonText: UI_TEXT.addStudentsButton,
+            content: UI_TEXT.addStudentsButton,
             onClick: () => {
               setAddStudent(true);
             },
@@ -61,7 +61,7 @@ const ClassDetail = () => {
           ...(studentsToDelete.length > 0
             ? [
                 {
-                  buttonText: UI_TEXT.removeStudent,
+                  content: UI_TEXT.removeStudent,
                   onClick: () => {
                     handleRemoveStudent(studentsToDelete, classDetail?.id);
                     setUpdateTable(true);
