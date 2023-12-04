@@ -1,9 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { ReactNode } from "react";
 
 type ButtonProps = {
-  buttonText: string;
+  content: ReactNode;
   url?: string;
   className?: string;
   onClick?: () => void;
@@ -30,7 +31,7 @@ const Navbar: React.FC<NavbarProps> = ({ buttons }) => {
       {buttons &&
         buttons.map(
           (
-            { buttonText, url, className = "btn btn-ghost text-l", onClick },
+            { content, url, className = "btn btn-ghost text-l", onClick },
             index
           ) => (
             <button
@@ -41,7 +42,7 @@ const Navbar: React.FC<NavbarProps> = ({ buttons }) => {
                 handleButtonClick(url, onClick);
               }}
             >
-              {buttonText}
+              {content}
             </button>
           )
         )}
