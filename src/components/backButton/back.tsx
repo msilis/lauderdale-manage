@@ -1,17 +1,14 @@
 import { FC, MouseEvent } from "react";
 
 type BackButtonProps = {
-  clickHandler: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
   className?: string;
 };
 
-export const BackButton: FC<BackButtonProps> = ({
-  clickHandler,
-  className,
-}) => {
+export const BackButton: FC<BackButtonProps> = ({ onClick, className }) => {
   return (
     <div>
-      <button onClick={clickHandler} className={className}>
+      <button onClick={onClick} className={className}>
         <img src="/Feather-arrows-chevron-left.svg" />
       </button>
     </div>
