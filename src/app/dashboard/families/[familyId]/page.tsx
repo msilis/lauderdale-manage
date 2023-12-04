@@ -24,26 +24,16 @@ const FamilyDetail = () => {
     fetchFamilyData();
   }, []);
 
+  const handleBackClick = () => {
+    return router.back();
+  };
+
   return (
     <div className="flex flex-col ml-28 gap-6">
       <h1 className="text-5xl font-bold">Family Details</h1>
-      <Navbar
-        buttons={[
-          {
-            content: <BackButton />,
-            onClick: () => router.back(),
-          },
-          {
-            content: UI_TEXT.addFamily,
-            url: "/dashboard/families/addfamilies",
-          },
-          {
-            content: UI_TEXT.editFamily,
-            url: `/dashboard/families/${params.familyId}/editfamily`,
-            className: "btn btn-accent text-l",
-          },
-        ]}
-      />
+      <Navbar className="navbar bg-base-100 drop-shadow-lg">
+        <BackButton clickHandler={handleBackClick} className="btn btn-square" />
+      </Navbar>
       <DetailsDisplay familyDetail={familyDetail} />
     </div>
   );

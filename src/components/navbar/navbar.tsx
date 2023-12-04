@@ -1,53 +1,12 @@
-"use client";
-
-import { useRouter } from "next/navigation";
 import { ReactNode } from "react";
 
-type ButtonProps = {
-  content: ReactNode;
-  url?: string;
-  className?: string;
-  onClick?: () => void;
-};
-
 type NavbarProps = {
-  buttons: ButtonProps[];
+  children: ReactNode;
+  className?: string;
 };
 
-const Navbar: React.FC<NavbarProps> = ({ buttons }) => {
-  const router = useRouter();
-  const handleButtonClick = (url?: string, onClick?: () => void) => {
-    if (onClick) {
-      onClick();
-    } else if (url) {
-      router.push(url);
-    } else {
-      console.warn("No click function or url provided to handleButtonClick");
-    }
-  };
-
-  return (
-    <div className="navbar bg-base-100 outline outline-gray-50 mt-2 drop-shadow-xl md:max-md:w-72 overflow-auto">
-      {buttons &&
-        buttons.map(
-          (
-            { content, url, className = "btn btn-ghost text-l", onClick },
-            index
-          ) => (
-            <button
-              key={index}
-              className={`${className}`}
-              onClick={(event) => {
-                event.preventDefault();
-                handleButtonClick(url, onClick);
-              }}
-            >
-              {content}
-            </button>
-          )
-        )}
-    </div>
-  );
+const Navbar = ({ children, className }: NavbarProps) => {
+  return <div className={className}>{children}</div>;
 };
 
 export default Navbar;
