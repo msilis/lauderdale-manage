@@ -4,4 +4,5 @@ export const STYLE_UTILS = {
   ghostButton: "btn btn-ghost text-l",
   accentButton: "btn btn-accent text-l",
   redButton: "btn btn-secondary text-l",
+  squareButton: "btn btn-square",
 };

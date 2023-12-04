@@ -34,7 +34,10 @@ const FamilyDetail = () => {
     <div className="flex flex-col ml-28 gap-6">
       <h1 className="text-5xl font-bold">Family Details</h1>
       <Navbar className={STYLE_UTILS.navbarStyle}>
-        <BackButton onClick={handleBackClick} className="btn btn-square" />
+        <BackButton
+          onClick={handleBackClick}
+          className={STYLE_UTILS.squareButton}
+        />
         <Link href="/dashboard/families/addfamilies">
           <button className={STYLE_UTILS.ghostButton}>
             {UI_TEXT.addFamily}
