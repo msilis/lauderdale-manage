@@ -10,7 +10,7 @@ const Classes = () => {
       <Navbar
         buttons={[
           {
-            buttonText: UI_TEXT.addClassButton,
+            content: UI_TEXT.addClassButton,
             url: "/dashboard/classes/addClass",
           },
         ]}

@@ -29,7 +29,7 @@ const EditFamilyDetails = () => {
       <Navbar
         buttons={[
           {
-            buttonText: UI_TEXT.addFamily,
+            content: UI_TEXT.addFamily,
             url: "/dashboard/families/addfamilies",
           },
         ]}

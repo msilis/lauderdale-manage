@@ -27,11 +27,11 @@ const FamilyDetail = () => {
       <Navbar
         buttons={[
           {
-            buttonText: UI_TEXT.addFamily,
+            content: UI_TEXT.addFamily,
             url: "/dashboard/families/addfamilies",
           },
           {
-            buttonText: UI_TEXT.editFamily,
+            content: UI_TEXT.editFamily,
             url: `/dashboard/families/${params.familyId}/editfamily`,
             className: "btn btn-accent text-l",
           },

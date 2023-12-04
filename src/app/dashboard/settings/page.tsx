@@ -9,7 +9,7 @@ const AdminSettings = () => {
       <Navbar
         buttons={[
           {
-            buttonText: UI_TEXT.setTermDates,
+            content: UI_TEXT.setTermDates,
             url: "/dashboard/settings/setTermDates",
           },
         ]}
