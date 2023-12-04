@@ -11,6 +11,7 @@ import Link from "next/link";
 import DetailsDisplay from "./details";
 import { BackButton } from "@/components/backButton/back";
 import { useRouter } from "next/navigation";
+import { STYLE_UTILS } from "../../../../../utils/styleUtils";
 
 const FamilyDetail = () => {
   const [familyDetail, setFamilyDetail] = useState<FamilyData | undefined>();
@@ -32,7 +33,7 @@ const FamilyDetail = () => {
   return (
     <div className="flex flex-col ml-28 gap-6">
       <h1 className="text-5xl font-bold">Family Details</h1>
-      <Navbar className="navbar bg-base-100 drop-shadow-lg">
+      <Navbar className={STYLE_UTILS.navbarStyle}>
         <BackButton clickHandler={handleBackClick} className="btn btn-square" />
       </Navbar>
       <DetailsDisplay familyDetail={familyDetail} />
