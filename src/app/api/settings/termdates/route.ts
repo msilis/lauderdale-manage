@@ -40,7 +40,7 @@ export async function GET(request: Request) {
         ...data,
       };
     });
-    return NextResponse.json(data);
+    return NextResponse.json(data, { status: 200 });
   } catch (error) {
     console.error("Error fetching term dates", error);
     return NextResponse.json(
