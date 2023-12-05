@@ -20,7 +20,6 @@ export const fetchTermDates = async () => {
     }
     const termDateData = await response.json();
     const lastTermDate = termDateData.pop();
-    console.log(lastTermDate, "lastTermDate");
     const convertedDates = convertDate(lastTermDate.termDates);
 
     return convertedDates;

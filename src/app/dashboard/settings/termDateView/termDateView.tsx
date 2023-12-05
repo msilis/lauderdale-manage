@@ -14,8 +14,6 @@ const TermDateView = () => {
     getTermDates();
   }, []);
 
-  console.log({ fetchedDates });
-
   return (
     <div className="grid grid-cols-3 gap-2 outline outline-2">
       <h3>Current Term Dates</h3>
