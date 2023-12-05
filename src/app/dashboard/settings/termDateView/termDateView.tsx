@@ -15,9 +15,9 @@ const TermDateView = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-3 gap-2 outline outline-2">
+    <div className="grid grid-cols-3 gap-2">
       <h3>Current Term Dates</h3>
-      <ul className="outline outline-2">
+      <ul>
         {fetchedDates &&
           fetchedDates.map((date, index) => (
             <li key={index}>{date.toDateString()}</li>
