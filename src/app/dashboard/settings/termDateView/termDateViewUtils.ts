@@ -17,11 +17,10 @@ export const fetchTermDates = async () => {
     if (lastTermDate && Array.isArray(lastTermDate.termDates)) {
       lastTermDate.termDates = lastTermDate.termDates
         .map((unixdate: number) => new Date(unixdate))
-        .sort((a, b) => {
+        .sort((a: { getTime: () => number }, b: { getTime: () => number }) => {
           a.getTime() - b.getTime();
         });
     }
-    console.log(lastTermDate, "Last term date");
 
     return lastTermDate;
   } catch (error) {
