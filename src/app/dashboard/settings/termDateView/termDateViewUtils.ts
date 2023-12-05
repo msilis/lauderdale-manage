@@ -13,7 +13,17 @@ export const fetchTermDates = async () => {
       errorToast(TOAST_TEXT.genericFetchError);
     }
     const termDateData = await response.json();
-    return termDateData;
+    const lastTermDate = termDateData.pop();
+    if (lastTermDate && Array.isArray(lastTermDate.termDates)) {
+      lastTermDate.termDates = lastTermDate.termDates
+        .map((unixdate: number) => new Date(unixdate))
+        .sort((a, b) => {
+          a.getTime() - b.getTime();
+        });
+    }
+    console.log(lastTermDate, "Last term date");
+
+    return lastTermDate;
   } catch (error) {
     throw new Error("Error fetching dates.");
   }
