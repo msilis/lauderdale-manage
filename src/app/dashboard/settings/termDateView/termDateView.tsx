@@ -3,19 +3,13 @@
 import { useState, useEffect } from "react";
 import { fetchTermDates } from "./termDateViewUtils";
 
-type FetchedDates = {
-  id: string;
-  field: number[];
-  termDates: Date[];
-};
-
 const TermDateView = () => {
-  const [fetchedDates, setFetchedDates] = useState<FetchedDates | null>(null);
+  const [fetchedDates, setFetchedDates] = useState<Date[] | null>(null);
 
   useEffect(() => {
     const getTermDates = async () => {
       const dates = await fetchTermDates();
-      setFetchedDates(dates);
+      setFetchedDates(dates || null);
     };
     getTermDates();
   }, []);
@@ -27,7 +21,7 @@ const TermDateView = () => {
       <h3>Current Term Dates</h3>
       <ul className="outline outline-2">
         {fetchedDates &&
-          fetchedDates.termDates.map((date, index) => (
+          fetchedDates.map((date, index) => (
             <li key={index}>{date.toDateString()}</li>
           ))}
       </ul>

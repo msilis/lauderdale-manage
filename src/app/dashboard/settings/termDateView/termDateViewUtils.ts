@@ -1,6 +1,17 @@
 import { errorToast } from "@/components/toast/toast";
 import { TOAST_TEXT } from "@/components/toast/toastText";
 
+const convertDate = (date) => {
+  let sortedDates;
+  if (date && Array.isArray(date)) {
+    const mappedDates = date.map((unixdate: number) => new Date(unixdate));
+    sortedDates = mappedDates.sort((a, b) => a.getTime() - b.getTime());
+  }
+
+  console.log(sortedDates, "sortedDates");
+  return sortedDates;
+};
+
 export const fetchTermDates = async () => {
   try {
     const response = await fetch("../../../api/settings/termdates", {
@@ -14,15 +25,9 @@ export const fetchTermDates = async () => {
     }
     const termDateData = await response.json();
     const lastTermDate = termDateData.pop();
-    if (lastTermDate && Array.isArray(lastTermDate.termDates)) {
-      lastTermDate.termDates = lastTermDate.termDates
-        .map((unixdate: number) => new Date(unixdate))
-        .sort((a: { getTime: () => number }, b: { getTime: () => number }) => {
-          a.getTime() - b.getTime();
-        });
-    }
+    const convertedDates = convertDate(lastTermDate.termDates);
 
-    return lastTermDate;
+    return convertedDates;
   } catch (error) {
     throw new Error("Error fetching dates.");
   }
