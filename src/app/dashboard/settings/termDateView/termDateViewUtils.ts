@@ -1,7 +1,13 @@
 import { errorToast } from "@/components/toast/toast";
 import { TOAST_TEXT } from "@/components/toast/toastText";
 
-const convertDate = (date) => {
+type TermDates = {
+  id: string;
+  field: number[];
+  termDates: Date[];
+};
+
+const convertDate = (date: TermDates) => {
   let sortedDates;
   if (date && Array.isArray(date)) {
     const mappedDates = date.map((unixdate: number) => new Date(unixdate));
@@ -25,6 +31,7 @@ export const fetchTermDates = async () => {
     }
     const termDateData = await response.json();
     const lastTermDate = termDateData.pop();
+    console.log(lastTermDate, "lastTermDate");
     const convertedDates = convertDate(lastTermDate.termDates);
 
     return convertedDates;
