@@ -1,21 +1,10 @@
 import { errorToast } from "@/components/toast/toast";
 import { TOAST_TEXT } from "@/components/toast/toastText";
 
-type TermDates = {
-  id: string;
-  field: number[];
-  termDates: Date[];
-};
-
-const convertDate = (date: TermDates) => {
-  let sortedDates;
-  if (date && Array.isArray(date)) {
-    const mappedDates = date.map((unixdate: number) => new Date(unixdate));
-    sortedDates = mappedDates.sort((a, b) => a.getTime() - b.getTime());
-  }
-
-  console.log(sortedDates, "sortedDates");
-  return sortedDates;
+const convertDate = (date: Date[]) => {
+  return date
+    .map((value) => new Date(value))
+    .sort((a, b) => a.getTime() - b.getTime());
 };
 
 export const fetchTermDates = async () => {
