@@ -3,4 +3,5 @@ export const LINK_ROUTE = {
   addFamilies: "/dashboard/families/addfamilies",
   setTermDates: "/dashboard/settings/setTermDates",
   addStudents: "/dashboard/students/addstudents",
+  addTeacher: "/dashboard/teachers/addTeacher",
 };
