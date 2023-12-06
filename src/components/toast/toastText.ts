@@ -29,4 +29,5 @@ export const TOAST_TEXT = {
   studentRemoved: "Student(s) removed successfully!",
   errorSavingDates: "There was an error saving the term dates",
   termDatesSaved: "Term dates saved successfully!",
+  genericFetchError: "There was an error getting the info you need.",
 };

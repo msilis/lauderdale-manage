@@ -33,6 +33,8 @@ export async function GET(request: Request) {
     const data = querySnapshot.docs.map((document) => {
       const data = document.data();
       const field = data["termDates"];
+      console.log("Fetch term dates endpoint");
+      console.log({ data });
 
       return {
         id: document.id,

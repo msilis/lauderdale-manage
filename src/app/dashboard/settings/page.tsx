@@ -3,6 +3,7 @@ import Navbar from "@/components/navbar/navbar";
 import { UI_TEXT } from "../../../../utils/uitext";
 import Link from "next/link";
 import { STYLE_UTILS } from "../../../../utils/styleUtils";
+import TermDateView from "./termDateView/termDateView";
 
 const AdminSettings = () => {
   return (
@@ -15,6 +16,7 @@ const AdminSettings = () => {
           </button>
         </Link>
       </Navbar>
+      <TermDateView />
     </div>
   );
 };
