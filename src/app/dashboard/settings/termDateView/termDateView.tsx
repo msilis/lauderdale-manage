@@ -30,19 +30,20 @@ const TermDateView = () => {
   const datesByMonth = fetchedDates && groupDatesByMonth(fetchedDates);
   return (
     <div className="grid grid-cols-3 gap-2">
-      <h3>Current Term Dates</h3>
-
-      {datesByMonth &&
-        Object.keys(datesByMonth).map((month) => (
-          <div key={month}>
-            <h4 className="font-bold">{month}</h4>
-            <ul>
-              {datesByMonth[month].map((date, index) => (
-                <li key={index}>{date.toDateString()}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
+      <h1 className="font-bold text-3xl">Current Term Dates</h1>
+      <div className="flex flex-col">
+        {datesByMonth &&
+          Object.keys(datesByMonth).map((month) => (
+            <div key={month} className="mt-4">
+              <h4 className="font-bold">{month}</h4>
+              <ul>
+                {datesByMonth[month].map((date, index) => (
+                  <li key={index}>{date.toDateString()}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+      </div>
     </div>
   );
 };
