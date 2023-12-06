@@ -1,8 +1,12 @@
+"use client";
+
 import { Calendar } from "react-multi-date-picker";
 import type { Value } from "react-multi-date-picker";
 import { UI_TEXT } from "../../../../../utils/uitext";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { handleCalendarSave } from "./calendarUtils";
+import { useRef } from "react";
+import ConfirmDateChange from "./confirmModal";
 
 interface TermCalendarProps {
   dates: Value;
@@ -19,6 +23,13 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
     setDates(event);
   };
 
+  const confirmRef = useRef<HTMLDialogElement | null>(null);
+  const confirmClick = () => {
+    console.log("confirmClick trigered");
+    handleCalendarSave(dates, router);
+    confirmRef.current?.close();
+  };
+
   return (
     <div>
       <Calendar
@@ -28,10 +39,11 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
         onChange={(event) => handleDateChange(event)}
         highlightToday={false}
       />
+      <ConfirmDateChange ref={confirmRef} confirmClick={confirmClick} />
       <div className="flex gap-4 mt-4">
         <button
           className="btn btn-accent"
-          onClick={() => handleCalendarSave(dates, router)}
+          onClick={() => confirmRef.current?.showModal()}
         >
           {UI_TEXT.saveDates}
         </button>
