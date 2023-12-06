@@ -12,6 +12,7 @@ import DetailsDisplay from "./details";
 import { BackButton } from "@/components/backButton/back";
 import { useRouter } from "next/navigation";
 import { STYLE_UTILS } from "../../../../../utils/styleUtils";
+import { LINK_ROUTE } from "../../../../../utils/linkRoutes";
 
 const FamilyDetail = () => {
   const [familyDetail, setFamilyDetail] = useState<FamilyData | undefined>();
@@ -38,7 +39,7 @@ const FamilyDetail = () => {
           onClick={handleBackClick}
           className={STYLE_UTILS.squareButton}
         />
-        <Link href="/dashboard/families/addfamilies">
+        <Link href={LINK_ROUTE.addFamilies}>
           <button className={STYLE_UTILS.ghostButton}>
             {UI_TEXT.addFamily}
           </button>
