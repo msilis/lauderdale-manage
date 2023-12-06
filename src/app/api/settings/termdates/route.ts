@@ -44,17 +44,6 @@ export async function GET(request: Request) {
         { status: 404 }
       );
     }
-    // const data = docSnap.data.map((document) => {
-    //   const data = document.data();
-    //   console.log(data, "Data");
-    //   const field = data["termDates"];
-
-    //   return {
-    //     id: document.id,
-    //     field,
-    //     ...data,
-    //   };
-    // });
 
     const data = docSnap.data();
     const id = docSnap.id;
