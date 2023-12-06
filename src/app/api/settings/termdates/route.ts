@@ -11,14 +11,13 @@ import {
 export async function POST(request: Request) {
   try {
     const termData = await request.json();
-    const { id, ...data } = JSON.parse(termData);
-    const dateRef = doc(db, "settings", id);
+    const dateRef = doc(db, "settings", "lauderdale-term-dates-master");
     if (!dateRef) {
       await addDoc(collection(db, "settings"), {
         termDates: termData.termDates,
       });
     } else {
-      await updateDoc(dateRef, data);
+      await updateDoc(dateRef, termData);
     }
     return NextResponse.json(
       { message: "Term dates set successfully." },
