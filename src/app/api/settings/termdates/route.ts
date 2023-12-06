@@ -1,13 +1,25 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/firebase/firebaseConfig";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 
 export async function POST(request: Request) {
   try {
     const termData = await request.json();
-    await addDoc(collection(db, "settings"), {
-      termDates: termData.termDates,
-    });
+    const { id, ...data } = JSON.parse(termData);
+    const dateRef = doc(db, "settings", id);
+    if (!dateRef) {
+      await addDoc(collection(db, "settings"), {
+        termDates: termData.termDates,
+      });
+    } else {
+      await updateDoc(dateRef, data);
+    }
     return NextResponse.json(
       { message: "Term dates set successfully." },
       { status: 200 }
