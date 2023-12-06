@@ -19,7 +19,6 @@ export const fetchTermDates = async () => {
       errorToast(TOAST_TEXT.genericFetchError);
     }
     const termDateData = await response.json();
-    console.log({ termDateData });
     const convertedDates = convertDate(termDateData.termDates);
 
     return convertedDates;
