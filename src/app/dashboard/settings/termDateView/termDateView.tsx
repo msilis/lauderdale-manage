@@ -31,7 +31,7 @@ const TermDateView = () => {
   return (
     <div className="grid grid-cols-3 gap-2">
       <h1 className="font-bold text-3xl">Current Term Dates</h1>
-      <div className="flex flex-col">
+      <div className="grid grid-cols-[200px_minmax(900px,_1fr)_100px] gap-4">
         {datesByMonth &&
           Object.keys(datesByMonth).map((month) => (
             <div key={month} className="mt-4">
