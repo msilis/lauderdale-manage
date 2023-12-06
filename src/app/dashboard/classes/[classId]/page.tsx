@@ -12,6 +12,7 @@ import ClassStudentDisplay from "./classStudentDisplay";
 import { handleRemoveStudent } from "./classEditUtils";
 import Link from "next/link";
 import { STYLE_UTILS } from "../../../../../utils/styleUtils";
+import { LINK_ROUTE } from "../../../../../utils/linkRoutes";
 
 export type StudentToDeleteType = {
   studentId: string;
@@ -59,7 +60,7 @@ const ClassDetail = () => {
     <div className="flex flex-col ml-28 gap-6">
       <h1 className="text-5xl font-bold">Class Details</h1>
       <Navbar>
-        <Link href="/dashboard/classes/addClass">
+        <Link href={LINK_ROUTE.addClass}>
           <button className={STYLE_UTILS.ghostButton}>
             {UI_TEXT.addClassButton}
           </button>
