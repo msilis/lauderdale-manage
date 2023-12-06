@@ -1,13 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/firebase/firebaseConfig";
-import {
-  collection,
-  addDoc,
-  getDocs,
-  getDoc,
-  doc,
-  updateDoc,
-} from "firebase/firestore";
+import { collection, addDoc, getDoc, doc, updateDoc } from "firebase/firestore";
 
 export async function POST(request: Request) {
   try {
@@ -47,8 +40,6 @@ export async function GET(request: Request) {
 
     const data = docSnap.data();
     const id = docSnap.id;
-
-    console.log(data["termDates"]);
 
     return NextResponse.json({ id, ...data }, { status: 200 });
   } catch (error) {
