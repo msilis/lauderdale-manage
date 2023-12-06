@@ -19,8 +19,7 @@ export const fetchTermDates = async () => {
       errorToast(TOAST_TEXT.genericFetchError);
     }
     const termDateData = await response.json();
-    const lastTermDate = termDateData.pop();
-    const convertedDates = convertDate(lastTermDate.termDates);
+    const convertedDates = convertDate(termDateData.termDates);
 
     return convertedDates;
   } catch (error) {
