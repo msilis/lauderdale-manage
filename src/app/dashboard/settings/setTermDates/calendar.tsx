@@ -29,7 +29,7 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
 
   const confirmRef = useRef<HTMLDialogElement | null>(null);
   const confirmClick = () => {
-    handleCalendarSave(dates, router);
+    handleCalendarSave(dates, term as number, router);
     confirmRef.current?.close();
   };
 

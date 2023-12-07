@@ -5,9 +5,11 @@ import type { Value } from "react-multi-date-picker";
 
 export const handleCalendarSave = async (
   dates: Value,
+  term: number,
   router: string[] | AppRouterInstance
 ) => {
   const datesToSave = {
+    termNumber: term,
     termDates: dates,
   };
 

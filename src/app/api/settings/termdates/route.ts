@@ -7,13 +7,13 @@ export async function POST(request: Request) {
     const termData = await request.json();
     let dateRef;
     switch (termData.termNumber) {
-      case "1":
+      case 1:
         dateRef = doc(db, "settings", "lauderdale-term-1-master");
         break;
-      case "2":
+      case 2:
         dateRef = doc(db, "settings", "lauderdale-term-2-master");
         break;
-      case "3":
+      case 3:
         dateRef = doc(db, "settings", "lauderdale-term-3-master");
         break;
       default:
