@@ -12,12 +12,16 @@ interface TermCalendarProps {
   dates: Value;
   setDates: (dates: Value) => void;
   router: string[] | AppRouterInstance;
+  term: number | undefined;
+  setTerm: (term: number | undefined) => void;
 }
 
 const TermCalendar: React.FC<TermCalendarProps> = ({
   dates,
   setDates,
   router,
+  term,
+  setTerm,
 }) => {
   const handleDateChange = (event: Value) => {
     setDates(event);
@@ -31,13 +35,35 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
 
   return (
     <div>
-      <Calendar
-        multiple={true}
-        value={dates}
-        numberOfMonths={4}
-        onChange={(event) => handleDateChange(event)}
-        highlightToday={false}
-      />
+      <div className="flex flex-col">
+        <label
+          htmlFor="selectTermInput"
+          id="selectTermInput"
+          className="text-lg font-bold mt-2"
+        >
+          Which term?
+        </label>
+        <select
+          name="selectTermInput"
+          className="select select-bordered w-full max-w-xs mt-4"
+          onChange={(event) => setTerm(Number(event.target.value))}
+          value={term || ""}
+        >
+          <option value={""}>Please choose a term</option>
+          <option value="1">Term 1</option>
+          <option value="2">Term 2</option>
+          <option value="3">Term 3</option>
+        </select>
+      </div>
+      <div className="mt-4">
+        <Calendar
+          multiple={true}
+          value={dates}
+          numberOfMonths={4}
+          onChange={(event) => handleDateChange(event)}
+          highlightToday={false}
+        />
+      </div>
       <ConfirmDateChange ref={confirmRef} confirmClick={confirmClick} />
       <div className="flex gap-4 mt-4">
         <button
@@ -46,7 +72,13 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
         >
           {UI_TEXT.saveDates}
         </button>
-        <button className="btn btn-default" onClick={() => setDates([])}>
+        <button
+          className="btn btn-default"
+          onClick={() => {
+            setDates([]);
+            setTerm(undefined);
+          }}
+        >
           {UI_TEXT.resetDates}
         </button>
       </div>

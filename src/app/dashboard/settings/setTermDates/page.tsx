@@ -12,6 +12,7 @@ import { STYLE_UTILS } from "../../../../../utils/styleUtils";
 
 const SetTermDates = () => {
   const [dates, setDates] = useState<Value>([]);
+  const [term, setTerm] = useState<number | undefined>();
   const router = useRouter();
 
   const handleCalendarBackClick = () => {
@@ -27,7 +28,13 @@ const SetTermDates = () => {
           className={STYLE_UTILS.squareButton}
         />
       </Navbar>
-      <TermCalendar dates={dates} setDates={setDates} router={router} />
+      <TermCalendar
+        dates={dates}
+        setDates={setDates}
+        router={router}
+        term={term}
+        setTerm={setTerm}
+      />
     </div>
   );
 };
