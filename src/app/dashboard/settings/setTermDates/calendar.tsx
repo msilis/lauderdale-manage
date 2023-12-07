@@ -25,7 +25,6 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
 
   const confirmRef = useRef<HTMLDialogElement | null>(null);
   const confirmClick = () => {
-    console.log("confirmClick trigered");
     handleCalendarSave(dates, router);
     confirmRef.current?.close();
   };
