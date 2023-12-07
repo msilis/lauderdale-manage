@@ -5,7 +5,21 @@ import { collection, addDoc, getDoc, doc, updateDoc } from "firebase/firestore";
 export async function POST(request: Request) {
   try {
     const termData = await request.json();
-    const dateRef = doc(db, "settings", "lauderdale-term-dates-master");
+    let dateRef;
+    switch (termData.termNumber) {
+      case "1":
+        dateRef = doc(db, "settings", "lauderdale-term-1-master");
+        break;
+      case "2":
+        dateRef = doc(db, "settings", "lauderdale-term-2-master");
+        break;
+      case "3":
+        dateRef = doc(db, "settings", "lauderdale-term-3-master");
+        break;
+      default:
+        dateRef = null;
+    }
+
     if (!dateRef) {
       await addDoc(collection(db, "settings"), {
         termDates: termData.termDates,
