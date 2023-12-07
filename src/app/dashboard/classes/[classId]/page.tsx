@@ -13,6 +13,8 @@ import { handleRemoveStudent } from "./classEditUtils";
 import Link from "next/link";
 import { STYLE_UTILS } from "../../../../../utils/styleUtils";
 import { LINK_ROUTE } from "../../../../../utils/linkRoutes";
+import { BackButton } from "@/components/backButton/back";
+import { useRouter } from "next/navigation";
 
 export type StudentToDeleteType = {
   studentId: string;
@@ -28,6 +30,7 @@ const ClassDetail = () => {
   const [addStudent, setAddStudent] = useState<boolean>(false);
   const params = useParams();
   const addStudentRef = useRef<HTMLDialogElement | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchClassDetails = async () => {
@@ -56,10 +59,18 @@ const ClassDetail = () => {
     setAddStudent(true);
   };
 
+  const handleBackClick = () => {
+    return router.back();
+  };
+
   return (
     <div className="flex flex-col ml-28 gap-6">
       <h1 className="text-5xl font-bold">Class Details</h1>
-      <Navbar>
+      <Navbar className={STYLE_UTILS.navbarStyle}>
+        <BackButton
+          className={STYLE_UTILS.squareButton}
+          onClick={handleBackClick}
+        />
         <Link href={LINK_ROUTE.addClass}>
           <button className={STYLE_UTILS.ghostButton}>
             {UI_TEXT.addClassButton}
