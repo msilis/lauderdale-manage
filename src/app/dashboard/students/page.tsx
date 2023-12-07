@@ -10,7 +10,7 @@ const Students = () => {
   return (
     <div className="flex flex-col ml-28 gap-6">
       <h1 className="text-5xl font-bold">Students</h1>
-      <Navbar>
+      <Navbar className={STYLE_UTILS.navbarStyle}>
         <Link href={LINK_ROUTE.addStudents}>
           <button className={STYLE_UTILS.ghostButton}>
             {UI_TEXT.addStudentsButton}
