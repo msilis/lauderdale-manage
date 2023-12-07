@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation";
 import { STYLE_UTILS } from "../../../../../utils/styleUtils";
 import { LINK_ROUTE } from "../../../../../utils/linkRoutes";
 
-const FamilyDetail = () => {
+export const FamilyDetail = () => {
   const [familyDetail, setFamilyDetail] = useState<FamilyData | undefined>();
   const params = useParams();
   const router = useRouter();
