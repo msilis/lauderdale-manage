@@ -1,6 +1,3 @@
-import { fetchTermDates } from "./termDateViewUtils";
-import { errorToast } from "@/components/toast/toast";
-import { TOAST_TEXT } from "@/components/toast/toastText";
 import fetchMock from "jest-fetch-mock";
 
 // Mock the fetch function globally
