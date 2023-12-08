@@ -32,7 +32,7 @@ export const FamilyDetail = () => {
   };
 
   return (
-    <div className="flex flex-col ml-28 gap-6">
+    <div className="flex flex-col pl-28 gap-6">
       <h1 className="text-5xl font-bold">Family Details</h1>
       <Navbar className={STYLE_UTILS.navbarStyle}>
         <BackButton

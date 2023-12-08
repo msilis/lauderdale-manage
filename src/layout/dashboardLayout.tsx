@@ -15,7 +15,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     loginEmail = sessionStorage.getItem("email");
   }
   return (
-    <div className="grid grid-cols-[10%_auto_auto]">
+    <div className="grid grid-cols-[10%_auto_auto] gap-2">
       <div className="w-1/5">
         <Sidebar />
       </div>

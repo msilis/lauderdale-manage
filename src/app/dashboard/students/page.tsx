@@ -8,7 +8,7 @@ import { STYLE_UTILS } from "../../../../utils/styleUtils";
 
 const Students = () => {
   return (
-    <div className="flex flex-col ml-28 gap-6">
+    <div className="flex flex-col pl-28 gap-6">
       <h1 className="text-5xl font-bold">Students</h1>
       <Navbar className={STYLE_UTILS.navbarStyle}>
         <Link href={LINK_ROUTE.addStudents}>
