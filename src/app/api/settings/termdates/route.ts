@@ -1,6 +1,14 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/firebase/firebaseConfig";
-import { collection, addDoc, getDoc, doc, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getDoc,
+  doc,
+  updateDoc,
+  query,
+  where,
+} from "firebase/firestore";
 
 export async function POST(request: Request) {
   try {
@@ -42,20 +50,16 @@ export async function POST(request: Request) {
 
 export async function GET(request: Request) {
   try {
-    const docSnap = await getDoc(
-      doc(db, "settings", "lauderdale-term-dates-master")
-    );
-    if (!docSnap.exists()) {
-      return NextResponse.json(
-        { message: "No term dates set" },
-        { status: 404 }
-      );
-    }
-
-    const data = docSnap.data();
-    const id = docSnap.id;
-
-    return NextResponse.json({ id, ...data }, { status: 200 });
+    const termIDs = [
+      "lauderdale-term-1-master",
+      "lauderdale-term-2-master",
+      "lauderdale-term-3-master",
+    ];
+    const termPromises = termIDs.map((id) => getDoc(doc(db, "settings", id)));
+    const termDocs = await Promise.all(termPromises);
+    const terms = termDocs.map((doc) => doc.data());
+    console.log({ terms });
+    return NextResponse.json(terms);
   } catch (error) {
     console.error("Error fetching term dates", error);
     return NextResponse.json(
