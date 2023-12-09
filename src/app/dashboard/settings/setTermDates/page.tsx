@@ -12,6 +12,7 @@ import { STYLE_UTILS } from "../../../../../utils/styleUtils";
 
 const SetTermDates = () => {
   const [dates, setDates] = useState<Value>([]);
+  const [term, setTerm] = useState<number | undefined>();
   const router = useRouter();
 
   const handleCalendarBackClick = () => {
@@ -19,7 +20,7 @@ const SetTermDates = () => {
   };
 
   return (
-    <div className="flex flex-col ml-28 gap-6">
+    <div className="flex flex-col pl-28 gap-6">
       <h1 className="text-5xl font-bold">Set Term Dates</h1>
       <Navbar className={STYLE_UTILS.navbarStyle}>
         <BackButton
@@ -27,7 +28,13 @@ const SetTermDates = () => {
           className={STYLE_UTILS.squareButton}
         />
       </Navbar>
-      <TermCalendar dates={dates} setDates={setDates} router={router} />
+      <TermCalendar
+        dates={dates}
+        setDates={setDates}
+        router={router}
+        term={term}
+        setTerm={setTerm}
+      />
     </div>
   );
 };

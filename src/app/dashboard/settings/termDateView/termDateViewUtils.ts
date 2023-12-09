@@ -1,10 +1,8 @@
 import { errorToast } from "@/components/toast/toast";
 import { TOAST_TEXT } from "@/components/toast/toastText";
 
-const convertDate = (date: Date[]) => {
-  return date
-    .map((value) => new Date(value))
-    .sort((a, b) => a.getTime() - b.getTime());
+const convertDate = (date: number[]) => {
+  return date.sort((a, b) => a - b).map((value) => new Date(value));
 };
 
 export const fetchTermDates = async () => {
@@ -19,7 +17,9 @@ export const fetchTermDates = async () => {
       errorToast(TOAST_TEXT.genericFetchError);
     }
     const termDateData = await response.json();
-    const convertedDates = convertDate(termDateData.termDates);
+    const convertedDates = termDateData.map((term: { termDates: number[] }) => {
+      return convertDate(term.termDates);
+    });
 
     return convertedDates;
   } catch (error) {

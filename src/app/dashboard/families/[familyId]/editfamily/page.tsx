@@ -27,7 +27,7 @@ const EditFamilyDetails = () => {
   console.log(detailsToEdit);
 
   return (
-    <div className="flex flex-col ml-28 gap-6">
+    <div className="flex flex-col pl-28 gap-6">
       <h1 className="text-5xl font-bold">Edit family</h1>
       <Navbar>
         <Link href={LINK_ROUTE.addFamilies}>
