@@ -44,8 +44,6 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
     fetchAllStudents();
   }, [classDetail]);
 
-  console.log(classDetail, "classDetail");
-
   const handleCheckInput = (
     event: { target: { checked: any } },
     studentId: string,
