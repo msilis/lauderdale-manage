@@ -12,6 +12,7 @@ export const UI_TEXT = {
   setTermDates: "Set Term Dates",
   saveDates: "Save Dates",
   resetDates: "Reset Dates",
+  generateClassList: "Generate Class List",
 };
 
 export const ALERT_TEXT = {

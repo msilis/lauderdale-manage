@@ -1,3 +1,5 @@
+"use client";
+
 import { BackButton } from "@/components/backButton/back";
 import Navbar from "@/components/navbar/navbar";
 import DashboardLayout from "@/layout/dashboardLayout";
@@ -12,8 +14,8 @@ const GenerateClassListView = () => {
   };
   return (
     <div className="flex flex-col pl-28 gap-6">
-      <h1 className="tex-5xl font-bold">Class List</h1>
-      <Navbar>
+      <h1 className="text-5xl font-bold">Class List</h1>
+      <Navbar className={STYLE_UTILS.navbarStyle}>
         <BackButton
           onClick={handleBackClick}
           className={STYLE_UTILS.squareButton}
@@ -22,3 +24,13 @@ const GenerateClassListView = () => {
     </div>
   );
 };
+
+const WrappedGenerateClassListView = () => {
+  return (
+    <DashboardLayout>
+      <GenerateClassListView />
+    </DashboardLayout>
+  );
+};
+
+export default WrappedGenerateClassListView;
