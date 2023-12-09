@@ -15,7 +15,6 @@ const TermDateView = () => {
   }, []);
 
   const groupDatesByMonth = (dates: Date[]) => {
-    console.log(dates, "dates");
     const datesByMonth: { [key: string]: Date[] } = {};
     dates.forEach((date) => {
       const month = date.toLocaleString("default", { month: "long" });

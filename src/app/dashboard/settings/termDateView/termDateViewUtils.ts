@@ -17,19 +17,12 @@ export const fetchTermDates = async () => {
       errorToast(TOAST_TEXT.genericFetchError);
     }
     const termDateData = await response.json();
-    console.log(termDateData);
     const convertedDates = termDateData.map((term: { termDates: number[] }) => {
-      console.log(term.termDates);
       return convertDate(term.termDates);
     });
-    console.log({ convertedDates });
 
     return convertedDates;
   } catch (error) {
     throw new Error("Error fetching dates.");
   }
 };
-
-//  return date
-//    .map((value) => new Date(value))
-//    .sort((a, b) => a.getTime() - b.getTime());
