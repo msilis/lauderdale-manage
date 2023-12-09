@@ -15,6 +15,7 @@ const TermDateView = () => {
   }, []);
 
   const groupDatesByMonth = (dates: Date[]) => {
+    console.log(dates, "dates");
     const datesByMonth: { [key: string]: Date[] } = {};
     dates.forEach((date) => {
       const month = date.toLocaleString("default", { month: "long" });
@@ -27,22 +28,29 @@ const TermDateView = () => {
     return datesByMonth;
   };
 
-  const datesByMonth = fetchedDates && groupDatesByMonth(fetchedDates);
+  const datesByMonth = fetchedDates && groupDatesByMonth(fetchedDates.flat());
+
+  const mappedDates = (datesByMonth) => {
+    return Object.keys(datesByMonth).map((month) => {
+      return (
+        <div key={month} className="mt-4">
+          <h4 className="font-bold">{month}</h4>
+          <ul>
+            {datesByMonth[month].map((date, index) => (
+              <li key={index}>{date.toDateString()}</li>
+            ))}
+          </ul>
+        </div>
+      );
+    });
+  };
+
   return (
     <div className="grid grid-cols-3 gap-2">
       <h1 className="font-bold text-3xl">Current Term Dates</h1>
-      <div className="grid grid-cols-[200px_minmax(900px,_1fr)_100px] gap-4">
+      <div className="grid grid-cols-[10rem_10rem_10rem] gap-4">
         {datesByMonth ? (
-          Object.keys(datesByMonth).map((month) => (
-            <div key={month} className="mt-4">
-              <h4 className="font-bold">{month}</h4>
-              <ul>
-                {datesByMonth[month].map((date, index) => (
-                  <li key={index}>{date.toDateString()}</li>
-                ))}
-              </ul>
-            </div>
-          ))
+          mappedDates(datesByMonth)
         ) : (
           <div className="flex justify-center">
             <span className="loading loading-dots loading-lg" />
