@@ -30,7 +30,7 @@ const TermDateView = () => {
 
   const datesByMonth = fetchedDates && groupDatesByMonth(fetchedDates.flat());
 
-  const mappedDates = (datesByMonth) => {
+  const mappedDates = (datesByMonth: { [x: string]: any[] | Date[] }) => {
     return Object.keys(datesByMonth).map((month) => {
       return (
         <div key={month} className="mt-4">
