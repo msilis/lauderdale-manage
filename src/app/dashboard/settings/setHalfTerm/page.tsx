@@ -17,14 +17,13 @@ const SetHalfTerm = () => {
 
   return (
     <div className="flex flex-col pl-28 gap-6">
-      <h1 className="text-5xl font-bold">
-        <Navbar className={STYLE_UTILS.navbarStyle}>
-          <BackButton
-            className={STYLE_UTILS.squareButton}
-            onClick={handleBackClick}
-          />
-        </Navbar>
-      </h1>
+      <h1 className="text-5xl font-bold">Set Half Term</h1>
+      <Navbar className={STYLE_UTILS.navbarStyle}>
+        <BackButton
+          className={STYLE_UTILS.squareButton}
+          onClick={handleBackClick}
+        />
+      </Navbar>
     </div>
   );
 };

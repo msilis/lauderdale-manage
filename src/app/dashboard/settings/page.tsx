@@ -16,6 +16,11 @@ const AdminSettings = () => {
             {UI_TEXT.setTermDates}
           </button>
         </Link>
+        <Link href={LINK_ROUTE.setHalfTerm}>
+          <button className={STYLE_UTILS.ghostButton}>
+            {UI_TEXT.setHalfTerm}
+          </button>
+        </Link>
       </Navbar>
       <TermDateView />
     </div>
