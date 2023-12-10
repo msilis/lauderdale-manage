@@ -1,4 +1,4 @@
-const TABLE_TEXT = {
+export const TABLE_TEXT = {
   studentFirstName: "First Name",
   studentLastName: "Last Name",
   studentBirthday: "Birthday",
