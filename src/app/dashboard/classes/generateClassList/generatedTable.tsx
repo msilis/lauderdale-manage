@@ -2,9 +2,13 @@ import { fetchTermDates } from "../../settings/termDateView/termDateViewUtils";
 import { ClassData } from "../classView/classTable";
 import { TABLE_TEXT } from "./generatedDetailUI";
 
-type GeneratedTableProps = {};
+type GeneratedTableProps = {
+  classDetail: ClassData;
+};
 
-export const GeneratedTable = () => {
+export const GeneratedTable: React.FC<GeneratedTableProps> = ({
+  classDetail,
+}) => {
   return (
     <div>
       <table>

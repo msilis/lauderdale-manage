@@ -5,4 +5,5 @@ export const LINK_ROUTE = {
   addStudents: "/dashboard/students/addstudents",
   addTeacher: "/dashboard/teachers/addTeacher",
   generateClassList: "/dashboard/classes/generateClassList",
+  setHalfTerm: "dashboard/settings/setHalfTerm",
 };

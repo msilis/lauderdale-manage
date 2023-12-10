@@ -14,6 +14,7 @@ interface TermCalendarProps {
   router: string[] | AppRouterInstance;
   term: number | undefined;
   setTerm: (term: number | undefined) => void;
+  onSave: () => void;
 }
 
 const TermCalendar: React.FC<TermCalendarProps> = ({
@@ -22,6 +23,7 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
   router,
   term,
   setTerm,
+  onSave,
 }) => {
   const handleDateChange = (event: Value) => {
     setDates(event);
@@ -29,7 +31,7 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
 
   const confirmRef = useRef<HTMLDialogElement | null>(null);
   const confirmClick = () => {
-    handleCalendarSave(dates, term as number, router);
+    onSave();
     confirmRef.current?.close();
   };
 
