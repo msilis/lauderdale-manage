@@ -35,6 +35,7 @@ const SetTermDates = () => {
         router={router}
         term={term}
         setTerm={setTerm}
+        numberOfMonths={4}
         onSave={() => handleCalendarSave(dates, term as number, router)}
       />
     </div>

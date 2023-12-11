@@ -7,9 +7,12 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { BackButton } from "@/components/backButton/back";
 import { STYLE_UTILS } from "../../../../../utils/styleUtils";
+import { Value } from "react-multi-date-picker";
 
 const SetHalfTerm = () => {
   const router = useRouter();
+  const [halfTerm, setHalfTerm] = useState<Value>([]);
+  const [term, setTerm] = useState<number | undefined>();
 
   const handleBackClick = () => {
     router.back();
@@ -24,6 +27,15 @@ const SetHalfTerm = () => {
           onClick={handleBackClick}
         />
       </Navbar>
+      <TermCalendar
+        dates={halfTerm}
+        setDates={setHalfTerm}
+        router={router}
+        term={term}
+        setTerm={setTerm}
+        numberOfMonths={1}
+        onSave={() => {}}
+      />
     </div>
   );
 };

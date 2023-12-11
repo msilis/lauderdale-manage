@@ -15,6 +15,7 @@ interface TermCalendarProps {
   term: number | undefined;
   setTerm: (term: number | undefined) => void;
   onSave: () => void;
+  numberOfMonths?: number;
 }
 
 const TermCalendar: React.FC<TermCalendarProps> = ({
@@ -24,6 +25,7 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
   term,
   setTerm,
   onSave,
+  numberOfMonths,
 }) => {
   const handleDateChange = (event: Value) => {
     setDates(event);
@@ -61,7 +63,7 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
         <Calendar
           multiple={true}
           value={dates}
-          numberOfMonths={4}
+          numberOfMonths={numberOfMonths}
           onChange={(event) => handleDateChange(event)}
           highlightToday={false}
         />
