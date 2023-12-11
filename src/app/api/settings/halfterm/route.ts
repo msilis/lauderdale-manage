@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/firebase/firebaseConfig";
-import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
+import { collection, addDoc, doc, updateDoc, getDoc } from "firebase/firestore";
 
 export async function POST(request: Request) {
   try {
@@ -20,8 +20,6 @@ export async function POST(request: Request) {
         dateRef = null;
     }
 
-    console.log(dateRef);
-    console.log(halfTermData);
     if (!dateRef) {
       await addDoc(collection(db, "settings"), {
         halfTermDate: halfTermData.halfTermDate,
@@ -38,6 +36,28 @@ export async function POST(request: Request) {
     console.error("There was an error saving the half-term date", error);
     return NextResponse.json(
       { message: "Error saving half-term data" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET(request: Request) {
+  try {
+    const halfTermIds = [
+      "lauderdale-half-term-1",
+      "lauderdale-half-term-2",
+      "lauderdale-half-term-3",
+    ];
+    const halfTermPromises = halfTermIds.map((id) =>
+      getDoc(doc(db, "settings", id))
+    );
+    const halfTermDocs = await Promise.all(halfTermPromises);
+    const halfTerms = halfTermDocs.map((doc) => doc.data());
+    return NextResponse.json(halfTerms);
+  } catch (error) {
+    console.error("Error fetching half-term dates");
+    return NextResponse.json(
+      { message: "Error fetching half-term dates" },
       { status: 500 }
     );
   }
