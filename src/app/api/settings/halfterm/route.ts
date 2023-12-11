@@ -53,6 +53,7 @@ export async function GET(request: Request) {
     );
     const halfTermDocs = await Promise.all(halfTermPromises);
     const halfTerms = halfTermDocs.map((doc) => doc.data());
+    console.log(halfTerms);
     return NextResponse.json(halfTerms);
   } catch (error) {
     console.error("Error fetching half-term dates");

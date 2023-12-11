@@ -1,7 +1,7 @@
 import { errorToast } from "@/components/toast/toast";
 import { TOAST_TEXT } from "@/components/toast/toastText";
 
-const convertDate = (date: number[]) => {
+export const convertDate = (date: number[]) => {
   return date.sort((a, b) => a - b).map((value) => new Date(value));
 };
 
