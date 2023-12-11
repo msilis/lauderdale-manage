@@ -19,6 +19,9 @@ export async function POST(request: Request) {
       default:
         dateRef = null;
     }
+
+    console.log(dateRef);
+    console.log(halfTermData);
     if (!dateRef) {
       await addDoc(collection(db, "settings"), {
         halfTermDate: halfTermData.halfTermDate,
@@ -26,6 +29,7 @@ export async function POST(request: Request) {
     } else {
       await updateDoc(dateRef, halfTermData);
     }
+
     return NextResponse.json(
       { message: "Half term date set successfully." },
       { status: 200 }

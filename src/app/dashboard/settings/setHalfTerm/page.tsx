@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { BackButton } from "@/components/backButton/back";
 import { STYLE_UTILS } from "../../../../../utils/styleUtils";
 import { Value } from "react-multi-date-picker";
+import { handleHalfTermSave } from "./halfTermUtilsts";
 
 const SetHalfTerm = () => {
   const router = useRouter();
@@ -34,7 +35,7 @@ const SetHalfTerm = () => {
         term={term}
         setTerm={setTerm}
         numberOfMonths={1}
-        onSave={() => {}}
+        onSave={() => handleHalfTermSave(halfTerm, term as number, router)}
       />
     </div>
   );
