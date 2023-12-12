@@ -50,7 +50,7 @@ export async function GET(request: Request) {
     const termPromises = termIDs.map((id) => getDoc(doc(db, "settings", id)));
     const termDocs = await Promise.all(termPromises);
     const terms = termDocs.map((doc) => doc.data());
-
+    console.log(terms);
     return NextResponse.json(terms);
   } catch (error) {
     console.error("Error fetching term dates", error);

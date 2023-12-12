@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { BackButton } from "@/components/backButton/back";
 import { STYLE_UTILS } from "../../../../../utils/styleUtils";
 import { Value } from "react-multi-date-picker";
-import { handleHalfTermSave } from "./halfTermUtilsts";
+import { handleHalfTermSave } from "./halfTermUtils";
 
 const SetHalfTerm = () => {
   const router = useRouter();
