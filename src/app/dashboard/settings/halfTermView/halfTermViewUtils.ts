@@ -3,7 +3,7 @@ import { errorToast } from "../../../../components/toast/toast";
 import { convertDate } from "../termDateView/termDateViewUtils";
 
 const convertHalfTermDate = (date: number[]) => {
-  date.map((value) => new Date(value));
+  return date.map((value) => new Date(value));
 };
 
 export const fetchHalfTermDates = async () => {
@@ -14,7 +14,6 @@ export const fetchHalfTermDates = async () => {
         "Content-Type": "application/json",
       },
     });
-    console.log({ response });
     if (!response.ok) {
       errorToast(TOAST_TEXT.genericFetchError);
     }
@@ -25,12 +24,8 @@ export const fetchHalfTermDates = async () => {
           term && Object.keys(term).length > 0
       )
       .map((term: { halfTermDate: number[] }) => {
-        console.log(term.halfTermDate);
         return convertHalfTermDate(term.halfTermDate);
       });
-
-    console.log({ halfTermData });
-    console.log(convertedHalfTermData);
 
     return convertedHalfTermData;
   } catch (error) {

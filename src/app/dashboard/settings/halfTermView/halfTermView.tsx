@@ -13,6 +13,8 @@ const HalfTermView = () => {
     };
     getHalfTerms();
   }, []);
+
+  console.log(halfTermDates, "halfTerm dates");
   return <div></div>;
 };
 
