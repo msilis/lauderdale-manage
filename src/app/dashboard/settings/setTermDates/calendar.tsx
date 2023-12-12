@@ -83,7 +83,6 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
           value={dates}
           numberOfMonths={numberOfMonths}
           onChange={(event) => {
-            console.log(event);
             handleDateChange(event);
           }}
           highlightToday={false}
