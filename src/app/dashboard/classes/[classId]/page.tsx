@@ -52,6 +52,8 @@ const ClassDetail = () => {
     }
   }, [addStudent]);
 
+  console.log(classDetail, "classDetail from page");
+
   const removeStudentHandler = () => {
     handleRemoveStudent(studentsToDelete, classDetail?.id);
     setUpdateTable(true);

@@ -22,6 +22,9 @@ const GenerateClassListView = () => {
     setHalfTermDates,
   } = useContext(ClassDataContext);
 
+  console.log(classDetail, "classDetail from parent");
+  console.log(termDates, "termDates from Parent");
+
   const handleBackClick = () => {
     router.back();
   };
@@ -51,7 +54,11 @@ const GenerateClassListView = () => {
           className={STYLE_UTILS.squareButton}
         />
       </Navbar>
-      <GeneratedTable classDetail={classDetail} />
+      <GeneratedTable
+        classDetail={classDetail}
+        termDates={termDates}
+        halfTermDates={halfTermDates}
+      />
     </div>
   );
 };

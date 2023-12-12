@@ -1,16 +1,20 @@
-"use client";
-
 import { ClassData } from "../classView/classTable";
 import { TABLE_TEXT } from "./generatedDetailUI";
-import { useContext } from "react";
 
 type GeneratedTableProps = {
   classDetail: ClassData;
+  termDates: any;
+  halfTermDates: any;
 };
 
 export const GeneratedTable: React.FC<GeneratedTableProps> = ({
   classDetail,
+  termDates,
+  halfTermDates,
 }) => {
+  console.log(termDates, "termDates");
+  console.log(classDetail, "classDetail");
+  console.log(halfTermDates, "halfTermDates");
   return (
     <div>
       <table className="table">
