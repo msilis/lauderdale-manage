@@ -17,10 +17,10 @@ const HalfTermView = () => {
   const halfTermDateArray = halfTermDates && halfTermDates?.flat();
 
   return (
-    <div>
+    <div className="grid grid-cols-3 mt-4">
       {halfTermDates ? (
         <>
-          <h1 className="font-bold text-3xl">Current Half-Term Dates</h1>
+          <h1 className="font-bold text-3xl">Current Half-Terms</h1>
           <div className="mt-2">
             <ul>
               {halfTermDateArray?.map((date, index) => {
