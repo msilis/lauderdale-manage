@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar } from "react-multi-date-picker";
+import { Calendar, CalendarRef, DateObject } from "react-multi-date-picker";
 import type { Value } from "react-multi-date-picker";
 import { UI_TEXT } from "../../../../../utils/uitext";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
@@ -44,7 +44,10 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
   };
 
   const checkInputs = () => {
-    if (termRef.current?.value) {
+    if (
+      termRef.current?.value &&
+      (dates instanceof Date || dates instanceof DateObject)
+    ) {
       confirmRef.current?.showModal();
     } else {
       errorToast(TOAST_TEXT.errorSetTerm);
@@ -79,7 +82,10 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
           multiple={true}
           value={dates}
           numberOfMonths={numberOfMonths}
-          onChange={(event) => handleDateChange(event)}
+          onChange={(event) => {
+            console.log(event);
+            handleDateChange(event);
+          }}
           highlightToday={false}
         />
       </div>
