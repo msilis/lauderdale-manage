@@ -22,7 +22,6 @@ interface TermCalendarProps {
 const TermCalendar: React.FC<TermCalendarProps> = ({
   dates,
   setDates,
-  router,
   term,
   setTerm,
   onSave,
