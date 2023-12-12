@@ -12,9 +12,6 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
   termDates,
   halfTermDates,
 }) => {
-  console.log(termDates, "termDates");
-  console.log(classDetail, "classDetail");
-  console.log(halfTermDates, "halfTermDates");
   return (
     <div>
       <table className="table">

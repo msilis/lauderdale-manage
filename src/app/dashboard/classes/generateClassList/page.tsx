@@ -22,9 +22,6 @@ const GenerateClassListView = () => {
     setHalfTermDates,
   } = useContext(ClassDataContext);
 
-  console.log(classDetail, "classDetail from parent");
-  console.log(termDates, "termDates from Parent");
-
   const handleBackClick = () => {
     router.back();
   };
