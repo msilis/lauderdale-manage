@@ -1,6 +1,8 @@
-import { fetchTermDates } from "../../settings/termDateView/termDateViewUtils";
+"use client";
+
 import { ClassData } from "../classView/classTable";
 import { TABLE_TEXT } from "./generatedDetailUI";
+import { useContext } from "react";
 
 type GeneratedTableProps = {
   classDetail: ClassData;

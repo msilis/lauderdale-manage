@@ -7,13 +7,40 @@ import { useRouter } from "next/navigation";
 import { STYLE_UTILS } from "../../../../../utils/styleUtils";
 import { GeneratedTable } from "./generatedTable";
 import { ClassData } from "../classView/classTable";
+import { useContext, useEffect } from "react";
+import { ClassDataContext } from "../../../../../utils/context/context";
+import { fetchTermDates } from "../../settings/termDateView/termDateViewUtils";
+import { fetchHalfTermDates } from "../../settings/halfTermView/halfTermViewUtils";
 
 const GenerateClassListView = () => {
   const router = useRouter();
+  const {
+    classDetail,
+    termDates,
+    setTermDates,
+    halfTermDates,
+    setHalfTermDates,
+  } = useContext(ClassDataContext);
 
   const handleBackClick = () => {
     router.back();
   };
+
+  useEffect(() => {
+    const getTermDates = async () => {
+      const termData = await fetchTermDates();
+      setTermDates(termData);
+    };
+    getTermDates();
+  }, []);
+
+  useEffect(() => {
+    const getHalfTermDates = async () => {
+      const halfTermData = await fetchHalfTermDates();
+      setHalfTermDates(halfTermData);
+    };
+    getHalfTermDates();
+  }, []);
 
   return (
     <div className="flex flex-col pl-28 gap-6">
@@ -24,7 +51,7 @@ const GenerateClassListView = () => {
           className={STYLE_UTILS.squareButton}
         />
       </Navbar>
-      {/* <GeneratedTable /> */}
+      <GeneratedTable classDetail={classDetail} />
     </div>
   );
 };
