@@ -15,7 +15,6 @@ import { STYLE_UTILS } from "../../../../../utils/styleUtils";
 import { LINK_ROUTE } from "../../../../../utils/linkRoutes";
 import { BackButton } from "@/components/backButton/back";
 import { useRouter } from "next/navigation";
-import { signal } from "@preact/signals-react";
 
 export type StudentToDeleteType = {
   studentId: string;
