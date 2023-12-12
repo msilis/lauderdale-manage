@@ -18,15 +18,21 @@ const HalfTermView = () => {
 
   return (
     <div>
-      <h1 className="font-bold text-3xl">Current Half-Term Dates</h1>
-      <div>
-        <ul>
-          {halfTermDateArray?.map((date, index) => {
-            const dateString = new Date(date).toDateString();
-            return <li key={dateString}>{dateString}</li>;
-          })}
-        </ul>
-      </div>
+      {halfTermDates ? (
+        <>
+          <h1 className="font-bold text-3xl">Current Half-Term Dates</h1>
+          <div className="mt-2">
+            <ul>
+              {halfTermDateArray?.map((date, index) => {
+                const dateString = new Date(date).toDateString();
+                return <li key={dateString}>{dateString}</li>;
+              })}
+            </ul>
+          </div>
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
