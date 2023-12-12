@@ -15,11 +15,14 @@ import { STYLE_UTILS } from "../../../../../utils/styleUtils";
 import { LINK_ROUTE } from "../../../../../utils/linkRoutes";
 import { BackButton } from "@/components/backButton/back";
 import { useRouter } from "next/navigation";
+import { signal } from "@preact/signals-react";
 
 export type StudentToDeleteType = {
   studentId: string;
   studentName: string;
 };
+
+export const classDetailSignal = signal<ClassData | undefined>(undefined);
 
 const ClassDetail = () => {
   const [classDetail, setClassDetail] = useState<ClassData | undefined>();
@@ -36,11 +39,13 @@ const ClassDetail = () => {
     const fetchClassDetails = async () => {
       const classData = await getClassDetails(params.classId as string);
       setClassDetail(classData);
+      classDetailSignal.value = classData;
       setUpdateTable(false);
     };
     fetchClassDetails();
   }, [updateTable]);
 
+  console.log(classDetailSignal.value, "classDetailSignal");
   useEffect(() => {
     if (addStudent) {
       addStudentRef.current?.showModal();
