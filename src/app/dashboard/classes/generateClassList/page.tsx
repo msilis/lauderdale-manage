@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar/navbar";
 import DashboardLayout from "@/layout/dashboardLayout";
 import { useRouter } from "next/navigation";
 import { STYLE_UTILS } from "../../../../../utils/styleUtils";
+import { GeneratedTable } from "./generatedTable";
 
 const GenerateClassListView = () => {
   const router = useRouter();
@@ -21,6 +22,7 @@ const GenerateClassListView = () => {
           className={STYLE_UTILS.squareButton}
         />
       </Navbar>
+      <GeneratedTable />
     </div>
   );
 };

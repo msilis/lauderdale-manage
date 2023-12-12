@@ -11,7 +11,7 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
 }) => {
   return (
     <div>
-      <table>
+      <table className="table">
         <thead>
           <tr>
             <th>{TABLE_TEXT.studentFirstName}</th>
