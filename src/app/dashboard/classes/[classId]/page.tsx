@@ -34,6 +34,8 @@ const ClassDetail = () => {
   const router = useRouter();
   const { classDetail, setClassDetail } = useContext(ClassDataContext);
 
+  console.log(classDetail, "classDetail before useEffect");
+
   useEffect(() => {
     const fetchClassDetails = async () => {
       const classData = await getClassDetails(params.classId as string);
