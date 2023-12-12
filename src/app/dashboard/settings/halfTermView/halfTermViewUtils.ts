@@ -2,7 +2,7 @@ import { TOAST_TEXT } from "@/components/toast/toastText";
 import { errorToast } from "../../../../components/toast/toast";
 import { convertDate } from "../termDateView/termDateViewUtils";
 
-const convertHalfTermDate = (date: number[]) => {
+const convertHalfTermDate = (date: string[]) => {
   return date.map((value) => new Date(value));
 };
 
@@ -23,7 +23,7 @@ export const fetchHalfTermDates = async () => {
         (term: { halfTermDate: number[] }) =>
           term && Object.keys(term).length > 0
       )
-      .map((term: { halfTermDate: number[] }) => {
+      .map((term: { halfTermDate: string[] }) => {
         return convertHalfTermDate(term.halfTermDate);
       });
 

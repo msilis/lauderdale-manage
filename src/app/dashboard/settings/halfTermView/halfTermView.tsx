@@ -14,8 +14,21 @@ const HalfTermView = () => {
     getHalfTerms();
   }, []);
 
-  console.log(halfTermDates, "halfTerm dates");
-  return <div></div>;
+  const halfTermDateArray = halfTermDates && halfTermDates?.flat();
+
+  return (
+    <div>
+      <h1 className="font-bold text-3xl">Current Half-Term Dates</h1>
+      <div>
+        <ul>
+          {halfTermDateArray?.map((date, index) => {
+            const dateString = new Date(date).toDateString();
+            return <li key={dateString}>{dateString}</li>;
+          })}
+        </ul>
+      </div>
+    </div>
+  );
 };
 
 export default HalfTermView;
