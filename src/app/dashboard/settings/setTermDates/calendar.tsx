@@ -12,7 +12,7 @@ import { TOAST_TEXT } from "@/components/toast/toastText";
 interface TermCalendarProps {
   dates: Value;
   setDates: (dates: Value) => void;
-  router: string[] | AppRouterInstance;
+  router?: string[] | AppRouterInstance;
   term: number | undefined;
   setTerm: (term: number | undefined) => void;
   onSave: () => void;
