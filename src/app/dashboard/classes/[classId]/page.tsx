@@ -24,7 +24,6 @@ export type StudentToDeleteType = {
 };
 
 const ClassDetail = () => {
-  const [classDetail, setClassDetail] = useState<ClassData | undefined>();
   const [updateTable, setUpdateTable] = useState<boolean>(false);
   const [studentsToDelete, setStudentsToDelete] = useState<
     StudentToDeleteType[]
@@ -33,6 +32,7 @@ const ClassDetail = () => {
   const params = useParams();
   const addStudentRef = useRef<HTMLDialogElement | null>(null);
   const router = useRouter();
+  const { classDetail, setClassDetail } = useContext(ClassDataContext);
 
   useEffect(() => {
     const fetchClassDetails = async () => {
