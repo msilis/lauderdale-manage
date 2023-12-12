@@ -4,9 +4,10 @@ import { Calendar } from "react-multi-date-picker";
 import type { Value } from "react-multi-date-picker";
 import { UI_TEXT } from "../../../../../utils/uitext";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { handleCalendarSave } from "./calendarUtils";
 import { useRef } from "react";
 import ConfirmDateChange from "./confirmModal";
+import { errorToast } from "@/components/toast/toast";
+import { TOAST_TEXT } from "@/components/toast/toastText";
 
 interface TermCalendarProps {
   dates: Value;
@@ -32,9 +33,23 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
   };
 
   const confirmRef = useRef<HTMLDialogElement | null>(null);
+  const termRef = useRef<HTMLSelectElement | null>(null);
+
   const confirmClick = () => {
-    onSave();
-    confirmRef.current?.close();
+    if (termRef.current?.value) {
+      onSave();
+      confirmRef.current?.close();
+    } else {
+      errorToast(TOAST_TEXT.errorSetTerm);
+    }
+  };
+
+  const checkInputs = () => {
+    if (termRef.current?.value) {
+      confirmRef.current?.showModal();
+    } else {
+      errorToast(TOAST_TEXT.errorSetTerm);
+    }
   };
 
   return (
@@ -52,6 +67,7 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
           className="select select-bordered w-full max-w-xs mt-4"
           onChange={(event) => setTerm(Number(event.target.value))}
           value={term || ""}
+          ref={termRef}
         >
           <option value={""}>Please choose a term</option>
           <option value="1">Term 1</option>
@@ -70,10 +86,7 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
       </div>
       <ConfirmDateChange ref={confirmRef} confirmClick={confirmClick} />
       <div className="flex gap-4 mt-4">
-        <button
-          className="btn btn-accent"
-          onClick={() => confirmRef.current?.showModal()}
-        >
+        <button className="btn btn-accent" onClick={() => checkInputs()}>
           {UI_TEXT.saveDates}
         </button>
         <button
