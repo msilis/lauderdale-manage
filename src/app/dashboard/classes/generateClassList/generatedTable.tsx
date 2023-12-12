@@ -23,6 +23,8 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
             <th>{TABLE_TEXT.studentTeacher}</th>
             <th>{TABLE_TEXT.parent1FirstName}</th>
             <th>{TABLE_TEXT.parent2FirstName}</th>
+            {termDates &&
+              termDates[0].map((date) => <th>{date.toLocaleString()}</th>)}
           </tr>
         </thead>
       </table>
