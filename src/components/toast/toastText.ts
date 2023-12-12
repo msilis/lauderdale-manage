@@ -30,4 +30,6 @@ export const TOAST_TEXT = {
   errorSavingDates: "There was an error saving the term dates",
   termDatesSaved: "Term dates saved successfully!",
   genericFetchError: "There was an error getting the info you need.",
+  errorSavingHalfTerm: "There was an error saving half-term date.",
+  halfTermSaved: "Half-term date saved successfully!",
 };

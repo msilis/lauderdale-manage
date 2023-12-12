@@ -9,6 +9,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { BackButton } from "@/components/backButton/back";
 import { STYLE_UTILS } from "../../../../../utils/styleUtils";
+import { handleCalendarSave } from "./calendarUtils";
 
 const SetTermDates = () => {
   const [dates, setDates] = useState<Value>([]);
@@ -34,6 +35,8 @@ const SetTermDates = () => {
         router={router}
         term={term}
         setTerm={setTerm}
+        numberOfMonths={4}
+        onSave={() => handleCalendarSave(dates, term as number, router)}
       />
     </div>
   );

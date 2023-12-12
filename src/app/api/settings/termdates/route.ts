@@ -1,14 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/firebase/firebaseConfig";
-import {
-  collection,
-  addDoc,
-  getDoc,
-  doc,
-  updateDoc,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, addDoc, getDoc, doc, updateDoc } from "firebase/firestore";
 
 export async function POST(request: Request) {
   try {
@@ -58,7 +50,7 @@ export async function GET(request: Request) {
     const termPromises = termIDs.map((id) => getDoc(doc(db, "settings", id)));
     const termDocs = await Promise.all(termPromises);
     const terms = termDocs.map((doc) => doc.data());
-    console.log({ terms });
+    console.log(terms);
     return NextResponse.json(terms);
   } catch (error) {
     console.error("Error fetching term dates", error);

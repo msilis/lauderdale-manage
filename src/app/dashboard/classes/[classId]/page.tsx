@@ -89,6 +89,11 @@ const ClassDetail = () => {
         ) : (
           ""
         )}
+        <Link href={LINK_ROUTE.generateClassList}>
+          <button className={STYLE_UTILS.ghostButton}>
+            {UI_TEXT.generateClassList}
+          </button>
+        </Link>
       </Navbar>
       <ClassDetailsDisplay classDetail={classDetail} />
       <ClassStudentDisplay

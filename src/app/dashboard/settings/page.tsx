@@ -5,6 +5,7 @@ import Link from "next/link";
 import { STYLE_UTILS } from "../../../../utils/styleUtils";
 import TermDateView from "./termDateView/termDateView";
 import { LINK_ROUTE } from "../../../../utils/linkRoutes";
+import HalfTermView from "./halfTermView/halfTermView";
 
 const AdminSettings = () => {
   return (
@@ -16,8 +17,14 @@ const AdminSettings = () => {
             {UI_TEXT.setTermDates}
           </button>
         </Link>
+        <Link href={LINK_ROUTE.setHalfTerm}>
+          <button className={STYLE_UTILS.ghostButton}>
+            {UI_TEXT.setHalfTerm}
+          </button>
+        </Link>
       </Navbar>
       <TermDateView />
+      <HalfTermView />
     </div>
   );
 };
