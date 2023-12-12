@@ -24,7 +24,7 @@ const GenerateClassListView = () => {
           className={STYLE_UTILS.squareButton}
         />
       </Navbar>
-      <GeneratedTable />
+      {/* <GeneratedTable /> */}
     </div>
   );
 };
