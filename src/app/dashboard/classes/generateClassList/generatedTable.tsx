@@ -24,7 +24,9 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
             <th>{TABLE_TEXT.parent1FirstName}</th>
             <th>{TABLE_TEXT.parent2FirstName}</th>
             {termDates &&
-              termDates[0].map((date) => <th>{date.toLocaleString()}</th>)}
+              termDates[0].map((date: Date) => (
+                <th>{`${date.getDate()}/${date.getMonth() + 1}`}</th>
+              ))}
           </tr>
         </thead>
       </table>
