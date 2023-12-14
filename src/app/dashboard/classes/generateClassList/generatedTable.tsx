@@ -32,7 +32,7 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
         <tbody>
           {classDetail &&
             classDetail.classStudents?.map((student) => (
-              <tr>
+              <tr key={student.studentId}>
                 <td className="outline outline-[0.5px] outline-slate-500">
                   {student.studentName}
                 </td>
