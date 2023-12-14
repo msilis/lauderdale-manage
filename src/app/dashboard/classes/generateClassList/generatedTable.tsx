@@ -12,7 +12,8 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
   termDates,
   halfTermDates,
 }) => {
-  console.log(classDetail);
+  console.log(termDates);
+  console.log(halfTermDates);
   return (
     <div>
       <table className="table outline outline-[1px] outline-slate-800 rounded-none">

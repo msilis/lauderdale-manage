@@ -44,10 +44,8 @@ const TermCalendar: React.FC<TermCalendarProps> = ({
   };
 
   const checkInputs = () => {
-    if (
-      termRef.current?.value &&
-      (dates instanceof Date || dates instanceof DateObject)
-    ) {
+    const checkDateInput = Array.isArray(dates) && dates.length > 0;
+    if (termRef.current?.value && checkDateInput) {
       confirmRef.current?.showModal();
     } else {
       errorToast(TOAST_TEXT.errorSetTerm);
