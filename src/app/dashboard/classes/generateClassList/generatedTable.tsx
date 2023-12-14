@@ -18,6 +18,7 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
 }) => {
   console.log(termDates);
   console.log(halfTermDates);
+  console.log(currentTerm, "currentTerm");
 
   return (
     <div>
@@ -26,10 +27,11 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
         <select
           id="termSelect"
           className="select select-bordered mt-4 w-full max-w-xs"
+          onChange={(event) => setCurrentTerm(Number(event.target?.value))}
         >
-          <option>Term 1</option>
-          <option>Term 2</option>
-          <option>Term 3</option>
+          <option value={0}>Term 1</option>
+          <option value={1}>Term 2</option>
+          <option value={2}>Term 3</option>
         </select>
       </div>
       <table className="table outline outline-[1px] outline-slate-800 rounded-none mt-4">
@@ -41,7 +43,7 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
             <th>{TABLE_TEXT.parent1FirstName}</th>
             <th>{TABLE_TEXT.parent2FirstName}</th>
             {termDates &&
-              termDates[1].map((date: Date) => (
+              termDates[currentTerm!].map((date: Date) => (
                 <th>{`${date.getDate()}/${date.getMonth() + 1}`}</th>
               ))}
           </tr>
@@ -66,7 +68,7 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
                   Parent2
                 </td>
                 {termDates &&
-                  termDates[1].map(() => (
+                  termDates[currentTerm!].map(() => (
                     <td className="outline outline-[1px] outline-slate-500"></td>
                   ))}
               </tr>

@@ -26,7 +26,7 @@ const GenerateClassListView = () => {
     router.back();
   };
 
-  const [currentTerm, setCurrentTerm] = useState<number | null>(null);
+  const [currentTerm, setCurrentTerm] = useState<number | null>(1);
 
   useEffect(() => {
     const getTermDates = async () => {
