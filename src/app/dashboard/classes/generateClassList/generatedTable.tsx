@@ -5,18 +5,34 @@ type GeneratedTableProps = {
   classDetail: ClassData;
   termDates: any;
   halfTermDates: any;
+  currentTerm: number | null;
+  setCurrentTerm: React.Dispatch<React.SetStateAction<number | null>>;
 };
 
 export const GeneratedTable: React.FC<GeneratedTableProps> = ({
   classDetail,
   termDates,
   halfTermDates,
+  currentTerm,
+  setCurrentTerm,
 }) => {
   console.log(termDates);
   console.log(halfTermDates);
+
   return (
     <div>
-      <table className="table outline outline-[1px] outline-slate-800 rounded-none">
+      <div className="flex flex-col">
+        <label htmlFor="termSelect">Which term?</label>
+        <select
+          id="termSelect"
+          className="select select-bordered mt-4 w-full max-w-xs"
+        >
+          <option>Term 1</option>
+          <option>Term 2</option>
+          <option>Term 3</option>
+        </select>
+      </div>
+      <table className="table outline outline-[1px] outline-slate-800 rounded-none mt-4">
         <thead>
           <tr className="outline outline-[1px] bg-slate-100 font-bold">
             <th>{TABLE_TEXT.studentFirstName}</th>

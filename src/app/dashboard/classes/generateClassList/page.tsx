@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { STYLE_UTILS } from "../../../../../utils/styleUtils";
 import { GeneratedTable } from "./generatedTable";
 import { ClassData } from "../classView/classTable";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ClassDataContext } from "../../../../../utils/context/context";
 import { fetchTermDates } from "../../settings/termDateView/termDateViewUtils";
 import { fetchHalfTermDates } from "../../settings/halfTermView/halfTermViewUtils";
@@ -25,6 +25,8 @@ const GenerateClassListView = () => {
   const handleBackClick = () => {
     router.back();
   };
+
+  const [currentTerm, setCurrentTerm] = useState<number | null>(null);
 
   useEffect(() => {
     const getTermDates = async () => {
@@ -55,6 +57,8 @@ const GenerateClassListView = () => {
         classDetail={classDetail}
         termDates={termDates}
         halfTermDates={halfTermDates}
+        currentTerm={currentTerm}
+        setCurrentTerm={setCurrentTerm}
       />
     </div>
   );
