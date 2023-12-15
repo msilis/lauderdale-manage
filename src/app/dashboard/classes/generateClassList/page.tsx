@@ -26,7 +26,7 @@ const GenerateClassListView = () => {
     router.back();
   };
 
-  const [currentTerm, setCurrentTerm] = useState<number | null>(1);
+  const [currentTerm, setCurrentTerm] = useState<number | null>(0);
   console.log(halfTermDates, "from generate classList");
 
   useEffect(() => {
