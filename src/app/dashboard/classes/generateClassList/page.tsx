@@ -27,6 +27,7 @@ const GenerateClassListView = () => {
   };
 
   const [currentTerm, setCurrentTerm] = useState<number | null>(1);
+  console.log(halfTermDates, "from generate classList");
 
   useEffect(() => {
     const getTermDates = async () => {
