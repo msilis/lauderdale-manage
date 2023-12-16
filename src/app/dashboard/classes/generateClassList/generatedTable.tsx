@@ -16,6 +16,7 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
   currentTerm,
   setCurrentTerm,
 }) => {
+  // TODO (ms) Maybe this can be pulled into a utility file as well?
   const allDates =
     currentTerm !== null &&
     halfTermDates &&
@@ -47,6 +48,8 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
         </select>
       </div>
       <table className="table outline outline-[1px] outline-slate-800 rounded-none mt-4">
+        // TODO (ms) see if there is a way to streamline this, this MIGHT be
+        good for abstracting
         <caption className="font-bold p-2">
           {`${classDetail && classDetail.className}`} Group - Term{" "}
           {`${currentTerm! + 1}`} -{" "}
@@ -64,6 +67,7 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
             <th>{TABLE_TEXT.studentTeacher}</th>
             <th>{TABLE_TEXT.parent1FirstName}</th>
             <th>{TABLE_TEXT.parent2FirstName}</th>
+            // TODO (ms) pull this out into separate function
             {termDates &&
               currentTerm !== null &&
               allDates &&
