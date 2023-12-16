@@ -3,8 +3,8 @@ import { TABLE_TEXT } from "./generatedDetailUI";
 
 type GeneratedTableProps = {
   classDetail: ClassData;
-  termDates: string[][] | Date[][];
-  halfTermDates: string[][] | Date[][];
+  termDates: any;
+  halfTermDates: any;
   currentTerm: number | null;
   setCurrentTerm: React.Dispatch<React.SetStateAction<number | null>>;
 };
@@ -27,6 +27,9 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
       })),
       halfTermDates[currentTerm],
     ].sort((a, b) => new Date(a.dates).getTime() - new Date(b.dates).getTime());
+
+  console.log(halfTermDates, "halfTermDates");
+  console.log(termDates, "termDates");
 
   return (
     <div>
