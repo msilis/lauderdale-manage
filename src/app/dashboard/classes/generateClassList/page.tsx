@@ -6,7 +6,6 @@ import DashboardLayout from "@/layout/dashboardLayout";
 import { useRouter } from "next/navigation";
 import { STYLE_UTILS } from "../../../../../utils/styleUtils";
 import { GeneratedTable } from "./generatedTable";
-import { ClassData } from "../classView/classTable";
 import { useContext, useEffect, useState } from "react";
 import { ClassDataContext } from "../../../../../utils/context/context";
 import { fetchTermDates } from "../../settings/termDateView/termDateViewUtils";
