@@ -32,10 +32,6 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
         new Date(b.dates as string).getTime()
     );
 
-  console.log(halfTermDates, "halfTermDates");
-  console.log(termDates, "termDates");
-  console.log(allDates, "allDates");
-
   return (
     <div>
       <div className="flex flex-col">
