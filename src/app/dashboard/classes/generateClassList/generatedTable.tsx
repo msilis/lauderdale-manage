@@ -3,8 +3,8 @@ import { TABLE_TEXT } from "./generatedDetailUI";
 
 type GeneratedTableProps = {
   classDetail: ClassData;
-  termDates: any;
-  halfTermDates: any;
+  termDates: string[][] | Date[][];
+  halfTermDates: string[][] | Date[][];
   currentTerm: number | null;
   setCurrentTerm: React.Dispatch<React.SetStateAction<number | null>>;
 };
@@ -46,7 +46,8 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
         <caption className="font-bold p-2">
           {`${classDetail && classDetail.className}`} Group - Term{" "}
           {`${currentTerm! + 1}`} -{" "}
-          {`${classDetail && classDetail.classTeacher}`} &{" "}
+          {`${classDetail && classDetail.classTeacher}`}
+          {classDetail && classDetail.classAccompanist && " & "}{" "}
           {`${classDetail && classDetail.classAccompanist}`} -{" "}
           {`${classDetail && classDetail.classStartTime}`} to{" "}
           {`${classDetail && classDetail.classEndTime}`} -{" "}
