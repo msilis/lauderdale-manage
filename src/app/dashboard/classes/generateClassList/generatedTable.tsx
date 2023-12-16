@@ -16,10 +16,16 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
   currentTerm,
   setCurrentTerm,
 }) => {
-  console.log(termDates);
-  console.log(halfTermDates);
-  console.log(classDetail, "classDetail");
-  console.log(currentTerm, "currentTerm");
+  const allDates =
+    currentTerm !== null &&
+    halfTermDates &&
+    termDates &&
+    [
+      ...termDates[currentTerm].map((dates) => ({ dates, isHalfTerm: false })),
+      halfTermDates[currentTerm],
+    ].sort((a, b) => new Date(a.dates).getTime() - new Date(b.dates).getTime());
+
+  console.log(allDates, "allDates");
 
   return (
     <div>
@@ -37,11 +43,13 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
       </div>
       <table className="table outline outline-[1px] outline-slate-800 rounded-none mt-4">
         <caption className="font-bold p-2">
-          {`${classDetail.className}`} Group - Term {`${currentTerm! + 1}`} -{" "}
-          {`${classDetail.classTeacher}`} &{" "}
+          {`${classDetail && classDetail.className}`} Group - Term{" "}
+          {`${currentTerm! + 1}`} -{" "}
+          {`${classDetail && classDetail.classTeacher}`} &{" "}
           {`${classDetail && classDetail.classAccompanist}`} -{" "}
-          {`${classDetail.classStartTime}`} to {`${classDetail.classEndTime}`} -{" "}
-          {`${classDetail.classLocation}`}
+          {`${classDetail && classDetail.classStartTime}`} to{" "}
+          {`${classDetail && classDetail.classEndTime}`} -{" "}
+          {`${classDetail && classDetail.classLocation}`}
         </caption>
         <thead>
           <tr className="outline outline-[1px] bg-slate-100 font-bold">
@@ -51,9 +59,20 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
             <th>{TABLE_TEXT.parent1FirstName}</th>
             <th>{TABLE_TEXT.parent2FirstName}</th>
             {termDates &&
-              termDates[currentTerm!].map((date: Date) => (
-                <th>{`${date.getDate()}/${date.getMonth() + 1}`}</th>
-              ))}
+              currentTerm !== null &&
+              allDates &&
+              allDates.map(
+                (date: { dates: string | number | Date; isHalfTerm: any }) => {
+                  const dateObj = new Date(date.dates);
+                  return (
+                    <th key={dateObj.getTime()}>
+                      {date.isHalfTerm
+                        ? "Half-Term"
+                        : `${dateObj.getDate()}/${dateObj.getMonth() + 1}`}
+                    </th>
+                  );
+                }
+              )}
           </tr>
         </thead>
         <tbody>
@@ -76,7 +95,9 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
                   Parent2
                 </td>
                 {termDates &&
-                  termDates[currentTerm!].map(() => (
+                  allDates &&
+                  currentTerm !== null &&
+                  allDates.map(() => (
                     <td className="outline outline-[1px] outline-slate-500"></td>
                   ))}
               </tr>
