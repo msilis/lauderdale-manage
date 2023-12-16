@@ -28,8 +28,6 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
       halfTermDates[currentTerm],
     ].sort((a, b) => new Date(a.dates).getTime() - new Date(b.dates).getTime());
 
-  console.log(allDates, "allDates");
-
   return (
     <div>
       <div className="flex flex-col">

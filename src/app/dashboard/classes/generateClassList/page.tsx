@@ -43,8 +43,6 @@ const GenerateClassListView = () => {
     getHalfTermDates();
   }, []);
 
-  console.log(halfTermDates, "halfTermDates from page");
-
   return (
     <div className="flex flex-col pl-28 gap-6">
       <h1 className="text-5xl font-bold">Class List</h1>
