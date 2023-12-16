@@ -21,7 +21,10 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
     halfTermDates &&
     termDates &&
     [
-      ...termDates[currentTerm].map((dates) => ({ dates, isHalfTerm: false })),
+      ...termDates[currentTerm].map((dates: string | number | Date) => ({
+        dates,
+        isHalfTerm: false,
+      })),
       halfTermDates[currentTerm],
     ].sort((a, b) => new Date(a.dates).getTime() - new Date(b.dates).getTime());
 
@@ -62,7 +65,10 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
               currentTerm !== null &&
               allDates &&
               allDates.map(
-                (date: { dates: string | number | Date; isHalfTerm: any }) => {
+                (date: {
+                  dates: string | number | Date;
+                  isHalfTerm: boolean;
+                }) => {
                   const dateObj = new Date(date.dates);
                   return (
                     <th key={dateObj.getTime()}>
