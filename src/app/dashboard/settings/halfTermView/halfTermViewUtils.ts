@@ -18,15 +18,18 @@ export const fetchHalfTermDates = async () => {
       errorToast(TOAST_TEXT.genericFetchError);
     }
     const halfTermData = await response.json();
+
     const convertedHalfTermData = halfTermData
       .filter(
         (term: { halfTermDate: number[] }) =>
           term && Object.keys(term).length > 0
       )
-      .map((term: { halfTermDate: string[] }) => {
-        return convertHalfTermDate(term.halfTermDate);
+      .map((term: { halfTermDate: string[]; isHalfTerm: boolean }) => {
+        return {
+          dates: convertHalfTermDate(term.halfTermDate),
+          isHalfTerm: term.isHalfTerm,
+        };
       });
-
     return convertedHalfTermData;
   } catch (error) {
     console.error("Error fetching half-term dates", error);

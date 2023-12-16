@@ -11,6 +11,7 @@ export const handleHalfTermSave = async (
   const halfTermDateToSave = {
     halfTermDate: date,
     halfTermNumber: term,
+    isHalfTerm: true,
   };
 
   const response = await fetch("../../../api/settings/halfterm", {

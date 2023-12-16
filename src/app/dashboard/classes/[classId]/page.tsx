@@ -15,6 +15,8 @@ import { STYLE_UTILS } from "../../../../../utils/styleUtils";
 import { LINK_ROUTE } from "../../../../../utils/linkRoutes";
 import { BackButton } from "@/components/backButton/back";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import { ClassDataContext } from "../../../../../utils/context/context";
 
 export type StudentToDeleteType = {
   studentId: string;
@@ -22,7 +24,6 @@ export type StudentToDeleteType = {
 };
 
 const ClassDetail = () => {
-  const [classDetail, setClassDetail] = useState<ClassData | undefined>();
   const [updateTable, setUpdateTable] = useState<boolean>(false);
   const [studentsToDelete, setStudentsToDelete] = useState<
     StudentToDeleteType[]
@@ -31,11 +32,13 @@ const ClassDetail = () => {
   const params = useParams();
   const addStudentRef = useRef<HTMLDialogElement | null>(null);
   const router = useRouter();
+  const { classDetail, setClassDetail } = useContext(ClassDataContext);
 
   useEffect(() => {
     const fetchClassDetails = async () => {
       const classData = await getClassDetails(params.classId as string);
       setClassDetail(classData);
+
       setUpdateTable(false);
     };
     fetchClassDetails();

@@ -3,8 +3,15 @@
 import { useEffect, useState } from "react";
 import { fetchHalfTermDates } from "./halfTermViewUtils";
 
+type HalfTermDate = {
+  dates: Date[];
+  isHalfTerm: boolean;
+};
+
 const HalfTermView = () => {
-  const [halfTermDates, setHalfTermDates] = useState<Date[] | null>(null);
+  const [halfTermDates, setHalfTermDates] = useState<HalfTermDate[] | null>(
+    null
+  );
 
   useEffect(() => {
     const getHalfTerms = async () => {
@@ -23,9 +30,12 @@ const HalfTermView = () => {
           <h1 className="font-bold text-3xl">Current Half-Terms</h1>
           <div className="mt-2">
             <ul>
-              {halfTermDateArray?.map((date, index) => {
-                const dateString = new Date(date).toDateString();
-                return <li key={dateString}>{dateString}</li>;
+              {halfTermDateArray?.map((date: HalfTermDate, index) => {
+                if (date.dates.length > 0) {
+                  const dateString = new Date(date.dates[0]).toDateString();
+                  return <li key={dateString}>{dateString}</li>;
+                }
+                return null;
               })}
             </ul>
           </div>
