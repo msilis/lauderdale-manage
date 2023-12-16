@@ -18,7 +18,7 @@ export const fetchHalfTermDates = async () => {
       errorToast(TOAST_TEXT.genericFetchError);
     }
     const halfTermData = await response.json();
-    console.log(halfTermData, "halfTermData");
+
     const convertedHalfTermData = halfTermData
       .filter(
         (term: { halfTermDate: number[] }) =>
@@ -30,7 +30,6 @@ export const fetchHalfTermDates = async () => {
           isHalfTerm: term.isHalfTerm,
         };
       });
-    console.log(convertedHalfTermData, "convertedData");
     return convertedHalfTermData;
   } catch (error) {
     console.error("Error fetching half-term dates", error);
