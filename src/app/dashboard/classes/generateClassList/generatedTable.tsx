@@ -3,8 +3,8 @@ import { TABLE_TEXT } from "./generatedDetailUI";
 
 type GeneratedTableProps = {
   classDetail: ClassData;
-  termDates: any;
-  halfTermDates: any;
+  termDates: Date[][];
+  halfTermDates: { dates: Date[]; isHalfTerm: boolean }[];
   currentTerm: number | null;
   setCurrentTerm: React.Dispatch<React.SetStateAction<number | null>>;
 };
@@ -26,10 +26,15 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
         isHalfTerm: false,
       })),
       halfTermDates[currentTerm],
-    ].sort((a, b) => new Date(a.dates).getTime() - new Date(b.dates).getTime());
+    ].sort(
+      (a, b) =>
+        new Date(a.dates as string).getTime() -
+        new Date(b.dates as string).getTime()
+    );
 
   console.log(halfTermDates, "halfTermDates");
   console.log(termDates, "termDates");
+  console.log(allDates, "allDates");
 
   return (
     <div>
@@ -66,21 +71,16 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
             {termDates &&
               currentTerm !== null &&
               allDates &&
-              allDates.map(
-                (date: {
-                  dates: string | number | Date;
-                  isHalfTerm: boolean;
-                }) => {
-                  const dateObj = new Date(date.dates);
-                  return (
-                    <th key={dateObj.getTime()}>
-                      {date.isHalfTerm
-                        ? "Half-Term"
-                        : `${dateObj.getDate()}/${dateObj.getMonth() + 1}`}
-                    </th>
-                  );
-                }
-              )}
+              allDates.map((date) => {
+                const dateObj = new Date(date.dates as string);
+                return (
+                  <th key={dateObj.getTime()}>
+                    {date.isHalfTerm
+                      ? "Half-Term"
+                      : `${dateObj.getDate()}/${dateObj.getMonth() + 1}`}
+                  </th>
+                );
+              })}
           </tr>
         </thead>
         <tbody>
