@@ -13,7 +13,7 @@ export interface ClassData {
   classStudents?: {
     studentId: string;
     studentName: string;
-    studentBirthday: string;
+    studentBirthdate: string;
   }[];
   id: string;
 }

@@ -47,6 +47,8 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
     }
   };
 
+  console.log(classDetail);
+
   return (
     <div>
       <div className="flex flex-col">
@@ -92,7 +94,7 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
                   {student.studentName}
                 </td>
                 <td className="outline outline-[1px] outline-slate-500">
-                  {student.studentBirthday}
+                  {student.studentBirthdate}
                 </td>
                 <td className="outline outline-[1px] outline-slate-500">
                   Teacher

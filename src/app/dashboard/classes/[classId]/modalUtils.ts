@@ -15,6 +15,7 @@ export const selectOptions = (
       value: `${student.studentLastName}, ${student.studentFirstName}`,
       label: `${student.studentLastName}, ${student.studentFirstName}`,
       id: student.id,
+      studentBirthdate: student.studentBirthdate,
     }));
 
     const filteredOptions = mappedOptions.filter(

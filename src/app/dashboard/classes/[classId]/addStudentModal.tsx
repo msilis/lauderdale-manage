@@ -25,6 +25,7 @@ interface AddStudentProps {
 export type StudentNames = {
   studentFirstName: string;
   studentLastName: string;
+  studentBirthdate: string;
   id: string;
 };
 
@@ -32,6 +33,7 @@ export type StudentOption = {
   value: string;
   label: string;
   id: string;
+  studentBirthdate: string;
 };
 
 export type AssignedStudentType = {
@@ -61,7 +63,7 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
         const extractedData = studentData.map((student: StudentData) => ({
           studentFirstName: student.studentFirstName,
           studentLastName: student.studentLastName,
-          studentBirthDate: student.studentBirthdate,
+          studentBirthdate: student.studentBirthdate,
           id: student.id,
         }));
         setStudentNames(extractedData);
@@ -69,6 +71,8 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
 
       fetchStudentNames();
     }, []);
+
+    console.log(studentNames, "studentNames");
 
     useEffect(() => {
       if (classId) {
@@ -99,6 +103,8 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
       setSelectedStudents([]);
       onClose();
     };
+
+    console.log(selectedStudents, "selectedStudents");
 
     return (
       <dialog className="modal" ref={ref}>
