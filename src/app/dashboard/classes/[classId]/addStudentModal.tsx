@@ -61,6 +61,7 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
         const extractedData = studentData.map((student: StudentData) => ({
           studentFirstName: student.studentFirstName,
           studentLastName: student.studentLastName,
+          studentBirthDate: student.studentBirthdate,
           id: student.id,
         }));
         setStudentNames(extractedData);
