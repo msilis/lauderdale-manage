@@ -10,7 +10,11 @@ export interface ClassData {
   classAccompanist: string;
   classStartTime: string;
   classEndTime: string;
-  classStudents?: { studentId: string; studentName: string }[];
+  classStudents?: {
+    studentId: string;
+    studentName: string;
+    studentBirthday: string;
+  }[];
   id: string;
 }
 
