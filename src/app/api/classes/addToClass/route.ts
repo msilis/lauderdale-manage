@@ -7,9 +7,10 @@ export async function POST(request: Request) {
     const body = await request.text();
     const { classId, selectedStudents } = JSON.parse(body);
     const studentsToAdd = selectedStudents.map(
-      (student: { id: string; label: string }) => ({
+      (student: { id: string; label: string; studentBirthdate: string }) => ({
         studentId: student.id,
         studentName: student.label,
+        studentBirthdate: student.studentBirthdate,
       })
     );
 

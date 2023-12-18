@@ -35,6 +35,8 @@ const ClassTable: React.FC<ClassTableProps> = ({
   const handleClassClick = (classId: string) => {
     router.push(`/dashboard/classes/${classId}`);
   };
+
+  console.log(classData, "classData");
   return (
     <div className="overflow-x-auto">
       <table className="table">

@@ -52,6 +52,8 @@ export const saveStudentsToClass = async (
     classId: classId,
     selectedStudents: selectedStudents,
   };
+
+  console.log(addStudentData, "addStudentData");
   const response = await fetch("../../../api/classes/addToClass", {
     method: "POST",
     headers: {

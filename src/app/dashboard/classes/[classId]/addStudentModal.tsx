@@ -72,8 +72,6 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
       fetchStudentNames();
     }, []);
 
-    console.log(studentNames, "studentNames");
-
     useEffect(() => {
       if (classId) {
         const fetchAssignedStudents = async () => {
@@ -103,8 +101,6 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
       setSelectedStudents([]);
       onClose();
     };
-
-    console.log(selectedStudents, "selectedStudents");
 
     return (
       <dialog className="modal" ref={ref}>
