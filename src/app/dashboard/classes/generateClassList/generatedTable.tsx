@@ -46,6 +46,7 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
       });
     }
   };
+
   return (
     <div>
       <div className="flex flex-col">
@@ -61,16 +62,17 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
         </select>
       </div>
       <table className="table outline outline-[1px] outline-slate-800 rounded-none mt-4">
-        <caption className="font-bold p-2">
-          {`${classDetail && classDetail.className}`} Group - Term{" "}
-          {`${currentTerm! + 1}`} -{" "}
-          {`${classDetail && classDetail.classTeacher}`}
-          {classDetail && classDetail.classAccompanist && " & "}{" "}
-          {`${classDetail && classDetail.classAccompanist}`} -{" "}
-          {`${classDetail && classDetail.classStartTime}`} to{" "}
-          {`${classDetail && classDetail.classEndTime}`} -{" "}
-          {`${classDetail && classDetail.classLocation}`}
-        </caption>
+        {classDetail && (
+          <caption className="font-bold p-2">
+            {`${classDetail.className}`} Group - Term {`${currentTerm! + 1}`} -{" "}
+            {`${classDetail.classTeacher}`}
+            {classDetail.classAccompanist && " & "}{" "}
+            {`${classDetail.classAccompanist}`} -{" "}
+            {`${classDetail.classStartTime}`} to {`${classDetail.classEndTime}`}{" "}
+            - {`${classDetail.classLocation}`}
+          </caption>
+        )}
+
         <thead>
           <tr className="outline outline-[1px] bg-slate-100 font-bold">
             <th>{TABLE_TEXT.studentFirstName}</th>
