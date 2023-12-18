@@ -85,7 +85,7 @@ const ClassDetail = () => {
         {studentsToDelete.length > 0 ? (
           <button
             className={STYLE_UTILS.redButton}
-            onClick={() => handleRemoveStudent}
+            onClick={() => removeStudentHandler()}
           >
             {UI_TEXT.removeStudent}
           </button>
