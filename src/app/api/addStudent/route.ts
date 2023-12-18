@@ -10,6 +10,7 @@ export async function POST(request: Request) {
       studentLastName: studentData.studentLastName,
       studentFamily: studentData.studentFamily,
       studentBirthdate: studentData.studentBirthdate,
+      studentFamilyId: studentData.familyId,
     });
     return NextResponse.json(
       { message: "Student added to database" },

@@ -12,6 +12,7 @@ import { getAllFamilyInfo } from "../../families/familyView/familyUtils";
 const AddStudent = () => {
   const router = useRouter();
   const [familyData, setFamilyData] = useState<FamilyData[]>([]);
+  const [familyId, setFamilyId] = useState<string | null>("");
   const handleCancelButtonClick = () => {
     router.push("/dashboard/students");
   };
@@ -61,6 +62,11 @@ const AddStudent = () => {
           className="select select-bordered w-full  mt-2"
           required
           name="studentFamily"
+          onChange={(event) => {
+            const selectedOption =
+              event.target.options[event.target.selectedIndex];
+            setFamilyId(selectedOption.getAttribute("id"));
+          }}
         >
           <option value="">Family...</option>
           {familyData.map((family) => (
@@ -83,6 +89,7 @@ const AddStudent = () => {
           required
           name="studentBirthdate"
         />
+        <input type="hidden" name="familyId" value={familyId as string} />
         <div className="flex w-full md:w-full justify-around mt-4">
           <button
             className="btn btn-secondary mt-4"
