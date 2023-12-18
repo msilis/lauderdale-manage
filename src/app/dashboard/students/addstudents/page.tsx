@@ -64,7 +64,11 @@ const AddStudent = () => {
         >
           <option value="">Family...</option>
           {familyData.map((family) => (
-            <option value={family.parent1LastName} id={family.id}>
+            <option
+              value={family.parent1LastName}
+              id={family.id}
+              key={family.id}
+            >
               {family.parent1LastName}
             </option>
           ))}
