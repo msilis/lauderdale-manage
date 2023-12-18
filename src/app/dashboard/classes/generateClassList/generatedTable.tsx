@@ -32,10 +32,20 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
         new Date(b.dates as string).getTime()
     );
 
-  console.log(halfTermDates, "halfTermDates");
-  console.log(termDates, "termDates");
-  console.log(allDates, "allDates");
-
+  const termDateMap = () => {
+    if (termDates && currentTerm !== null && allDates) {
+      return allDates.map((date) => {
+        const dateObj = new Date(date.dates as string);
+        return (
+          <th key={dateObj.getTime()}>
+            {date.isHalfTerm
+              ? "Half-Term"
+              : `${dateObj.getDate()}/${dateObj.getMonth() + 1}`}
+          </th>
+        );
+      });
+    }
+  };
   return (
     <div>
       <div className="flex flex-col">
@@ -68,19 +78,8 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
             <th>{TABLE_TEXT.studentTeacher}</th>
             <th>{TABLE_TEXT.parent1FirstName}</th>
             <th>{TABLE_TEXT.parent2FirstName}</th>
-            {termDates &&
-              currentTerm !== null &&
-              allDates &&
-              allDates.map((date) => {
-                const dateObj = new Date(date.dates as string);
-                return (
-                  <th key={dateObj.getTime()}>
-                    {date.isHalfTerm
-                      ? "Half-Term"
-                      : `${dateObj.getDate()}/${dateObj.getMonth() + 1}`}
-                  </th>
-                );
-              })}
+
+            {termDateMap()}
           </tr>
         </thead>
         <tbody>
