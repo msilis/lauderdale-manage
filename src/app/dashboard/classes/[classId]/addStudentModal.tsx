@@ -27,6 +27,8 @@ export type StudentNames = {
   studentLastName: string;
   studentBirthdate: string;
   id: string;
+  familyId: string;
+  studentTeacher: string;
 };
 
 export type StudentOption = {
@@ -57,6 +59,9 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
     const [assignedStudents, setAssignedStudents] =
       useState<AssignedStudentType | null>(null);
 
+    console.log(studentNames, "studentNames");
+    console.log(selectedStudents, "selectedStudents");
+
     useEffect(() => {
       const fetchStudentNames = async () => {
         const studentData = await getAllStudents();
@@ -65,6 +70,8 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
           studentLastName: student.studentLastName,
           studentBirthdate: student.studentBirthdate,
           id: student.id,
+          studentFamily: student.studentFamily,
+          studentTeacher: student.studentTeacher,
         }));
         setStudentNames(extractedData);
       };
