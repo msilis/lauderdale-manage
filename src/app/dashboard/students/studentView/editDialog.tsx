@@ -63,6 +63,8 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
               onChange={handleInputChange}
               className="input input-bordered w-full  mt-2"
             />
+            <label htmlFor="studentTeacher">Teacher</label>
+            <select className="select select-bordered w-full max-w-xs" />
           </div>
           <div>
             <button
