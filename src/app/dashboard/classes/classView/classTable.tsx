@@ -36,7 +36,6 @@ const ClassTable: React.FC<ClassTableProps> = ({
     router.push(`/dashboard/classes/${classId}`);
   };
 
-  console.log(classData, "classData");
   return (
     <div className="overflow-x-auto">
       <table className="table">
