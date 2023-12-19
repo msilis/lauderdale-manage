@@ -8,12 +8,18 @@ import { handleAddStudentSubmit } from "./addStudentFormHandler";
 import { useRouter } from "next/navigation";
 import { FamilyData } from "../../families/familyView/familyTable";
 import { getAllFamilyInfo } from "../../families/familyView/familyUtils";
+import { getAllTeachers } from "../../teachers/teacherView/teacherUtils";
+import { TeacherData } from "../../teachers/teacherView/teacherView";
 
 const AddStudent = () => {
   const router = useRouter();
   const [familyData, setFamilyData] = useState<FamilyData[]>([]);
   const [familyId, setFamilyId] = useState<string | null>("");
   const [parent2Name, setParent2Name] = useState<string | undefined>("");
+  const [teacherData, setTeacherData] = useState<TeacherData[]>([]);
+  const [teacherName, setTeacherName] = useState<
+    TeacherData | string | undefined
+  >("");
   const handleCancelButtonClick = () => {
     router.push("/dashboard/students");
   };
@@ -26,9 +32,23 @@ const AddStudent = () => {
     fetchFamilies();
   }, []);
 
+  useEffect(() => {
+    const fetchTeachers = async () => {
+      const data = await getAllTeachers();
+      setTeacherData(data);
+    };
+    fetchTeachers();
+  }, []);
+
   const familyMap = new Map(
     familyData.map((family) => [family.parent1LastName, family])
   );
+
+  const teacherMap = new Map(
+    teacherData.map((teacher) => [teacher.teacherLastName, teacher])
+  );
+
+  console.log(teacherMap, "teacherMap");
 
   return (
     <div className="mt-6 ml-[30%] max-w-lg outline outline-slate-100 p-4 drop-shadow-lg rounded-md">
@@ -97,6 +117,32 @@ const AddStudent = () => {
           className="input input-bordered w-full  mt-2"
           required
           name="studentBirthdate"
+        />
+        <label htmlFor="studentTeacher" className="flex flex-col mt-2">
+          Teacher
+        </label>
+        <select
+          className="select select-bordered w-full  mt-2"
+          required
+          name="studentTeacher"
+          onChange={(event) => {
+            const selectedTeacher = teacherMap.get(event.target.value);
+            if (selectedTeacher) {
+              setTeacherName(selectedTeacher);
+            }
+          }}
+        >
+          <option value="">Teacher...</option>
+          {Array.from(teacherMap.keys()).map((teacherName) => (
+            <option value={teacherName} key={teacherMap.get(teacherName)?.id}>
+              {teacherName}
+            </option>
+          ))}
+        </select>
+        <input
+          type="hidden"
+          name="studentTeacher"
+          value={teacherName as string}
         />
 
         <div className="flex w-full md:w-full justify-around mt-4">
