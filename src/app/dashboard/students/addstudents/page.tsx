@@ -25,6 +25,10 @@ const AddStudent = () => {
     fetchFamilies();
   }, []);
 
+  const familyMap = new Map(
+    familyData.map((family) => [family.parent1LastName, family])
+  );
+
   return (
     <div className="mt-6 ml-[30%] max-w-lg outline outline-slate-100 p-4 drop-shadow-lg rounded-md">
       <h2 className="font-bold">Enter Student Details</h2>
@@ -63,19 +67,16 @@ const AddStudent = () => {
           required
           name="studentFamily"
           onChange={(event) => {
-            const selectedOption =
-              event.target.options[event.target.selectedIndex];
-            setFamilyId(selectedOption.getAttribute("id"));
+            const selectedFamily = familyMap.get(event.target.value);
+            if (selectedFamily) {
+              setFamilyId(selectedFamily.id);
+            }
           }}
         >
           <option value="">Family...</option>
-          {familyData.map((family) => (
-            <option
-              value={family.parent1LastName}
-              id={family.id}
-              key={family.id}
-            >
-              {family.parent1LastName}
+          {Array.from(familyMap.keys()).map((familyName) => (
+            <option value={familyName} key={familyMap.get(familyName)?.id}>
+              {familyName}
             </option>
           ))}
         </select>
@@ -89,7 +90,7 @@ const AddStudent = () => {
           required
           name="studentBirthdate"
         />
-        <input type="hidden" name="familyId" value={familyId as string} />
+
         <div className="flex w-full md:w-full justify-around mt-4">
           <button
             className="btn btn-secondary mt-4"
