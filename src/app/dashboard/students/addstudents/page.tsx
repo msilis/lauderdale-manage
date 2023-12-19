@@ -80,6 +80,7 @@ const AddStudent = () => {
             </option>
           ))}
         </select>
+        <input type="hidden" name="familyId" value={familyId as string} />
         <label htmlFor="studentBirthdate" className="flex flex-col mt-2">
           Birth Date
         </label>
