@@ -13,6 +13,7 @@ const AddStudent = () => {
   const router = useRouter();
   const [familyData, setFamilyData] = useState<FamilyData[]>([]);
   const [familyId, setFamilyId] = useState<string | null>("");
+  const [parent2Name, setParent2Name] = useState<string | undefined>("");
   const handleCancelButtonClick = () => {
     router.push("/dashboard/students");
   };
@@ -70,6 +71,7 @@ const AddStudent = () => {
             const selectedFamily = familyMap.get(event.target.value);
             if (selectedFamily) {
               setFamilyId(selectedFamily.id);
+              setParent2Name(selectedFamily.parent2FirstName);
             }
           }}
         >
@@ -81,6 +83,11 @@ const AddStudent = () => {
           ))}
         </select>
         <input type="hidden" name="familyId" value={familyId as string} />
+        <input
+          type="hidden"
+          name="parent2FirstName"
+          value={parent2Name as string}
+        />
         <label htmlFor="studentBirthdate" className="flex flex-col mt-2">
           Birth Date
         </label>
