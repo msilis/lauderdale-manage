@@ -17,9 +17,10 @@ const AddStudent = () => {
   const [familyId, setFamilyId] = useState<string | null>("");
   const [parent2Name, setParent2Name] = useState<string | undefined>("");
   const [teacherData, setTeacherData] = useState<TeacherData[]>([]);
-  const [teacherName, setTeacherName] = useState<
-    TeacherData | string | undefined
-  >("");
+  const [teacherName, setTeacherName] = useState<{
+    teacherLastName: string;
+    id: string;
+  } | null>({ teacherLastName: "", id: "" });
   const handleCancelButtonClick = () => {
     router.push("/dashboard/students");
   };
@@ -47,6 +48,8 @@ const AddStudent = () => {
   const teacherMap = new Map(
     teacherData.map((teacher) => [teacher.teacherLastName, teacher])
   );
+
+  console.log(teacherName);
 
   return (
     <div className="mt-6 ml-[30%] max-w-lg outline outline-slate-100 p-4 drop-shadow-lg rounded-md">
@@ -125,8 +128,12 @@ const AddStudent = () => {
           name="studentTeacher"
           onChange={(event) => {
             const selectedTeacher = teacherMap.get(event.target.value);
+            console.log(selectedTeacher?.teacherLastName, selectedTeacher?.id);
             if (selectedTeacher) {
-              setTeacherName(selectedTeacher);
+              setTeacherName({
+                teacherLastName: selectedTeacher.teacherLastName,
+                id: selectedTeacher.id,
+              });
             }
           }}
         >
@@ -140,7 +147,7 @@ const AddStudent = () => {
         <input
           type="hidden"
           name="studentTeacher"
-          value={teacherName as string}
+          value={teacherName?.teacherLastName as string}
         />
 
         <div className="flex w-full md:w-full justify-around mt-4">
