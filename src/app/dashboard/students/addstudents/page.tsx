@@ -49,8 +49,6 @@ const AddStudent = () => {
     teacherData.map((teacher) => [teacher.teacherLastName, teacher])
   );
 
-  console.log(teacherName);
-
   return (
     <div className="mt-6 ml-[30%] max-w-lg outline outline-slate-100 p-4 drop-shadow-lg rounded-md">
       <h2 className="font-bold">Enter Student Details</h2>
@@ -128,7 +126,6 @@ const AddStudent = () => {
           name="studentTeacher"
           onChange={(event) => {
             const selectedTeacher = teacherMap.get(event.target.value);
-            console.log(selectedTeacher?.teacherLastName, selectedTeacher?.id);
             if (selectedTeacher) {
               setTeacherName({
                 teacherLastName: selectedTeacher.teacherLastName,
