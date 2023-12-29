@@ -27,7 +27,7 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
         const data = await getAllTeachers();
         setTeacherData(data);
       };
-      getAllTeachers();
+      getTeachers();
     }, []);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
