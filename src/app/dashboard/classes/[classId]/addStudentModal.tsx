@@ -59,9 +59,6 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
     const [assignedStudents, setAssignedStudents] =
       useState<AssignedStudentType | null>(null);
 
-    console.log(studentNames, "studentNames");
-    console.log(selectedStudents, "selectedStudents");
-
     useEffect(() => {
       const fetchStudentNames = async () => {
         const studentData = await getAllStudents();

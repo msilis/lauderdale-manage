@@ -38,6 +38,8 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
       }));
     };
 
+    //TODO (ms) parse teacher info and set teacher name for select
+
     return (
       <dialog id="editStudentModal" className="modal" ref={ref}>
         <div className="modal-box">
