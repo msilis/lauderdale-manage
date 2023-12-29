@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { StudentData } from "./studentView";
 import { UI_TEXT } from "../../../../../utils/uitext";
 import { TeacherData } from "../../teachers/teacherView/teacherView";
+import { getAllTeachers } from "../../teachers/teacherView/teacherUtils";
 
 interface EditStudentProps {
   student: StudentData;
@@ -20,6 +21,14 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
       teacherLastName: string;
       id: string;
     } | null>({ teacherLastName: "", id: "" });
+
+    useEffect(() => {
+      const getTeachers = async () => {
+        const data = await getAllTeachers();
+        setTeacherData(data);
+      };
+      getAllTeachers();
+    }, []);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target;
