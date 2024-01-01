@@ -84,7 +84,13 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
               className="input input-bordered w-full  mt-2"
             />
             <label htmlFor="studentTeacher">Teacher</label>
-            <select className="select select-bordered w-full max-w-xs mt-2"></select>
+            <select className="select select-bordered w-full max-w-xs mt-2">
+              {options.map((teacher) => (
+                <option
+                  value={teacher.teacherId}
+                >{`${teacher.teacherLastName}, ${teacher.teacherFirstName}`}</option>
+              ))}
+            </select>
           </div>
           <div>
             <button
