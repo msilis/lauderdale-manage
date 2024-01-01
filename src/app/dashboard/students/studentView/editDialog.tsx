@@ -5,6 +5,7 @@ import { StudentData } from "./studentView";
 import { UI_TEXT } from "../../../../../utils/uitext";
 import { TeacherData } from "../../teachers/teacherView/teacherView";
 import { getAllTeachers } from "../../teachers/teacherView/teacherUtils";
+import { editStudentOptions } from "./editUtils";
 
 interface EditStudentProps {
   student: StudentData;
@@ -39,6 +40,8 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
     };
 
     //TODO (ms) parse teacher info and set teacher name for select
+
+    const options = editStudentOptions(teacherData);
 
     return (
       <dialog id="editStudentModal" className="modal" ref={ref}>

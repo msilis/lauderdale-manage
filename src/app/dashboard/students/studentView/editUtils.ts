@@ -6,4 +6,5 @@ export const editStudentOptions = (teacherData: TeacherData[]) => {
     teacherFirstName: teacher.teacherFirstName,
     teacherId: teacher.id,
   }));
+  return parsedTeaherNames;
 };
