@@ -43,6 +43,13 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
 
     const options = editStudentOptions(teacherData);
 
+    console.log(options, "options from options :)");
+    console.log(teacherName, "teacherName");
+
+    const editTeacherMap = new Map(
+      teacherData.map((teacher) => [teacher.teacherLastName, teacher])
+    );
+
     return (
       <dialog id="editStudentModal" className="modal" ref={ref}>
         <div className="modal-box">
@@ -84,7 +91,21 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
               className="input input-bordered w-full  mt-2"
             />
             <label htmlFor="studentTeacher">Teacher</label>
-            <select className="select select-bordered w-full max-w-xs mt-2">
+            <select
+              name="studentTeacher"
+              className="select select-bordered w-full max-w-xs mt-2"
+              onChange={(event) => {
+                const selectedTeacher = editTeacherMap.get(event.target.value);
+                console.log(teacherName);
+                if (selectedTeacher) {
+                  setTeacherName({
+                    teacherLastName: selectedTeacher.teacherLastName,
+                    id: selectedTeacher.id,
+                  });
+                }
+              }}
+            >
+              <option value="">Teacher...</option>
               {options.map((teacher) => (
                 <option
                   value={teacher.teacherId}
