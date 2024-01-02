@@ -43,11 +43,8 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
 
     const options = editStudentOptions(teacherData);
 
-    console.log(options, "options from options :)");
-    console.log(teacherName, "teacherName");
-
     const editTeacherMap = new Map(
-      teacherData.map((teacher) => [teacher.teacherLastName, teacher])
+      teacherData.map((teacher) => [teacher.id, teacher])
     );
 
     return (
@@ -96,12 +93,16 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
               className="select select-bordered w-full max-w-xs mt-2"
               onChange={(event) => {
                 const selectedTeacher = editTeacherMap.get(event.target.value);
-                console.log(teacherName);
+                console.log(editedStudentData, "editedStudentData");
                 if (selectedTeacher) {
                   setTeacherName({
                     teacherLastName: selectedTeacher.teacherLastName,
                     id: selectedTeacher.id,
                   });
+                  setEditedStudentData((prevData) => ({
+                    ...prevData,
+                    studentTeacher: selectedTeacher.id,
+                  }));
                 }
               }}
             >
