@@ -39,8 +39,6 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
       }));
     };
 
-    //TODO (ms) parse teacher info and set teacher name for select
-
     const options = editStudentOptions(teacherData);
 
     const editTeacherMap = new Map(
@@ -100,7 +98,9 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
                   });
                   setEditedStudentData((prevData) => ({
                     ...prevData,
-                    studentTeacher: selectedTeacher.id,
+                    studentTeacherId: selectedTeacher.id,
+                    studentTeacherLastName: selectedTeacher.teacherLastName,
+                    studentTeacherFirstName: selectedTeacher.teacherFirstName,
                   }));
                 }
               }}
