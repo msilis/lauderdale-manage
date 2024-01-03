@@ -10,7 +10,11 @@ export interface ClassData {
   classAccompanist: string;
   classStartTime: string;
   classEndTime: string;
-  classStudents?: { studentId: string; studentName: string }[];
+  classStudents?: {
+    studentId: string;
+    studentName: string;
+    studentBirthdate: string;
+  }[];
   id: string;
 }
 
@@ -31,6 +35,7 @@ const ClassTable: React.FC<ClassTableProps> = ({
   const handleClassClick = (classId: string) => {
     router.push(`/dashboard/classes/${classId}`);
   };
+
   return (
     <div className="overflow-x-auto">
       <table className="table">

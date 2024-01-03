@@ -15,6 +15,7 @@ export const selectOptions = (
       value: `${student.studentLastName}, ${student.studentFirstName}`,
       label: `${student.studentLastName}, ${student.studentFirstName}`,
       id: student.id,
+      studentBirthdate: student.studentBirthdate,
     }));
 
     const filteredOptions = mappedOptions.filter(
@@ -51,6 +52,8 @@ export const saveStudentsToClass = async (
     classId: classId,
     selectedStudents: selectedStudents,
   };
+
+  console.log(addStudentData, "addStudentData");
   const response = await fetch("../../../api/classes/addToClass", {
     method: "POST",
     headers: {

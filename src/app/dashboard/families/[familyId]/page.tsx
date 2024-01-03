@@ -31,6 +31,8 @@ export const FamilyDetail = () => {
     return router.back();
   };
 
+  console.log(familyDetail, "familyDetail");
+
   return (
     <div className="flex flex-col pl-28 gap-6">
       <h1 className="text-5xl font-bold">Family Details</h1>

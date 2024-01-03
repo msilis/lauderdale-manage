@@ -25,13 +25,17 @@ interface AddStudentProps {
 export type StudentNames = {
   studentFirstName: string;
   studentLastName: string;
+  studentBirthdate: string;
   id: string;
+  familyId: string;
+  studentTeacher: string;
 };
 
 export type StudentOption = {
   value: string;
   label: string;
   id: string;
+  studentBirthdate: string;
 };
 
 export type AssignedStudentType = {
@@ -61,7 +65,12 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
         const extractedData = studentData.map((student: StudentData) => ({
           studentFirstName: student.studentFirstName,
           studentLastName: student.studentLastName,
+          studentBirthdate: student.studentBirthdate,
           id: student.id,
+          studentFamily: student.studentFamily,
+          studentTeacherId: student.studentTeacherId,
+          studentTeacherLastName: student.studentTeacherLastName,
+          studentTeacherFirstName: student.studentTeacherFirstName,
         }));
         setStudentNames(extractedData);
       };
