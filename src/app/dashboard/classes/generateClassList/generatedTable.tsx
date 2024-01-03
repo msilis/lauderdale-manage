@@ -46,6 +46,8 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
       });
     }
   };
+  console.log(classDetail.classStudents, "classStudents");
+  console.log(classDetail, "classDetail");
 
   return (
     <div>
@@ -95,7 +97,7 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
                   {student.studentBirthdate}
                 </td>
                 <td className="outline outline-[1px] outline-slate-500">
-                  Teacher
+                  {student.studentTeacherLastname}
                 </td>
                 <td className="outline outline-[1px] outline-slate-500">
                   Parent 1

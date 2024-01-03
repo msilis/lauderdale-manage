@@ -14,6 +14,9 @@ export interface ClassData {
     studentId: string;
     studentName: string;
     studentBirthdate: string;
+    studentTeacherLastName: string;
+    studentParent1Name: string;
+    studentParent2Name: string;
   }[];
   id: string;
 }
