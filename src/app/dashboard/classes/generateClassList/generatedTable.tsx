@@ -47,8 +47,6 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
     }
   };
 
-  console.log(classDetail);
-
   return (
     <div>
       <div className="flex flex-col">
