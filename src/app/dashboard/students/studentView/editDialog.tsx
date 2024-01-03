@@ -41,6 +41,8 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
 
     const options = editStudentOptions(teacherData);
 
+    console.log(student, "student");
+
     const editTeacherMap = new Map(
       teacherData.map((teacher) => [teacher.id, teacher])
     );
@@ -105,7 +107,11 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
                 }
               }}
             >
-              <option value="">Teacher...</option>
+              <option value="">
+                {student.studentTeacherId
+                  ? `${student.studentTeacherLastName}, ${student.studentTeacherFirstName}`
+                  : "Teacher..."}
+              </option>
               {options.map((teacher) => (
                 <option
                   value={teacher.teacherId}
