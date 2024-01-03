@@ -112,12 +112,16 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
                   ? `${student.studentTeacherLastName}, ${student.studentTeacherFirstName}`
                   : "Teacher..."}
               </option>
-              {options.map((teacher) => (
-                <option
-                  value={teacher.teacherId}
-                  key={teacher.teacherId}
-                >{`${teacher.teacherLastName}, ${teacher.teacherFirstName}`}</option>
-              ))}
+              {options
+                .filter(
+                  (teacher) => teacher.teacherId !== student.studentTeacherId
+                )
+                .map((teacher) => (
+                  <option
+                    value={teacher.teacherId}
+                    key={teacher.teacherId}
+                  >{`${teacher.teacherLastName}, ${teacher.teacherFirstName}`}</option>
+                ))}
             </select>
           </div>
           <div>
