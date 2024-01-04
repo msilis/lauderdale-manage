@@ -19,6 +19,7 @@ export async function POST(request: Request) {
       studentId: student.id,
       studentName: student.label,
       studentBirthdate: student.studentBirthdate,
+      studentTeacherLastName: student.studentTeacher,
     }));
 
     const classRef = doc(db, "classes", classId);
