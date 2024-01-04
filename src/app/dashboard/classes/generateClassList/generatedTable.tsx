@@ -46,8 +46,6 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
       });
     }
   };
-  console.log(classDetail.classStudents, "classStudents");
-  console.log(classDetail, "classDetail");
 
   return (
     <div>
