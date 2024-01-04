@@ -19,6 +19,8 @@ const GenerateClassListView = () => {
     setTermDates,
     halfTermDates,
     setHalfTermDates,
+    classAssignedStudents,
+    setClassAssignedStudents,
   } = useContext(ClassDataContext);
 
   const handleBackClick = () => {
