@@ -6,6 +6,7 @@ export const ClassDataContext = createContext();
 
 export function ClassContext({ children }) {
   const [classDetail, setClassDetail] = useState();
+  const [classAssignedStudents, setClassAssignedStudents] = useState();
   const [termDates, setTermDates] = useState();
   const [halfTermDates, setHalfTermDates] = useState();
 
