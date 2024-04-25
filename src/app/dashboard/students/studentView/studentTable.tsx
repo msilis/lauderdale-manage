@@ -32,7 +32,8 @@ const StudentTable: React.FC<StudentTableProps> = ({
                 <td>{student.studentFirstName}</td>
                 <td>{student.studentLastName}</td>
                 <td>{student.studentFamily}</td>
-                <td>{student.studentBirthdate}</td>
+                    <td>{student.studentBirthdate}</td>
+                    <td>{student.studentTeacher }</td>
                 <td className="cursor-pointer w-[50px]">
                   <img
                     src="/icons8-edit-simple-small(1)/icons8-edit-16.png"

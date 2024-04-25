@@ -19,6 +19,7 @@ export interface StudentData {
   studentBirthdate: string;
   id: string;
   studentTeacherId?: string;
+  studentTeacher?: string;
   studentTeacherLastName?: string;
   studentTeacherFirstName?: string;
 }
