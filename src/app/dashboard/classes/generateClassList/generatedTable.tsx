@@ -95,7 +95,7 @@ export const GeneratedTable: React.FC<GeneratedTableProps> = ({
                   {student.studentBirthdate}
                 </td>
                 <td className="outline outline-[1px] outline-slate-500">
-                  Teacher
+                  {student.studentTeacherLastName}
                 </td>
                 <td className="outline outline-[1px] outline-slate-500">
                   Parent 1

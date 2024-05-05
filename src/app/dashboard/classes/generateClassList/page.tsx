@@ -10,6 +10,7 @@ import { useContext, useEffect, useState } from "react";
 import { ClassDataContext } from "../../../../../utils/context/context";
 import { fetchTermDates } from "../../settings/termDateView/termDateViewUtils";
 import { fetchHalfTermDates } from "../../settings/halfTermView/halfTermViewUtils";
+import { fetchAssignedStudentInfo } from "./classListUtils";
 
 const GenerateClassListView = () => {
   const router = useRouter();
@@ -19,6 +20,8 @@ const GenerateClassListView = () => {
     setTermDates,
     halfTermDates,
     setHalfTermDates,
+    classAssignedStudents,
+    setClassAssignedStudents,
   } = useContext(ClassDataContext);
 
   const handleBackClick = () => {
@@ -26,6 +29,17 @@ const GenerateClassListView = () => {
   };
 
   const [currentTerm, setCurrentTerm] = useState<number | null>(0);
+  const studentsToGet = classDetail.classStudents.map(
+    (student: { studentId: any }) => {
+      console.log(student.studentId, "student");
+      return student.studentId;
+    }
+  );
+  console.log(studentsToGet, "studentsToGet");
+
+  console.log(classDetail.classStudents);
+
+  console.log(classAssignedStudents, "classAssignedStudents");
 
   useEffect(() => {
     const getTermDates = async () => {
@@ -41,6 +55,14 @@ const GenerateClassListView = () => {
       setHalfTermDates(halfTermData);
     };
     getHalfTermDates();
+  }, []);
+
+  useEffect(() => {
+    const getAssignedStudents = async () => {
+      const assignedStudentData = await fetchAssignedStudentInfo(studentsToGet);
+      setClassAssignedStudents(assignedStudentData);
+    };
+    getAssignedStudents();
   }, []);
 
   return (
