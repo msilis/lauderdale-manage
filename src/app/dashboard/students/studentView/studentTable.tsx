@@ -29,13 +29,13 @@ const StudentTable: React.FC<StudentTableProps> = ({
         </thead>
         <tbody>
           {studentData && studentData.length > 0 && studentData[0].id ? (
-            studentData.map((student) => (
+                      studentData.map((student) =>  (
               <tr key={student.id}>
                 <td>{student.studentFirstName}</td>
                 <td>{student.studentLastName}</td>
                 <td>{student.studentFamily}</td>
                     <td>{student.studentBirthdate}</td>
-                    <td>{student.studentTeacher }</td>
+                    <td>{student.studentTeacherLastName}</td>
                 <td className="cursor-pointer w-[50px]">
                   <img
                     src="/icons8-edit-simple-small(1)/icons8-edit-16.png"
