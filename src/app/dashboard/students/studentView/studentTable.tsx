@@ -22,7 +22,9 @@ const StudentTable: React.FC<StudentTableProps> = ({
             <th>{STUDENT_TABLE.studentFirstName}</th>
             <th>{STUDENT_TABLE.studentLastName}</th>
             <th>{STUDENT_TABLE.studentFamily}</th>
-            <th>{STUDENT_TABLE.studentBirthdate}</th>
+                      <th>{STUDENT_TABLE.studentBirthdate}</th>
+                      <th>{STUDENT_TABLE.studentTeacher }</th>
+                      
           </tr>
         </thead>
         <tbody>
