@@ -1,5 +1,6 @@
 "use client";
 
+import { ReactNode } from "react";
 import { CLASS_TABLE } from "./classUtils";
 import { useRouter } from "next/navigation";
 
@@ -10,7 +11,9 @@ export interface ClassData {
   classAccompanist: string;
   classStartTime: string;
   classEndTime: string;
-  classStudents?: { studentId: string; studentName: string }[];
+  classStudents?: {
+  studentId: string; studentName: string; studentTeacherLastName: string;
+}[];
   id: string;
 }
 
