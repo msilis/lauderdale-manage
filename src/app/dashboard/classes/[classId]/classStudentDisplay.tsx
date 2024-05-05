@@ -38,7 +38,7 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
 
   useEffect(() => {
     const fetchAllStudents = async () => {
-      const studentData = await getAllStudents();
+        const studentData = await getAllStudents();
       setStudents(studentData);
     };
     fetchAllStudents();
@@ -70,12 +70,15 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
             <tr>
               <th>Remove?</th>
               <th></th>
-              <th>Student Name</th>
+                          <th>Student Name</th>
+                          <th>Teacher</th>
             </tr>
           </thead>
           <tbody>
             {classDetail &&
-              classDetail.classStudents?.map((student, index) => (
+                          classDetail.classStudents?.map((student, index) => {
+                            console.log(classDetail, 'classDetail')
+                              return(
                 <tr key={student.studentId}>
                   <td>
                     <input
@@ -91,9 +94,10 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
                     />
                   </td>
                   <td>{index + 1}</td>
-                  <td>{student.studentName}</td>
+                    <td>{student.studentName}</td>
+                    <td>{student.studentTeacherLastName}</td>
                 </tr>
-              ))}
+              )})}
           </tbody>
         </table>
       </div>

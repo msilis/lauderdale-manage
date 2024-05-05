@@ -18,6 +18,7 @@ export interface StudentData {
   studentFamily: string;
   studentBirthdate: string;
   id: string;
+  studentTeacherLastName?: string;
 }
 
 const StudentView = () => {

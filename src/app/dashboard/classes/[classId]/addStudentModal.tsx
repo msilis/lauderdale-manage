@@ -26,18 +26,21 @@ export type StudentNames = {
   studentFirstName: string;
   studentLastName: string;
   id: string;
+  studentTeacherLastName: string;
 };
 
 export type StudentOption = {
   value: string;
   label: string;
   id: string;
+  studentTeacherLastName: string
 };
 
 export type AssignedStudentType = {
   classStudents: {
     studentId: string;
     studentName: string;
+    studentTeacherLastName: string;
   }[];
 };
 
@@ -62,6 +65,7 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
           studentFirstName: student.studentFirstName,
           studentLastName: student.studentLastName,
           id: student.id,
+          studentTeacherLastName: student.studentTeacherLastName,
         }));
         setStudentNames(extractedData);
       };
@@ -85,14 +89,17 @@ const AddStudentToClass = React.forwardRef<HTMLDialogElement, AddStudentProps>(
       selectedStudents: readonly StudentOption[],
       actionMeta: ActionMeta<StudentOption>
     ) => {
-      if (selectedStudents) {
+        
+        if (selectedStudents) {
+          console.log(selectedStudents)
         setSelectedStudents(Array.from(selectedStudents));
       } else {
         setSelectedStudents([]);
       }
     };
 
-    const handleSave = () => {
+        const handleSave = () => {
+        console.log(selectedStudents, 'selectedStudents')
       saveStudentsToClass(selectedStudents, classId);
       setUpdateTable(true);
       setSelectedStudents([]);
