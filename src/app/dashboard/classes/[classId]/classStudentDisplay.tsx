@@ -77,7 +77,6 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
           <tbody>
             {classDetail &&
                           classDetail.classStudents?.map((student, index) => {
-                            console.log(classDetail, 'classDetail')
                               return(
                 <tr key={student.studentId}>
                   <td>
