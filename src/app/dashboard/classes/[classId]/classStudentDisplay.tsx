@@ -61,6 +61,11 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
     }
   };
 
+  const alphabeticalStudents = classDetail?.classStudents?.sort((a, b) => {
+    const studentComparison = a.studentName.localeCompare(b.studentName);
+    return studentComparison;
+  });
+
   return (
     <div className="flex flex-col ml-5 gap-6">
       <h3 className="font-bold">Students</h3>
@@ -76,8 +81,8 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
           </thead>
           <tbody>
             {classDetail &&
-                          classDetail.classStudents?.map((student, index) => {
-                              return(
+              alphabeticalStudents &&
+              alphabeticalStudents.map((student, index) => (
                 <tr key={student.studentId}>
                   <td>
                     <input

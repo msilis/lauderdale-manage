@@ -7,11 +7,17 @@ import { useEffect, useState } from "react";
 import DashboardLayout from "@/layout/dashboardLayout";
 import Navbar from "@/components/navbar/navbar";
 import { UI_TEXT } from "../../../../../utils/uitext";
+import Link from "next/link";
 import DetailsDisplay from "./details";
+import { BackButton } from "@/components/backButton/back";
+import { useRouter } from "next/navigation";
+import { STYLE_UTILS } from "../../../../../utils/styleUtils";
+import { LINK_ROUTE } from "../../../../../utils/linkRoutes";
 
-const FamilyDetail = () => {
+export const FamilyDetail = () => {
   const [familyDetail, setFamilyDetail] = useState<FamilyData | undefined>();
   const params = useParams();
+  const router = useRouter();
 
   useEffect(() => {
     const fetchFamilyData = async () => {
@@ -21,22 +27,31 @@ const FamilyDetail = () => {
     fetchFamilyData();
   }, []);
 
+  const handleBackClick = () => {
+    return router.back();
+  };
+
+  console.log(familyDetail, "familyDetail");
+
   return (
-    <div className="flex flex-col ml-28 gap-6">
+    <div className="flex flex-col pl-28 gap-6">
       <h1 className="text-5xl font-bold">Family Details</h1>
-      <Navbar
-        buttons={[
-          {
-            buttonText: UI_TEXT.addFamily,
-            url: "/dashboard/families/addfamilies",
-          },
-          {
-            buttonText: UI_TEXT.editFamily,
-            url: `/dashboard/families/${params.familyId}/editfamily`,
-            className: "btn btn-accent text-l",
-          },
-        ]}
-      />
+      <Navbar className={STYLE_UTILS.navbarStyle}>
+        <BackButton
+          onClick={handleBackClick}
+          className={STYLE_UTILS.squareButton}
+        />
+        <Link href={LINK_ROUTE.addFamilies}>
+          <button className={STYLE_UTILS.ghostButton}>
+            {UI_TEXT.addFamily}
+          </button>
+        </Link>
+        <Link href={`/dashboard/families/${params.familyId}/editfamily`}>
+          <button className={STYLE_UTILS.accentButton}>
+            {UI_TEXT.editFamily}
+          </button>
+        </Link>
+      </Navbar>
       <DetailsDisplay familyDetail={familyDetail} />
     </div>
   );

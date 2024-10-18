@@ -7,7 +7,8 @@ export const STUDENT_TABLE = {
   studentFirstName: "First Name",
   studentLastName: "Last Name",
   studentFamily: "Family",
-  studentBirthdate: "Birthdate",
+    studentBirthdate: "Birthdate",
+  studentTeacher: "Teacher"
 };
 
 export const getAllStudents = async () => {

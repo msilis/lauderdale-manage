@@ -10,6 +10,7 @@ export const handleRemoveStudent = async (
     studentsToDelete: studentsToDelete,
     classId: classId,
   };
+
   const response = await fetch("../../../api/classes/removeStudent", {
     method: "POST",
     headers: {

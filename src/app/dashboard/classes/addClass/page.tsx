@@ -8,7 +8,7 @@ import { handleAddClassSubmit } from "./addClassHandler";
 const AddClass = () => {
   const router = useRouter();
   const handleCancelButtonClick = () => {
-    router.push("/dashboard/classes");
+    router.back();
   };
   return (
     <div className="mt-6 ml-[30%] max-w-lg outline outline-slate-100 p-4 drop-shadow-lg rounded-md">

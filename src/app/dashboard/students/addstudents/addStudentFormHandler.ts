@@ -12,6 +12,8 @@ export const handleAddStudentSubmit = async (
   const formData = new FormData(event.target as HTMLFormElement);
   const studentData = Object.fromEntries(formData.entries());
 
+  console.log(studentData, "studentData");
+
   const response = await fetch("../../../api/addStudent", {
     method: "POST",
     headers: {

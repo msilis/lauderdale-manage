@@ -10,6 +10,13 @@ import { useParams } from "next/navigation";
 import { getClassDetails } from "../classView/classUtils";
 import ClassStudentDisplay from "./classStudentDisplay";
 import { handleRemoveStudent } from "./classEditUtils";
+import Link from "next/link";
+import { STYLE_UTILS } from "../../../../../utils/styleUtils";
+import { LINK_ROUTE } from "../../../../../utils/linkRoutes";
+import { BackButton } from "@/components/backButton/back";
+import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import { ClassDataContext } from "../../../../../utils/context/context";
 
 export type StudentToDeleteType = {
   studentId: string;
@@ -17,7 +24,6 @@ export type StudentToDeleteType = {
 };
 
 const ClassDetail = () => {
-  const [classDetail, setClassDetail] = useState<ClassData | undefined>();
   const [updateTable, setUpdateTable] = useState<boolean>(false);
   const [studentsToDelete, setStudentsToDelete] = useState<
     StudentToDeleteType[]
@@ -25,11 +31,14 @@ const ClassDetail = () => {
   const [addStudent, setAddStudent] = useState<boolean>(false);
   const params = useParams();
   const addStudentRef = useRef<HTMLDialogElement | null>(null);
+  const router = useRouter();
+  const { classDetail, setClassDetail } = useContext(ClassDataContext);
 
   useEffect(() => {
     const fetchClassDetails = async () => {
       const classData = await getClassDetails(params.classId as string);
       setClassDetail(classData);
+
       setUpdateTable(false);
     };
     fetchClassDetails();
@@ -43,35 +52,52 @@ const ClassDetail = () => {
     }
   }, [addStudent]);
 
+  const removeStudentHandler = () => {
+    handleRemoveStudent(studentsToDelete, classDetail?.id);
+    setUpdateTable(true);
+    setStudentsToDelete([]);
+  };
+
+  const addStudentHandler = () => {
+    setAddStudent(true);
+  };
+
+  const handleBackClick = () => {
+    return router.back();
+  };
+
   return (
-    <div className="flex flex-col ml-28 gap-6">
+    <div className="flex flex-col pl-28 gap-6">
       <h1 className="text-5xl font-bold">Class Details</h1>
-      <Navbar
-        buttons={[
-          {
-            buttonText: UI_TEXT.addClassButton,
-            url: "/dashboard/classes/addClass",
-          },
-          {
-            buttonText: UI_TEXT.addStudentsButton,
-            onClick: () => {
-              setAddStudent(true);
-            },
-          },
-          ...(studentsToDelete.length > 0
-            ? [
-                {
-                  buttonText: UI_TEXT.removeStudent,
-                  onClick: () => {
-                    handleRemoveStudent(studentsToDelete, classDetail?.id);
-                    setUpdateTable(true);
-                    setStudentsToDelete([]);
-                  },
-                },
-              ]
-            : []),
-        ]}
-      />
+      <Navbar className={STYLE_UTILS.navbarStyle}>
+        <BackButton
+          className={STYLE_UTILS.squareButton}
+          onClick={handleBackClick}
+        />
+        <Link href={LINK_ROUTE.addClass}>
+          <button className={STYLE_UTILS.ghostButton}>
+            {UI_TEXT.addClassButton}
+          </button>
+        </Link>
+        <button className={STYLE_UTILS.ghostButton} onClick={addStudentHandler}>
+          {UI_TEXT.addStudentsButton}
+        </button>
+        {studentsToDelete.length > 0 ? (
+          <button
+            className={STYLE_UTILS.redButton}
+            onClick={() => removeStudentHandler()}
+          >
+            {UI_TEXT.removeStudent}
+          </button>
+        ) : (
+          ""
+        )}
+        <Link href={LINK_ROUTE.generateClassList}>
+          <button className={STYLE_UTILS.ghostButton}>
+            {UI_TEXT.generateClassList}
+          </button>
+        </Link>
+      </Navbar>
       <ClassDetailsDisplay classDetail={classDetail} />
       <ClassStudentDisplay
         classDetail={classDetail!}

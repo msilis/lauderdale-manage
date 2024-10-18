@@ -5,12 +5,13 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 export async function POST(request: Request) {
   try {
     const studentData = await request.json();
-    console.log({ studentData });
     await addDoc(collection(db, "students"), {
       studentFirstName: studentData.studentFirstName,
       studentLastName: studentData.studentLastName,
       studentFamily: studentData.studentFamily,
       studentBirthdate: studentData.studentBirthdate,
+      studentFamilyId: studentData.familyId,
+      studentTeacher: studentData.studentTeacher,
     });
     return NextResponse.json(
       { message: "Student added to database" },

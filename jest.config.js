@@ -12,12 +12,15 @@ module.exports = {
     "!<rootDir>/coverage/**",
   ],
   moduleNameMapper: {
+    // Handle CSS imports (without CSS modules)
+    "^.+\\.(css|sass|scss)$": "identity-obj-proxy",
+
+    //Google Inter font
+    "^next/font/google$": "<rootDir>/__mocks__/next/font/google.js",
+
     // Handle CSS imports (with CSS modules)
     // https://jestjs.io/docs/webpack#mocking-css-modules
     "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
-
-    // Handle CSS imports (without CSS modules)
-    "^.+\\.(css|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
 
     // Handle image imports
     // https://jestjs.io/docs/webpack#handling-static-assets

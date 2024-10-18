@@ -1,8 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StudentData } from "./studentView";
 import { UI_TEXT } from "../../../../../utils/uitext";
+import { TeacherData } from "../../teachers/teacherView/teacherView";
+import { getAllTeachers } from "../../teachers/teacherView/teacherUtils";
+import { editStudentOptions } from "./editUtils";
 
 interface EditStudentProps {
   student: StudentData;
@@ -14,6 +17,19 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
   ({ student, onClose, onSave }, ref) => {
     const [editedStudentData, setEditedStudentData] =
       useState<StudentData>(student);
+    const [teacherData, setTeacherData] = useState<TeacherData[]>([]);
+    const [teacherName, setTeacherName] = useState<{
+      teacherLastName: string;
+      id: string;
+    } | null>({ teacherLastName: "", id: "" });
+
+    useEffect(() => {
+      const getTeachers = async () => {
+        const data = await getAllTeachers();
+        setTeacherData(data);
+      };
+      getTeachers();
+    }, []);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target;
@@ -22,6 +38,12 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
         [name]: value,
       }));
     };
+
+    const options = editStudentOptions(teacherData);
+
+    const editTeacherMap = new Map(
+      teacherData.map((teacher) => [teacher.id, teacher])
+    );
 
     return (
       <dialog id="editStudentModal" className="modal" ref={ref}>
@@ -63,6 +85,42 @@ const EditStudent = React.forwardRef<HTMLDialogElement, EditStudentProps>(
               onChange={handleInputChange}
               className="input input-bordered w-full  mt-2"
             />
+            <label htmlFor="studentTeacher">Teacher</label>
+            <select
+              name="studentTeacher"
+              className="select select-bordered w-full max-w-xs mt-2"
+              onChange={(event) => {
+                const selectedTeacher = editTeacherMap.get(event.target.value);
+                if (selectedTeacher) {
+                  setTeacherName({
+                    teacherLastName: selectedTeacher.teacherLastName,
+                    id: selectedTeacher.id,
+                  });
+                  setEditedStudentData((prevData) => ({
+                    ...prevData,
+                    studentTeacherId: selectedTeacher.id,
+                    studentTeacherLastName: selectedTeacher.teacherLastName,
+                    studentTeacherFirstName: selectedTeacher.teacherFirstName,
+                  }));
+                }
+              }}
+            >
+              <option value="">
+                {student.studentTeacherId
+                  ? `${student.studentTeacherLastName}, ${student.studentTeacherFirstName}`
+                  : "Teacher..."}
+              </option>
+              {options
+                .filter(
+                  (teacher) => teacher.teacherId !== student.studentTeacherId
+                )
+                .map((teacher) => (
+                  <option
+                    value={teacher.teacherId}
+                    key={teacher.teacherId}
+                  >{`${teacher.teacherLastName}, ${teacher.teacherFirstName}`}</option>
+                ))}
+            </select>
           </div>
           <div>
             <button
