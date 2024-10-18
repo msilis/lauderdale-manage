@@ -101,7 +101,7 @@ const ClassStudentDisplay: React.FC<ClassStudentDisplayProps> = ({
                     <td>{student.studentName}</td>
                     <td>{student.studentTeacherLastName}</td>
                 </tr>
-              )})}
+              ))}
           </tbody>
         </table>
       </div>
